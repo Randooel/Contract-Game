@@ -6,10 +6,14 @@ public class ClientManager : MonoBehaviour
 {
     [Header("Client Reference")]
     CurrentClient currentClient;
+    [SerializeField] SpriteRenderer clientEyes;
+    [SerializeField] SpriteRenderer clientHead;
+    [SerializeField] SpriteRenderer clientTeeth;
+    [SerializeField] SpriteRenderer clientOutline;
 
     [Header("SO References")]
     public ClientNameSO clientNameSO;
-    public ClientSpritesSO spritesSO;
+    public ClientSpritesListSO spritesListSO;
     public ClientObjectiveSO objectivesSO;
     public ClientPersonalitySO personalitySO;
 
@@ -20,14 +24,16 @@ public class ClientManager : MonoBehaviour
     {
         currentClient = FindObjectOfType<CurrentClient>();
 
-        ChooseRandomProfile();
+        //ChooseRandomProfile();
+        GenerateClient();
     }
 
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            ChooseRandomProfile();
+            GenerateClient();
+            //ChooseRandomProfile();
         }
     }
 
@@ -52,8 +58,9 @@ public class ClientManager : MonoBehaviour
     void GenerateClient()
     {
         currentClient.clientName = clientNameSO.name;
-        currentClient.clientSprite = spritesSO.GetRandomSprite();
-        objectivesSO.GetRandomObjective();
+        //currentClient.clientSprite = spritesSO.GetRandomSprite();
+        RandomizeSprite();
+        //objectivesSO.GetRandomObjective();
         RandomizeResolution();
         RandomizeCash();
         RandomizeColor();
@@ -61,8 +68,18 @@ public class ClientManager : MonoBehaviour
 
     void RandomizeSprite()
     {
-        int rand = Random.Range(0, spritesSO.sprites.Count);
-        currentClient.clientSprite = spritesSO.sprites[rand];
+        /*
+        int rand = Random.Range(0, spritesListSO.clientSpritesListSOs.Count);
+        currentClient.clientSprite = spritesListSO.clientSpritesListSOs.ClientSpriteSO.sprites[rand];
+        */
+
+        int rand = Random.Range(0, spritesListSO.clientSpritesListSO.Count);
+        var selectedSO = spritesListSO.clientSpritesListSO[rand];
+
+        clientEyes.sprite = selectedSO.clientEyes;
+        clientHead.sprite = selectedSO.clientHead;
+        clientTeeth.sprite = selectedSO.clientTeeth;
+        clientOutline.sprite = selectedSO.clientOutline;
     }
 
     void RandomizeCash()
@@ -80,6 +97,6 @@ public class ClientManager : MonoBehaviour
     void RandomizeColor()
     {
         Color randomColor = new Color(Random.value, Random.value, Random.value);
-        currentClient.clientSpriteRenderer.color = randomColor;
+        clientHead.color = randomColor;
     }
 }

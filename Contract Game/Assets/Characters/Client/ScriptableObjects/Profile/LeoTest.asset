@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LeoTest
   m_EditorClassIdentifier: 
   clientName: Leo, o Nardo
-  sprite: {fileID: 21300000, guid: 716620968d38ce148a788fc2ded1d611, type: 3}
+  sprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
   resolution: 0.7
   objective: []
   cash: 0

@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b476d4a5a7752ba4c8c79b528c9c0090, type: 3}
+  m_Name: Orc Client
+  m_EditorClassIdentifier: 
+  clientEyes: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}
+  clientHead: {fileID: 21300000, guid: 9b014f6432bd39d49b4df9fac1d80c24, type: 3}
+  clientTeeth: {fileID: 21300000, guid: 7cfacafbd4569744ca9bc1f79556a0fa, type: 3}
+  clientOutline: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}

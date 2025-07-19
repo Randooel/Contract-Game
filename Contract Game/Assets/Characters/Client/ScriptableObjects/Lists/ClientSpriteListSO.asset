@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b476d4a5a7752ba4c8c79b528c9c0090, type: 3}
-  m_Name: SpritesList
+  m_Script: {fileID: 11500000, guid: b9f17c82ab6f0154787fc93c43f43f55, type: 3}
+  m_Name: ClientSpriteListSO
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 8c744760404cff44281d85ab7a86dd0f, type: 3}
-  - {fileID: 21300000, guid: 716620968d38ce148a788fc2ded1d611, type: 3}
+  clientSpritesListSO:
+  - {fileID: 11400000, guid: 147b02be24d966e4a8351742a04bc69c, type: 2}
+  - {fileID: 11400000, guid: 9521350ccfed97944887feff812fb785, type: 2}
