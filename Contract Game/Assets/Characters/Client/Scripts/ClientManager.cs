@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ClientManager : MonoBehaviour
 {
@@ -20,9 +21,20 @@ public class ClientManager : MonoBehaviour
     public List<ClientSO> profileSO = new List<ClientSO>();
     public int currentProfile;
 
+    [Header("Animation")]
+    public ClientAnimation clientAnimation;
+
     void Start()
     {
-        currentClient = FindObjectOfType<CurrentClient>();
+        if(currentClient == null)
+        {
+            currentClient = FindObjectOfType<CurrentClient>();
+        }
+        
+        if(clientAnimation == null)
+        {
+            clientAnimation = FindObjectOfType<ClientAnimation>();
+        }
 
         //ChooseRandomProfile();
         GenerateClient();
@@ -32,7 +44,12 @@ public class ClientManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            GenerateClient();
+            clientAnimation.PlayLeave();
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                GenerateClient();
+            });
+            
             //ChooseRandomProfile();
         }
     }
@@ -54,6 +71,8 @@ public class ClientManager : MonoBehaviour
         //currentClient.clientObjectives = profileSO[currentProfile].objective;
         currentClient.clientResolution = profileSO[currentProfile].resolution;
         currentClient.clientCash = profileSO[currentProfile].cash;
+
+        clientAnimation.PlayEntrance();
     }
     void GenerateClient()
     {
@@ -64,6 +83,8 @@ public class ClientManager : MonoBehaviour
         RandomizeResolution();
         RandomizeCash();
         RandomizeColor();
+
+        clientAnimation.PlayEntrance();
     }
 
     void RandomizeSprite()
