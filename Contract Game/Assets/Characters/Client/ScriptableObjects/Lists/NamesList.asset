@@ -12,20 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc317c2c4f65f58419c40567292385b2, type: 3}
   m_Name: NamesList
   m_EditorClassIdentifier: 
-  clientName:
-  - Mark
-  - Oliver
-  - Debbie
-  - Cecil
-  - Johnny
+  clientNames:
   - Leo
   - Vitor
-  - Erick
   - Jadhy
-  - Michel
-  - Sarah
+  - Erick
   - Paullo
-  - Thiago
-  - Gabrielle
-  - Max
-  - Hanna
+  - Sarah
+  - Michel
+  - Mark
+  - Nolan
+  - Debbie
+  - Oliver
+  - Eve

@@ -57,7 +57,7 @@ public class ClientManager : MonoBehaviour
     }
     void GenerateClient()
     {
-        currentClient.clientName = clientNameSO.name;
+        currentClient.clientTextName.text = clientNameSO.GetRandomName();
         //currentClient.clientSprite = spritesSO.GetRandomSprite();
         RandomizeSprite();
         //objectivesSO.GetRandomObjective();
