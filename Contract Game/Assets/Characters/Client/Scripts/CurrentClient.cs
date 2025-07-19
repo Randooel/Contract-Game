@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CurrentClient : ClientClass
 {
+
     void Start()
     {
         

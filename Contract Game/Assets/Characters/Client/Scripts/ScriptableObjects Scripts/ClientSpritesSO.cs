@@ -6,4 +6,11 @@ using UnityEngine;
 public class ClientSpritesSO : ScriptableObject
 {
     public List<Sprite> sprites = new List<Sprite>();
+
+    public Sprite GetRandomSprite()
+    {
+        int rand = Random.Range(0, sprites.Count);
+        return sprites[rand];
+
+    }
 }

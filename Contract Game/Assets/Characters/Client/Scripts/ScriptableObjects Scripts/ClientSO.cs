@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClientSO : MonoBehaviour
+[CreateAssetMenu(fileName = "ClientSO", menuName = "Client/Profile")]
+public class ClientSO : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string clientName;
+    public Sprite sprite;
+    [Range(0, 1)] public float resolution;
+    public GameObject[] objective;
+    public int cash;
+    public GameObject[] possession;
 }

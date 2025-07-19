@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class ClientClass : MonoBehaviour
 {
     [Header("Profile")]
-    [SerializeField] protected string clientName;
-    [SerializeField] protected Sprite sprite;
-    [SerializeField] protected string objective;
+    [SerializeField] public string clientName;
+    [SerializeField] public TextMeshProUGUI clientTextName;
+    [SerializeField] public Sprite clientSprite;
+    [SerializeField] public SpriteRenderer clientSpriteRenderer;
+    [SerializeField] public List<GameObject> clientObjectives = new List<GameObject>();
 
     [Header("Personality")]
-    [SerializeField][Range(0, 1)] protected float resolution;
-    [SerializeField] protected ScriptableObject personality;
+    [SerializeField][Range(0, 1)] public float clientResolution;
+    [SerializeField] public ScriptableObject clientPersonality;
 
-    [SerializeField] protected enum State
+    [SerializeField]
+    public enum State
     {
         Neutral,
         Happy,
@@ -21,20 +25,19 @@ public abstract class ClientClass : MonoBehaviour
     }
 
     [Header("Physical Goods")]
-    [SerializeField] protected int cash;
-    [SerializeField] protected GameObject[] possessions;
+    [SerializeField] public int clientCash;
+    [SerializeField] public GameObject[] clientPossessions;
 
-    [Header("Random Values")]
-    protected int[] randomizedValues;
-
-    protected virtual void RandomizeValues()
+    private void Start()
     {
-        randomizedValues = new int[7];
-
-        for (int i = 0; i < 7; i++)
+        if(clientSpriteRenderer == null)
         {
-            int rand = Random.Range(0, 10);
-            randomizedValues[i] = rand;
+            clientSpriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        if(clientTextName == null)
+        {
+            Debug.LogError("TMP component not assigned to clientTextName variable.");
         }
     }
 }
