@@ -42,6 +42,7 @@ public class ClientManager : MonoBehaviour
 
     void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.R))
         {
             clientAnimation.PlayLeave();
@@ -52,9 +53,10 @@ public class ClientManager : MonoBehaviour
             
             //ChooseRandomProfile();
         }
+        */
     }
 
-    void ChooseRandomProfile()
+    public void ChooseRandomProfile()
     {
         int rand = Random.Range(0, profileSO.Count);
         currentProfile = rand;
@@ -62,7 +64,7 @@ public class ClientManager : MonoBehaviour
         SetProfile();
     }
 
-    void SetProfile()
+    public void SetProfile()
     {
         currentClient.clientName = profileSO[currentProfile].clientName;
         currentClient.clientTextName.text = profileSO[currentProfile].clientName;
@@ -74,7 +76,8 @@ public class ClientManager : MonoBehaviour
 
         clientAnimation.PlayEntrance();
     }
-    void GenerateClient()
+
+    public void GenerateClient()
     {
         currentClient.clientTextName.text = clientNameSO.GetRandomName();
         //currentClient.clientSprite = spritesSO.GetRandomSprite();

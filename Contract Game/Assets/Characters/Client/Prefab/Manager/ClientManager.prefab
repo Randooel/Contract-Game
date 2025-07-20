@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7721037541437556311
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1392950492834529878}
+  - component: {fileID: 1006248628171043804}
+  m_Layer: 0
+  m_Name: ClientManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1392950492834529878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7721037541437556311}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1006248628171043804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7721037541437556311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9667787467c607845991b4bc13408fac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clientEyes: {fileID: 0}
+  clientHead: {fileID: 0}
+  clientTeeth: {fileID: 0}
+  clientOutline: {fileID: 0}
+  clientNameSO: {fileID: 11400000, guid: 957eb40d4525e6b40964c2180edea08c, type: 2}
+  spritesListSO: {fileID: 11400000, guid: 1a91a4d46e01b914aa10812f6a2dc18e, type: 2}
+  objectivesSO: {fileID: 11400000, guid: fe5dcf9c922c90e4bad3752812bf54de, type: 2}
+  personalitySO: {fileID: 11400000, guid: 2581a5b818b5ac645bd02381f866d263, type: 2}
+  profileSO:
+  - {fileID: 11400000, guid: 9a2570eac7d6ada4b96f9668fd695131, type: 2}
+  - {fileID: 11400000, guid: 2da9afbc6a5642e4596d9333ed38dd0e, type: 2}
+  - {fileID: 11400000, guid: 9c1fd31d3fe406b4ba47d32383b172b9, type: 2}
+  - {fileID: 11400000, guid: d4c17bfd0f052b04d98e328869c48d95, type: 2}
+  currentProfile: 0
+  clientAnimation: {fileID: 0}
