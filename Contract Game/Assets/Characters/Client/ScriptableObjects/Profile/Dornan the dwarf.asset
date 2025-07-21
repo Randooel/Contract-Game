@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57876aec776890749970732bf519a6fb, type: 3}
-  m_Name: ErvilhaTest
+  m_Name: Dornan the dwarf
   m_EditorClassIdentifier: 
-  clientName: Shames, James brother
-  eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
-  headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
+  clientName: Dornar, the dwarf
+  eyesSprite: {fileID: 21300000, guid: 3849927d865302b44a7d85df7322242d, type: 3}
+  headSprite: {fileID: 21300000, guid: 67479d20b6692de4ca76836907f3cd4d, type: 3}
   teethSprite: {fileID: 0}
-  outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
-  resolution: 0.2
+  outlineSprite: {fileID: 21300000, guid: 2d0bd27de5e2b434ebfde4fff42ef652, type: 3}
+  resolution: 1
   objective: []
   cash: 0
   possession: []
   greetingLines:
-  - Hi. I'm James brother, Shames
+  - Howdy! Name's Dornan
   negotiationLines: []
   positiveConclusionLines: []
   neutralConclusionLines: []
