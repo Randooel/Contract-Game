@@ -13,8 +13,21 @@ MonoBehaviour:
   m_Name: LeoTest
   m_EditorClassIdentifier: 
   clientName: Leo, o Nardo
-  sprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
+  eyesSprite: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}
+  headSprite: {fileID: 21300000, guid: 9b014f6432bd39d49b4df9fac1d80c24, type: 3}
+  teethSprite: {fileID: 21300000, guid: 7cfacafbd4569744ca9bc1f79556a0fa, type: 3}
+  outlineSprite: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}
   resolution: 0.7
   objective: []
   cash: 0
   possession: []
+  greetingLines:
+  - Hello, there!
+  - Did you know I programmed you?
+  - In fact, I wrote all the code for this game.
+  - What? You didn't know this is a videogame?
+  - Thought so, 'cause I made you this way.
+  negotiationLines: []
+  positiveConclusionLines: []
+  neutralConclusionLines: []
+  negativeConclusionLines: []

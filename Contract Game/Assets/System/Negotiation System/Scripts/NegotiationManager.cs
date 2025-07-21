@@ -112,7 +112,7 @@ public class NegotiationManager : MonoBehaviour
     }
     private void HandleEntrance()
     {
-        _queueSystem.NextRandomClient();
+        //_queueSystem.NextRandomClient();
     }
 
     private void HandleChitChat()

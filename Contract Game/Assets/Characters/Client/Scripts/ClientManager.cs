@@ -2,58 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 public class ClientManager : MonoBehaviour
 {
     [Header("Client Reference")]
-    CurrentClient currentClient;
-    [SerializeField] SpriteRenderer clientEyes;
-    [SerializeField] SpriteRenderer clientHead;
-    [SerializeField] SpriteRenderer clientTeeth;
-    [SerializeField] SpriteRenderer clientOutline;
+    CurrentClient _currentClient;
+    [SerializeField] SpriteRenderer _clientEyes;
+    [SerializeField] SpriteRenderer _clientHead;
+    [SerializeField] SpriteRenderer _clientTeeth;
+    [SerializeField] SpriteRenderer _clientOutline;
 
     [Header("SO References")]
     public ClientNameSO clientNameSO;
     public ClientSpritesListSO spritesListSO;
     public ClientObjectiveSO objectivesSO;
-    public ClientPersonalitySO personalitySO;
+    public ClientGreetingLinesSO personalitySO;
+    public ClientSO clientSO;
 
     public List<ClientSO> profileSO = new List<ClientSO>();
     public int currentProfile;
 
-    [Header("Animation")]
-    public ClientAnimation clientAnimation;
+    [Header("Dialogue")]
+    [SerializeField] protected GameObject _clientDialgoueBox;
+    [SerializeField] protected ClientLinesListSO _clientLinesList;
+
+    [Header("Next Client")]
+    private bool canCallNexClient = true;
 
     void Start()
     {
-        if(currentClient == null)
+        if(_currentClient == null)
         {
-            currentClient = FindObjectOfType<CurrentClient>();
-        }
-        
-        if(clientAnimation == null)
-        {
-            clientAnimation = FindObjectOfType<ClientAnimation>();
+            _currentClient = FindObjectOfType<CurrentClient>();
         }
 
-        //ChooseRandomProfile();
-        GenerateClient();
+        ChooseRandomProfile();
+        //GenerateClient();
     }
 
     void Update()
     {
-        /*
-        if(Input.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R) && canCallNexClient)
         {
-            clientAnimation.PlayLeave();
+            canCallNexClient = false;
+            _currentClient.sentences.Clear();
+            _currentClient.currentLine = 0;
+
+            _currentClient.PlayLeave();
             DOVirtual.DelayedCall(1f, () =>
             {
-                GenerateClient();
+                //GenerateClient();
+                ChooseRandomProfile();
+
+                canCallNexClient = true;
             });
-            
-            //ChooseRandomProfile();
         }
-        */
     }
 
     public void ChooseRandomProfile()
@@ -66,28 +70,52 @@ public class ClientManager : MonoBehaviour
 
     public void SetProfile()
     {
-        currentClient.clientName = profileSO[currentProfile].clientName;
-        currentClient.clientTextName.text = profileSO[currentProfile].clientName;
-        currentClient.clientSpriteRenderer.sprite = profileSO[currentProfile].sprite;
+        _currentClient.clientName = profileSO[currentProfile].clientName;
+        _currentClient.clientTextName.text = profileSO[currentProfile].clientName;
+        _clientEyes.sprite = profileSO[currentProfile].eyesSprite;
+        _clientHead.sprite = profileSO[currentProfile].headSprite;
+        _clientTeeth.sprite = profileSO[currentProfile].teethSprite;
+        _clientOutline.sprite = profileSO[currentProfile].outlineSprite;
         RandomizeColor();
         //currentClient.clientObjectives = profileSO[currentProfile].objective;
-        currentClient.clientResolution = profileSO[currentProfile].resolution;
-        currentClient.clientCash = profileSO[currentProfile].cash;
+        _currentClient.clientResolution = profileSO[currentProfile].resolution;
+        _currentClient.clientCash = profileSO[currentProfile].cash;
 
-        clientAnimation.PlayEntrance();
+        foreach(var line in profileSO[currentProfile].greetingLines)
+        {
+            _currentClient.sentences.Add(line);
+        }
+
+        _currentClient.PlayEntrance();
     }
 
     public void GenerateClient()
     {
-        currentClient.clientTextName.text = clientNameSO.GetRandomName();
+        _currentClient.clientTextName.text = clientNameSO.GetRandomName();
         //currentClient.clientSprite = spritesSO.GetRandomSprite();
         RandomizeSprite();
         //objectivesSO.GetRandomObjective();
+        RandomizeLines();
         RandomizeResolution();
         RandomizeCash();
         RandomizeColor();
 
-        clientAnimation.PlayEntrance();
+        _currentClient.PlayEntrance();
+    }
+
+    void RandomizeLines()
+    {
+        int rand = Random.Range(0, _clientLinesList.linesList.Count);
+        var selectedLinesList = _clientLinesList.linesList[rand];
+        _currentClient.clientPersonality = selectedLinesList;
+
+        _currentClient.sentences.Clear();
+        _currentClient.currentLine = 0;
+
+        foreach(var line in selectedLinesList.lines)
+        {
+            _currentClient.sentences.Add(line);
+        }
     }
 
     void RandomizeSprite()
@@ -100,27 +128,27 @@ public class ClientManager : MonoBehaviour
         int rand = Random.Range(0, spritesListSO.clientSpritesListSO.Count);
         var selectedSO = spritesListSO.clientSpritesListSO[rand];
 
-        clientEyes.sprite = selectedSO.clientEyes;
-        clientHead.sprite = selectedSO.clientHead;
-        clientTeeth.sprite = selectedSO.clientTeeth;
-        clientOutline.sprite = selectedSO.clientOutline;
+        _clientEyes.sprite = selectedSO.clientEyes;
+        _clientHead.sprite = selectedSO.clientHead;
+        _clientTeeth.sprite = selectedSO.clientTeeth;
+        _clientOutline.sprite = selectedSO.clientOutline;
     }
 
     void RandomizeCash()
     {
-        int rand = Random.Range(0, 999);
-        currentClient.clientCash = rand;
+        int rand = Random.Range(0, 9999);
+        _currentClient.clientCash = rand;
     }
 
     void RandomizeResolution()
     {
         float rand = Random.Range(0, 1);
-        currentClient.clientResolution = rand;
+        _currentClient.clientResolution = rand;
     }
 
     void RandomizeColor()
     {
         Color randomColor = new Color(Random.value, Random.value, Random.value);
-        clientHead.color = randomColor;
+        _clientHead.color = randomColor;
     }
 }

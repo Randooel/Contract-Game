@@ -13,8 +13,17 @@ MonoBehaviour:
   m_Name: James the Elf
   m_EditorClassIdentifier: 
   clientName: Elf
-  sprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
+  eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
+  headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
+  teethSprite: {fileID: 0}
+  outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
   resolution: 0.5
   objective: []
   cash: 0
   possession: []
+  greetingLines:
+  - 'Star Platinum: Za warudoooo'
+  negotiationLines: []
+  positiveConclusionLines: []
+  neutralConclusionLines: []
+  negativeConclusionLines: []

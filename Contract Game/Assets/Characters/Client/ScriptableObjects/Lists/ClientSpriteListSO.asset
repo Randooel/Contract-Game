@@ -15,3 +15,4 @@ MonoBehaviour:
   clientSpritesListSO:
   - {fileID: 11400000, guid: 147b02be24d966e4a8351742a04bc69c, type: 2}
   - {fileID: 11400000, guid: 9521350ccfed97944887feff812fb785, type: 2}
+  - {fileID: 11400000, guid: e19ea6c44c5d7ca4aac5fd5d447b63ca, type: 2}

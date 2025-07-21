@@ -6,9 +6,22 @@ using UnityEngine;
 public class ClientSO : ScriptableObject
 {
     public string clientName;
-    public Sprite sprite;
+    public Sprite eyesSprite;
+    public Sprite headSprite;
+    public Sprite teethSprite;
+    public Sprite outlineSprite;
     [Range(0, 1)] public float resolution;
     public GameObject[] objective;
     public int cash;
     public GameObject[] possession;
+
+    // greetings
+    public List<string> greetingLines = new List<string>();
+
+    public List<string> negotiationLines = new List<string>();
+
+    public List<string> positiveConclusionLines = new List<string>();
+    public List<string> neutralConclusionLines = new List<string>();
+    public List<string> negativeConclusionLines = new List<string>();
+
 }

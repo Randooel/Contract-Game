@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4058015814144765906}
   - component: {fileID: 2169789321963433240}
   m_Layer: 0
-  m_Name: ORC_TEETH
+  m_Name: Client Teeth Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 1129501584975157773}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.010000229, y: 0, z: -0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -172,6 +172,8 @@ MonoBehaviour:
   clientPersonality: {fileID: 0}
   clientCash: 0
   clientPossessions: []
+  _clientDialogueBox: {fileID: 0}
+  _clientDialogueText: {fileID: 0}
 --- !u!212 &2110491569814535394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -440,7 +442,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5823517258866079891}
   - {fileID: 7380513492115271828}
@@ -473,7 +475,7 @@ Transform:
   m_GameObject: {fileID: 5318072834209039688}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

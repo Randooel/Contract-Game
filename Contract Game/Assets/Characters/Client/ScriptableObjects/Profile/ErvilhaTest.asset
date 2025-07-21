@@ -13,8 +13,20 @@ MonoBehaviour:
   m_Name: ErvilhaTest
   m_EditorClassIdentifier: 
   clientName: Ervilha, o Draws
-  sprite: {fileID: 21300000, guid: c376e501828fa914c895971c3c8b8b82, type: 3}
+  eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
+  headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
+  teethSprite: {fileID: 0}
+  outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
   resolution: 0.2
   objective: []
   cash: 0
   possession: []
+  greetingLines:
+  - Hi. Did you know I drew you?
+  - Actually, I made the sprites for this game.
+  - What? You didn't know this is a video game?
+  - My bad.
+  negotiationLines: []
+  positiveConclusionLines: []
+  neutralConclusionLines: []
+  negativeConclusionLines: []
