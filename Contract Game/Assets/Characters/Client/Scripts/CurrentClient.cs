@@ -36,7 +36,7 @@ public class CurrentClient : MonoBehaviour
     [Header("Dialogue")]
     [SerializeField] protected GameObject _clientDialogueBox;
     [SerializeField] protected TextMeshProUGUI _clientDialogueText;
-    [SerializeField] private float typingSpeed = 0.05f;
+    // [SerializeField] private float typingSpeed = 0.05f;
     public List<string> sentences = new List<string>();
     public int currentLine = 0;
 

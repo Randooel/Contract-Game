@@ -17,8 +17,11 @@ public class ClientSO : ScriptableObject
 
     // greetings
     public List<string> greetingLines = new List<string>();
+    public List<string> playerGreetingResponses = new List<string>();
 
+    [Space(10)]
     public List<string> negotiationLines = new List<string>();
+    public List<string> playerNegotiationResponses = new List<string>();
 
     public List<string> positiveConclusionLines = new List<string>();
     public List<string> neutralConclusionLines = new List<string>();

@@ -25,7 +25,12 @@ MonoBehaviour:
   - Hello! I'm James, the Elf adventurer
   - I'm looking for my brother
   - He looks just like me
+  playerGreetingResponses:
+  - Good for you!
+  - I'm glad to hear it
+  - (Lie)
   negotiationLines: []
+  playerNegotiationResponses: []
   positiveConclusionLines: []
   neutralConclusionLines: []
   negativeConclusionLines: []

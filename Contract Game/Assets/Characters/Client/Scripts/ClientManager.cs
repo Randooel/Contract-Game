@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ClientManager : MonoBehaviour
 {
+    [Header("Player Reference")]
+    private PlayerResponses _playerResponse;
+
     [Header("Client Reference")]
     CurrentClient _currentClient;
     [SerializeField] SpriteRenderer _clientEyes;
@@ -37,6 +41,16 @@ public class ClientManager : MonoBehaviour
             _currentClient = FindObjectOfType<CurrentClient>();
         }
 
+        if(_playerResponse == null)
+        {
+            _playerResponse = FindObjectOfType<PlayerResponses>();
+
+            if(_playerResponse == null)
+            {
+                Debug.LogWarning("PlayPlayerResponse not found!");
+            }
+        }
+
         ChooseRandomProfile();
         //GenerateClient();
     }
@@ -45,19 +59,27 @@ public class ClientManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R) && canCallNexClient)
         {
-            canCallNexClient = false;
-            _currentClient.sentences.Clear();
-            _currentClient.currentLine = 0;
-
-            _currentClient.PlayLeave();
-            DOVirtual.DelayedCall(1f, () =>
-            {
-                //GenerateClient();
-                ChooseRandomProfile();
-
-                canCallNexClient = true;
-            });
+            CallNextClient();
         }
+    }
+
+    void CallNextClient()
+    {
+        canCallNexClient = false;
+
+        _currentClient.sentences.Clear();
+        _currentClient.currentLine = 0;
+
+        _playerResponse.HideResponses();
+
+        _currentClient.PlayLeave();
+        DOVirtual.DelayedCall(1f, () =>
+        {
+            //GenerateClient();
+            ChooseRandomProfile();
+
+            canCallNexClient = true;
+        });
     }
 
     public void ChooseRandomProfile()
@@ -85,6 +107,15 @@ public class ClientManager : MonoBehaviour
         {
             _currentClient.sentences.Add(line);
         }
+
+        // Updates player responses
+        foreach(var response in profileSO[currentProfile].playerGreetingResponses)
+        {
+            _playerResponse.responsesLines.Add(response);
+        }
+
+        _playerResponse.ShowResponses();
+
 
         _currentClient.PlayEntrance();
     }

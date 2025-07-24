@@ -20,6 +20,7 @@ public class NegotiationManager : MonoBehaviour
 
     [Header("Interface References")]
     [SerializeField] private GameObject _contract;
+    [SerializeField] private PlayerDebt _playerDebt;
 
     void Start()
     {
