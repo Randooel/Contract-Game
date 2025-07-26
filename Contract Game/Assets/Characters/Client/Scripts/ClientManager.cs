@@ -10,6 +10,9 @@ public class ClientManager : MonoBehaviour
     [Header("Player Reference")]
     private PlayerResponses _playerResponse;
 
+    [Header("DialogueManager Reference")]
+    private DialogueManager _dialogueManager;
+
     [Header("Client Reference")]
     CurrentClient _currentClient;
     [SerializeField] SpriteRenderer _clientEyes;
@@ -22,9 +25,9 @@ public class ClientManager : MonoBehaviour
     public ClientSpritesListSO spritesListSO;
     public ClientObjectiveSO objectivesSO;
     public ClientGreetingLinesSO personalitySO;
-    public ClientSO clientSO;
+    public ClientProfileSO clientSO;
 
-    public List<ClientSO> profileSO = new List<ClientSO>();
+    public List<ClientProfileSO> profileSO = new List<ClientProfileSO>();
     public int currentProfile;
 
     [Header("Dialogue")]
@@ -51,6 +54,8 @@ public class ClientManager : MonoBehaviour
             }
         }
 
+        _dialogueManager = FindObjectOfType<DialogueManager>();
+
         ChooseRandomProfile();
         //GenerateClient();
     }
@@ -60,6 +65,9 @@ public class ClientManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R) && canCallNexClient)
         {
             CallNextClient();
+            _dialogueManager.ClearClientLines();
+            _dialogueManager.ClearPlayerResponses();
+            _dialogueManager.clientCurrentLine = 0;
         }
     }
 
@@ -67,7 +75,7 @@ public class ClientManager : MonoBehaviour
     {
         canCallNexClient = false;
 
-        _currentClient.sentences.Clear();
+        _currentClient.lines.Clear();
         _currentClient.currentLine = 0;
 
         _playerResponse.HideResponses();
@@ -103,19 +111,9 @@ public class ClientManager : MonoBehaviour
         _currentClient.clientResolution = profileSO[currentProfile].resolution;
         _currentClient.clientCash = profileSO[currentProfile].cash;
 
-        foreach(var line in profileSO[currentProfile].greetingLines)
-        {
-            _currentClient.sentences.Add(line);
-        }
+        _dialogueManager.SetClientLines();
 
-        // Updates player responses
-        foreach(var response in profileSO[currentProfile].playerGreetingResponses)
-        {
-            _playerResponse.responsesLines.Add(response);
-        }
-
-        _playerResponse.ShowResponses();
-
+        _dialogueManager.SetPlayerResponses();
 
         _currentClient.PlayEntrance();
     }
@@ -140,12 +138,12 @@ public class ClientManager : MonoBehaviour
         var selectedLinesList = _clientLinesList.linesList[rand];
         _currentClient.clientPersonality = selectedLinesList;
 
-        _currentClient.sentences.Clear();
+        _currentClient.lines.Clear();
         _currentClient.currentLine = 0;
 
         foreach(var line in selectedLinesList.lines)
         {
-            _currentClient.sentences.Add(line);
+            _currentClient.lines.Add(line);
         }
     }
 

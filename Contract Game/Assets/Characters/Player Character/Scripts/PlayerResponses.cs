@@ -16,11 +16,12 @@ public class PlayerResponses : MonoBehaviour
 
     public void Update()
     {
+        // DEBUG CODE
         if(Input.GetKeyDown(KeyCode.Q))
         {
             HideResponses();
         }
-
+        // DEBUG CODE
         if (Input.GetKeyDown(KeyCode.E))
         {
             ShowResponses();

@@ -6,6 +6,7 @@ using UnityEngine;
 public class CurrentClient : MonoBehaviour
 {
     private Animator _animator;
+    private DialogueManager _dialogueManager;
 
     [Header("Profile")]
     public string clientName;
@@ -37,8 +38,9 @@ public class CurrentClient : MonoBehaviour
     [SerializeField] protected GameObject _clientDialogueBox;
     [SerializeField] protected TextMeshProUGUI _clientDialogueText;
     // [SerializeField] private float typingSpeed = 0.05f;
-    public List<string> sentences = new List<string>();
     public int currentLine = 0;
+    public List<string> lines = new List<string>();
+    
 
     private Coroutine typingCoroutine;
 
@@ -51,6 +53,8 @@ public class CurrentClient : MonoBehaviour
 
         // References check
         _animator = GetComponent<Animator>();
+
+        _dialogueManager = FindObjectOfType<DialogueManager>();
 
         if (clientSpriteRenderer == null)
         {
@@ -75,6 +79,7 @@ public class CurrentClient : MonoBehaviour
 
     void Update()
     {
+        /*
         if(Input.GetKeyDown(KeyCode.Space))
         {
             currentLine++;
@@ -87,6 +92,7 @@ public class CurrentClient : MonoBehaviour
                 StopTalk();
             }
         }
+        */
     }
 
 
@@ -95,7 +101,7 @@ public class CurrentClient : MonoBehaviour
     public void Speak()
     {
         _clientDialogueBox.SetActive(true);
-        _clientDialogueText.text = sentences[currentLine];
+        _clientDialogueText.text = lines[_dialogueManager.clientCurrentLine];
         _animator.SetTrigger("Speak");
     }
 

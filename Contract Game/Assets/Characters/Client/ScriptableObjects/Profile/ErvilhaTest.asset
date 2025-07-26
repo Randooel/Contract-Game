@@ -9,21 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57876aec776890749970732bf519a6fb, type: 3}
+  m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
   m_Name: ErvilhaTest
   m_EditorClassIdentifier: 
-  clientName: Shames, James brother
+  clientName: Ervilha, the artist
   eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
   headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
-  resolution: 0.2
+  resolution: 0
   objective: []
   cash: 0
   possession: []
-  greetingLines:
-  - Hi. I'm James brother, Shames
-  negotiationLines: []
-  positiveConclusionLines: []
-  neutralConclusionLines: []
-  negativeConclusionLines: []
+  dialogueGroups:
+  - clientLines:
+    - Hello, there! Did you know I drew you?
+    - Actually, I made all the assets for this game.
+    - What, you didn't know this was a videogame?
+    - Sorry.
+    playerResponses:
+    - It's cool.
+    - You ruined my immersion.
+    - I can forgive you, for the right price...

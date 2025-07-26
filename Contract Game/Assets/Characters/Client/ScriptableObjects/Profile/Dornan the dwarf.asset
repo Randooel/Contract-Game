@@ -9,21 +9,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57876aec776890749970732bf519a6fb, type: 3}
+  m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
   m_Name: Dornan the dwarf
   m_EditorClassIdentifier: 
-  clientName: Dornar, the dwarf
+  clientName: Dornan, the Dwarf
   eyesSprite: {fileID: 21300000, guid: 3849927d865302b44a7d85df7322242d, type: 3}
   headSprite: {fileID: 21300000, guid: 67479d20b6692de4ca76836907f3cd4d, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 2d0bd27de5e2b434ebfde4fff42ef652, type: 3}
-  resolution: 1
+  resolution: 0
   objective: []
-  cash: 0
+  cash: 15
   possession: []
-  greetingLines:
-  - Howdy! Name's Dornan
-  negotiationLines: []
-  positiveConclusionLines: []
-  neutralConclusionLines: []
-  negativeConclusionLines: []
+  dialogueGroups:
+  - clientLines:
+    - Name is Dornan.
+    playerResponses:
+    - Cool!

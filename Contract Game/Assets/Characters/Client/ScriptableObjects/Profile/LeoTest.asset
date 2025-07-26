@@ -9,25 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57876aec776890749970732bf519a6fb, type: 3}
+  m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
   m_Name: LeoTest
   m_EditorClassIdentifier: 
-  clientName: Leo, o Nardo
+  clientName: Leo, the tech designer
   eyesSprite: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}
   headSprite: {fileID: 21300000, guid: 9b014f6432bd39d49b4df9fac1d80c24, type: 3}
   teethSprite: {fileID: 21300000, guid: 7cfacafbd4569744ca9bc1f79556a0fa, type: 3}
   outlineSprite: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}
-  resolution: 0.7
+  resolution: 0
   objective: []
   cash: 0
   possession: []
-  greetingLines:
-  - Hello, there!
-  - Did you know I programmed you?
-  - In fact, I wrote all the code for this game.
-  - What? You didn't know this is a videogame?
-  - Thought so, 'cause I made you this way.
-  negotiationLines: []
-  positiveConclusionLines: []
-  neutralConclusionLines: []
-  negativeConclusionLines: []
+  dialogueGroups:
+  - clientLines:
+    - Hi, I'm Leo. Did you know I designed this game and wrote all of its code?
+    - What? You didn't realize this is a videogame?
+    - My bad.
+    playerResponses:
+    - It's cool.
+    - You ruined my immersion.
+    - I can forgive your, for the right price...

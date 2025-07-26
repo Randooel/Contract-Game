@@ -9,28 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57876aec776890749970732bf519a6fb, type: 3}
-  m_Name: James the Elf
+  m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
+  m_Name: James, the Adventurer
   m_EditorClassIdentifier: 
-  clientName: James, the elf
+  clientName: James, the Adventurer
   eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
   headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
-  resolution: 0.5
+  resolution: 0.8
   objective: []
-  cash: 0
+  cash: 300
   possession: []
-  greetingLines:
-  - Hello! I'm James, the Elf adventurer
-  - I'm looking for my brother
-  - He looks just like me
-  playerGreetingResponses:
-  - Good for you!
-  - I'm glad to hear it
-  - (Lie)
-  negotiationLines: []
-  playerNegotiationResponses: []
-  positiveConclusionLines: []
-  neutralConclusionLines: []
-  negativeConclusionLines: []
+  dialogueGroups:
+  - clientLines:
+    - 'Hi, I''m James, the Adventurer. '
+    - I'm looking for my brother, Shames.
+    - Can you help me find him?
+    playerResponses:
+    - Sure!
+    - Sorry, I don't know...
+    - Yes, for the right price.
+  - clientLines: []
+    playerResponses: []
+  - clientLines: []
+    playerResponses: []
