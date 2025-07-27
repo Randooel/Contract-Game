@@ -11,9 +11,10 @@ public class DialogueManager : MonoBehaviour
     private ClientManager _clientManager;
     private CurrentClient _currentClient;
 
+    [Header("Dialogue Group indexes")]
     [SerializeField] public int clientCurrentLine = 0;
-    [SerializeField] private int _clientCurrentLineGroup = 0;
-    [SerializeField] [Range(1, 5)] private int _clientMaxLineGroup = 3;
+    [SerializeField] public int clientCurrentDialogueGroup = 1;
+    [Range(0, 5)] public int clientMaxDialogueGroup;
 
     private void Start()
     {
@@ -45,15 +46,12 @@ public class DialogueManager : MonoBehaviour
     // Client Lines Functions
     public void SetClientLines()
     {
-        foreach (var line in _clientManager.profileSO[_clientManager.currentProfile].dialogueGroups[0].clientLines)
+        ClearClientLines();
+
+        foreach (var line in _clientManager.profileSO[_clientManager.currentProfile].dialogueGroups[clientCurrentDialogueGroup].clientLines)
         {
             _currentClient.lines.Add(line);
         }
-    }
-
-    public void UpdateClientLines()
-    {
-
     }
 
     public void ClearClientLines()
@@ -66,16 +64,12 @@ public class DialogueManager : MonoBehaviour
     // Player Responses Functions
     public void SetPlayerResponses()
     {
-        // Updates player responses
-        foreach (var response in _clientManager.profileSO[_clientManager.currentProfile].dialogueGroups[0].playerResponses)
+        ClearPlayerResponses();
+
+        foreach (var response in _clientManager.profileSO[_clientManager.currentProfile].dialogueGroups[clientCurrentDialogueGroup].playerResponses)
         {
             _playerResponses.responsesLines.Add(response);
         }
-    }
-
-    public void UpdatePlayerResponses()
-    {
-
     }
 
     public void ClearPlayerResponses()
@@ -95,16 +89,22 @@ public class DialogueManager : MonoBehaviour
     // Called by buttons
     public void OnResponseChosen()
     {
+        _playerResponses.HideResponses();
+
         // Add null verification
         // Add verification of elements in the current group. If it is null, them
         // go to the next group. If the next group is null or higher than the
         // clientMaxLineGroup, than end conversation
-        
+
         // If there's more elements in the current group, go to the next
-        if (_clientCurrentLineGroup < _clientMaxLineGroup)
+        if (clientCurrentDialogueGroup + 1 < clientMaxDialogueGroup)
         {
-            UpdateClientLines();
-            UpdatePlayerResponses();
+            clientCurrentDialogueGroup++;
+
+            SetClientLines();
+            SetPlayerResponses();
+
+            _currentClient.Speak();
         }
         else
         {

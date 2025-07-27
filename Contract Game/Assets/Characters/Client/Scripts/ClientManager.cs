@@ -35,7 +35,7 @@ public class ClientManager : MonoBehaviour
     [SerializeField] protected ClientLinesListSO _clientLinesList;
 
     [Header("Next Client")]
-    private bool canCallNexClient = true;
+    public bool canCallNexClient = true;
 
     void Start()
     {
@@ -62,16 +62,10 @@ public class ClientManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.R) && canCallNexClient)
-        {
-            CallNextClient();
-            _dialogueManager.ClearClientLines();
-            _dialogueManager.ClearPlayerResponses();
-            _dialogueManager.clientCurrentLine = 0;
-        }
+        
     }
 
-    void CallNextClient()
+    public void CallNextClient()
     {
         canCallNexClient = false;
 
@@ -81,6 +75,9 @@ public class ClientManager : MonoBehaviour
         _playerResponse.HideResponses();
 
         _currentClient.PlayLeave();
+
+        //DOTween.Kill(this.gameObject);
+
         DOVirtual.DelayedCall(1f, () =>
         {
             //GenerateClient();
@@ -90,6 +87,9 @@ public class ClientManager : MonoBehaviour
         });
     }
 
+
+    // PREDETERMINED CLIENT PROFILES
+    // Comment this script after the QueueManager profile pick logic is implemented
     public void ChooseRandomProfile()
     {
         int rand = Random.Range(0, profileSO.Count);
@@ -112,12 +112,17 @@ public class ClientManager : MonoBehaviour
         _currentClient.clientCash = profileSO[currentProfile].cash;
 
         _dialogueManager.SetClientLines();
-
         _dialogueManager.SetPlayerResponses();
+
+        _dialogueManager.clientMaxDialogueGroup = profileSO[currentProfile].dialogueGroups.Count;
+        _dialogueManager.clientCurrentDialogueGroup = 0;
 
         _currentClient.PlayEntrance();
     }
 
+
+    // RANDOM CLIENTS
+    /*
     public void GenerateClient()
     {
         _currentClient.clientTextName.text = clientNameSO.GetRandomName();
@@ -149,10 +154,9 @@ public class ClientManager : MonoBehaviour
 
     void RandomizeSprite()
     {
-        /*
-        int rand = Random.Range(0, spritesListSO.clientSpritesListSOs.Count);
-        currentClient.clientSprite = spritesListSO.clientSpritesListSOs.ClientSpriteSO.sprites[rand];
-        */
+        //int rand = Random.Range(0, spritesListSO.clientSpritesListSOs.Count);
+        //currentClient.clientSprite = spritesListSO.clientSpritesListSOs.ClientSpriteSO.sprites[rand];
+        
 
         int rand = Random.Range(0, spritesListSO.clientSpritesListSO.Count);
         var selectedSO = spritesListSO.clientSpritesListSO[rand];
@@ -174,7 +178,7 @@ public class ClientManager : MonoBehaviour
         float rand = Random.Range(0, 1);
         _currentClient.clientResolution = rand;
     }
-
+    */
     void RandomizeColor()
     {
         Color randomColor = new Color(Random.value, Random.value, Random.value);

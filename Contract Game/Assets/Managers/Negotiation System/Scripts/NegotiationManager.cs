@@ -26,7 +26,7 @@ public class NegotiationManager : MonoBehaviour
     {
         currentState = State.ChitChat;
 
-        _contract.SetActive(false);
+        //_contract.SetActive(false);
 
         // References check
         if (_currentClient == null)
@@ -72,6 +72,7 @@ public class NegotiationManager : MonoBehaviour
 
     private void Update()
     {
+        /*
         // Placeholder change to Negotiation State logic
         if(currentState == State.ChitChat)
         {
@@ -91,6 +92,7 @@ public class NegotiationManager : MonoBehaviour
                 SwitchState();
             }
         }
+        */
     }
 
     public void SwitchState()

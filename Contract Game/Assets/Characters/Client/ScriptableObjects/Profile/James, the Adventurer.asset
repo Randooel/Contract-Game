@@ -30,7 +30,10 @@ MonoBehaviour:
     - Sure!
     - Sorry, I don't know...
     - Yes, for the right price.
-  - clientLines: []
-    playerResponses: []
-  - clientLines: []
-    playerResponses: []
+  - clientLines:
+    - Great!
+    - Now, how do we proceed?
+    playerResponses:
+    - I'll look for him. Come again tomorrow, ok?
+    - Uhm... Actually, I can't help you.
+    - I just need your soul to do the finding

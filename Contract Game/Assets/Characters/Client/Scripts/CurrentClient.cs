@@ -96,7 +96,6 @@ public class CurrentClient : MonoBehaviour
     }
 
 
-
     // DIALOGUE
     public void Speak()
     {
