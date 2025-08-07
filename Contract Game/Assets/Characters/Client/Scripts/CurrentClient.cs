@@ -16,6 +16,7 @@ public class CurrentClient : MonoBehaviour
     public List<GameObject> clientObjectives = new List<GameObject>();
 
     [Header("Personality")]
+    [Range(-50, 50)] public float clientSatisfaction;
     [SerializeField][Range(0, 1)] public float clientResolution;
     public ClientGreetingLinesSO clientPersonality;
 

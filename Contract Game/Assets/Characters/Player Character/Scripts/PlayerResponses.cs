@@ -5,12 +5,17 @@ using TMPro;
 
 public class PlayerResponses : MonoBehaviour
 {
+    private CurrentClient currentClient;
+
     public GameObject[] responsesObjects;
     public TextMeshProUGUI[] responsesText;
+    
     public List<string> responsesLines = new List<string>();
 
     private void Start()
     {
+        currentClient = FindObjectOfType<CurrentClient>();
+
         HideResponses();
     }
 

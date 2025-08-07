@@ -11,6 +11,7 @@ public class ClientProfileSO : ScriptableObject
     public Sprite headSprite;
     public Sprite teethSprite;
     public Sprite outlineSprite;
+    public float satisfaction;
     [Range(0, 1)] public float resolution;
     public GameObject[] objective;
     public int cash;
@@ -22,8 +23,10 @@ public class ClientProfileSO : ScriptableObject
         [TextArea(1, 3)]
         public List<string> clientLines;
 
-        [TextArea(1, 2)]
+        [TextArea(1, 1 / 2)]
         public List<string> playerResponses;
+
+        [Range(-2, 2)] public int answerSatisfaction3, answerSatisfaction2, answerSatisfaction1;
     }
 
     [Space(10)]

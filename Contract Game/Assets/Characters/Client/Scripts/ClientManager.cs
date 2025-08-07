@@ -108,6 +108,7 @@ public class ClientManager : MonoBehaviour
         _clientOutline.sprite = profileSO[currentProfile].outlineSprite;
         RandomizeColor();
         //currentClient.clientObjectives = profileSO[currentProfile].objective;
+        _currentClient.clientSatisfaction = profileSO[currentProfile].satisfaction;
         _currentClient.clientResolution = profileSO[currentProfile].resolution;
         _currentClient.clientCash = profileSO[currentProfile].cash;
 

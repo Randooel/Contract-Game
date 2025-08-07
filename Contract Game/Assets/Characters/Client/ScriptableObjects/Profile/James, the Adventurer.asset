@@ -30,6 +30,9 @@ MonoBehaviour:
     - Sure!
     - Sorry, I don't know...
     - Yes, for the right price.
+    answerSatisfaction3: 1
+    answerSatisfaction2: -1
+    answerSatisfaction1: 0
   - clientLines:
     - Great!
     - Now, how do we proceed?
@@ -37,3 +40,6 @@ MonoBehaviour:
     - I'll look for him. Come again tomorrow, ok?
     - Uhm... Actually, I can't help you.
     - I just need your soul to do the finding
+    answerSatisfaction3: 1
+    answerSatisfaction2: -1
+    answerSatisfaction1: -2

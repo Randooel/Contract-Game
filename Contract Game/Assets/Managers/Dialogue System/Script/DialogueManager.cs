@@ -87,9 +87,77 @@ public class DialogueManager : MonoBehaviour
     }
 
     // Called by buttons
-    public void OnResponseChosen()
+    public void OnResponseChosen3()
     {
         _playerResponses.HideResponses();
+
+        // Calculates client's satisfaction to the response chosen
+        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile]
+            .dialogueGroups[clientCurrentDialogueGroup].answerSatisfaction3;
+
+        // Add null verification
+        // Add verification of elements in the current group. If it is null, them
+        // go to the next group. If the next group is null or higher than the
+        // clientMaxLineGroup, than end conversation
+
+        // If there's more elements in the current group, go to the next
+        if (clientCurrentDialogueGroup + 1 < clientMaxDialogueGroup)
+        {
+            clientCurrentDialogueGroup++;
+
+            SetClientLines();
+            SetPlayerResponses();
+
+            _currentClient.Speak();
+        }
+        else
+        {
+            _currentClient.StopTalk();
+
+            ClearClientLines();
+            ClearPlayerResponses();
+        }
+    }
+
+    public void OnResponseChosen2()
+    {
+        _playerResponses.HideResponses();
+
+        // Calculates client's satisfaction to the response chosen
+        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile]
+            .dialogueGroups[clientCurrentDialogueGroup].answerSatisfaction2;
+
+        // Add null verification
+        // Add verification of elements in the current group. If it is null, them
+        // go to the next group. If the next group is null or higher than the
+        // clientMaxLineGroup, than end conversation
+
+        // If there's more elements in the current group, go to the next
+        if (clientCurrentDialogueGroup + 1 < clientMaxDialogueGroup)
+        {
+            clientCurrentDialogueGroup++;
+
+            SetClientLines();
+            SetPlayerResponses();
+
+            _currentClient.Speak();
+        }
+        else
+        {
+            _currentClient.StopTalk();
+
+            ClearClientLines();
+            ClearPlayerResponses();
+        }
+    }
+
+    public void OnResponseChosen1()
+    {
+        _playerResponses.HideResponses();
+
+        // Calculates client's satisfaction to the response chosen
+        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile]
+            .dialogueGroups[clientCurrentDialogueGroup].answerSatisfaction1;
 
         // Add null verification
         // Add verification of elements in the current group. If it is null, them

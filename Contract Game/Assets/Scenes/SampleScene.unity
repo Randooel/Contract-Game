@@ -1598,7 +1598,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5346528024613277573}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: OnResponseChosen
+        m_MethodName: OnResponseChosen1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2095,7 +2095,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5346528024613277573}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: OnResponseChosen
+        m_MethodName: OnResponseChosen3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2353,7 +2353,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5346528024613277573}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
-        m_MethodName: OnResponseChosen
+        m_MethodName: OnResponseChosen2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4303,7 +4303,7 @@ PrefabInstance:
     - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
         type: 3}
       propertyPath: profileSO.Array.size
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
         type: 3}
