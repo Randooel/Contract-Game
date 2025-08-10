@@ -71,7 +71,7 @@ public class DialogueManager : MonoBehaviour
 
         ClearPlayerResponses();
 
-        if(playerResponses != null)
+        if(playerResponses != null && playerResponses.Count > 0)
         {
             foreach (var response in playerResponses)
             {
@@ -91,11 +91,16 @@ public class DialogueManager : MonoBehaviour
 
     private void CheckQuestion()
     {
-        if(currentLine == _currentClient.lines.Count)
+        var pResponses = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].playerResponses;
+
+        if (pResponses?.Count > 0)
         {
             _playerResponses.ShowResponses();
         }
-        else return;
+        else
+        {
+            Exit();
+        }
     }
 
     // Called by buttons
@@ -163,9 +168,9 @@ public class DialogueManager : MonoBehaviour
             Debug.Log("Exit");
             Exit();
         }
-        else if (currentDialogueGroup + 1 <= maxDialogueGroup)
+        else if (currentDialogueGroup + 1 < maxDialogueGroup)
         {
-            if(responseIndex != null && _response == responseIndex[0])
+            if(responseIndex?.Count > 0 && _response == responseIndex[0])
             {
                 string nextDialogueTag = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].nextDialogueElement[0];
                 var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
@@ -182,6 +187,8 @@ public class DialogueManager : MonoBehaviour
                     SetPlayerResponses();
 
                     _currentClient.Speak();
+
+                    Exit();
                 }
                 else
                 {
@@ -210,7 +217,21 @@ public class DialogueManager : MonoBehaviour
     private void Exit()
     {
         Debug.Log("Exit");
-        _currentClient.PlayLeave();
+
+        var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
+
+        int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == "EXIT");
+
+        if(nextIndex != -1)
+        {
+            currentDialogueGroup = nextIndex;
+        }
+        else
+        {
+            Debug.LogError("Dialogue Element with tag " + nextIndex + " not found");
+        }
+
+        StartCoroutine(WaitToLeave());
     }
 
     private IEnumerator ReactionAnim()
@@ -221,5 +242,13 @@ public class DialogueManager : MonoBehaviour
         {
             reaction.SetActive(false);
         }
+    }
+
+    private IEnumerator WaitToLeave()
+    {
+        yield return new WaitForSeconds(1f);
+
+        currentDialogueGroup = 0;
+        _clientManager.CallNextClient();
     }
 }

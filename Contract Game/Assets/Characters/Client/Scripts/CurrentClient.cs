@@ -82,7 +82,6 @@ public class CurrentClient : MonoBehaviour
 
         foreach(var reaction in reactions)
         {
-            Debug.Log("reaction");
             reaction.SetActive(false);
         }
     }

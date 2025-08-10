@@ -56,7 +56,10 @@ MonoBehaviour:
       isExitDialogue: 0
       clientLines:
       - NEGOTIATION 2
-      playerResponses: []
+      playerResponses:
+      - 
+      - 
+      - 
       answerSatisfaction: 000000000000000000000000
       responseIndex: 
       nextDialogueElement: []
