@@ -18,13 +18,6 @@ public class DialogueManager : MonoBehaviour
     [Range(0, 5)] public int maxDialogueGroup;
     [SerializeField] public int currentEncounter;
 
-    /*
-    [Header("Current Client Variables")]
-    int currentClientIndex;
-    int currentDialogueIndex;
-    bool shouldSkipDialogue;
-    */
-
     private void Start()
     {
         _playerResponses = FindObjectOfType<PlayerResponses>();
@@ -54,9 +47,11 @@ public class DialogueManager : MonoBehaviour
     // Client Lines Functions
     public void SetClientLines()
     {
+        var clientLines = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].clientLines;
+
         ClearClientLines();
 
-        foreach (var line in _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].clientLines)
+        foreach (var line in clientLines)
         {
             _currentClient.lines.Add(line);
         }
@@ -72,11 +67,13 @@ public class DialogueManager : MonoBehaviour
     // Player Responses Functions
     public void SetPlayerResponses()
     {
+        var playerResponses = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].playerResponses;
+
         ClearPlayerResponses();
 
-        if(_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].playerResponses != null)
+        if(playerResponses != null)
         {
-            foreach (var response in _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].playerResponses)
+            foreach (var response in playerResponses)
             {
                 _playerResponses.responsesLines.Add(response);
             }
@@ -130,11 +127,12 @@ public class DialogueManager : MonoBehaviour
 
     private void HandleResponse()
     {
-        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter]
+        var answerSatisfaction = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter]
             .dialogueGroups[currentDialogueGroup].answerSatisfaction[_response];
 
-        if (_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
-            dialogueGroups[currentDialogueGroup].answerSatisfaction[_response] > 0)
+        _currentClient.clientSatisfaction += answerSatisfaction;
+
+        if (answerSatisfaction > 0)
         {
             // Happy reaction
             _currentClient.reactions[0].SetActive(true);
@@ -156,14 +154,41 @@ public class DialogueManager : MonoBehaviour
         // clientMaxLineGroup, than end conversation
 
         // If there's more elements in the current group, go to the next
-        if (_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].isExitDialogue == true)
+
+        var isExitDialogue = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].isExitDialogue;
+        var responseIndex = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].responseIndex;
+
+        if (isExitDialogue == true)
         {
             Debug.Log("Exit");
             Exit();
         }
         else if (currentDialogueGroup + 1 <= maxDialogueGroup)
         {
-            if(_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].responseIndex == null)
+            if(responseIndex != null && _response == responseIndex[0])
+            {
+                string nextDialogueTag = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].nextDialogueElement[0];
+                var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
+
+                int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);
+
+                // The list function 'FindIndex' returns '-1' when the it doesn't find the list element
+                // So, in this context, -1 = null
+                if (nextIndex != -1)
+                {
+                    currentDialogueGroup = nextIndex;
+
+                    SetClientLines();
+                    SetPlayerResponses();
+
+                    _currentClient.Speak();
+                }
+                else
+                {
+                    Debug.LogError("Dialogue with tag " + nextDialogueTag + " not found");
+                }
+            }
+            else
             {
                 currentDialogueGroup++;
 
@@ -172,11 +197,6 @@ public class DialogueManager : MonoBehaviour
 
                 _currentClient.Speak();
             }
-            else
-            {
-                // implement jump to dialogue logic here OR on the HandleResponse function
-            }
-            
         }
         else
         {

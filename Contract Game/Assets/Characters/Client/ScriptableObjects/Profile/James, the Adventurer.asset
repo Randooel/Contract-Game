@@ -36,8 +36,9 @@ MonoBehaviour:
       - I can find him, for the right price...
       - Sorry, I don't think I can help you.
       answerSatisfaction: 0100000001000000ffffffff
-      responseIndex: 
-      nextDialogueElement: []
+      responseIndex: 02000000
+      nextDialogueElement:
+      - EXIT
     - dialogueTag: NEGOTIATION 1
       isExitDialogue: 0
       clientLines:
@@ -48,8 +49,9 @@ MonoBehaviour:
       - '[Set price]'
       - Never mind. Go away.
       answerSatisfaction: 0300000001000000fdffffff
-      responseIndex: 
-      nextDialogueElement: []
+      responseIndex: 02000000
+      nextDialogueElement:
+      - EXIT
     - dialogueTag: NEGOTIATION 2
       isExitDialogue: 0
       clientLines:
