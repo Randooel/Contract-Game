@@ -18,18 +18,11 @@ public class ClientProfileSO : ScriptableObject
     public GameObject[] possession;
 
     [System.Serializable]
-    public class DialogueGroup
+    public class Encounters
     {
-        [TextArea(1, 3)]
-        public List<string> clientLines;
-
-        [TextArea(1, 1 / 2)]
-        public List<string> playerResponses;
-
-        [Range(-2, 2)] public int answerSatisfaction3, answerSatisfaction2, answerSatisfaction1;
+        public string encounterTag;
+        public List<DialogueGroup> dialogueGroups = new List<DialogueGroup>();
     }
 
-    [Space(10)]
-    public List<DialogueGroup> dialogueGroups = new List<DialogueGroup>();
-
+    public List<Encounters> encounters = new List<Encounters>();
 }

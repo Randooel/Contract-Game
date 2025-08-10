@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 4513569517007247847}
   - component: {fileID: 5236824465576426691}
   - component: {fileID: 2110491569814535394}
+  - component: {fileID: 2710791649035151198}
   m_Layer: 0
   m_Name: Client
   m_TagString: Untagged
@@ -167,14 +168,18 @@ MonoBehaviour:
   clientSprite: {fileID: 0}
   clientSpriteRenderer: {fileID: 2110491569814535394}
   clientObjectives: []
+  reactions:
+  - {fileID: 8893474530352051647}
+  - {fileID: 8233870311936525687}
+  clientSatisfaction: 0
   clientResolution: 0
   clientPersonality: {fileID: 0}
   clientCash: 0
   clientPossessions: []
   _clientDialogueBox: {fileID: 0}
   _clientDialogueText: {fileID: 0}
-  sentences: []
   currentLine: 0
+  lines: []
 --- !u!212 &2110491569814535394
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -227,6 +232,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2710791649035151198
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601633597385791974}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52a01eccf78eea447a69f69959def477, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4171018251137629809
 GameObject:
   m_ObjectHideFlags: 0
@@ -744,7 +770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7090160152176433562
 Transform:
   m_ObjectHideFlags: 0

@@ -6,15 +6,24 @@ public class DialogueManager : MonoBehaviour
 {
     [Header("Player References")]
     private PlayerResponses _playerResponses;
+    private int _response;
 
     [Header("Client References")]
     private ClientManager _clientManager;
     private CurrentClient _currentClient;
 
     [Header("Dialogue Group indexes")]
-    [SerializeField] public int clientCurrentLine = 0;
-    [SerializeField] public int clientCurrentDialogueGroup = 1;
-    [Range(0, 5)] public int clientMaxDialogueGroup;
+    [SerializeField] public int currentLine = 0;
+    [SerializeField] public int currentDialogueGroup = 0;
+    [Range(0, 5)] public int maxDialogueGroup;
+    [SerializeField] public int currentEncounter;
+
+    /*
+    [Header("Current Client Variables")]
+    int currentClientIndex;
+    int currentDialogueIndex;
+    bool shouldSkipDialogue;
+    */
 
     private void Start()
     {
@@ -27,11 +36,11 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
         // Player's input
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            clientCurrentLine++;
+            currentLine++;
 
-            if(clientCurrentLine < _currentClient.lines.Count)
+            if(currentLine < _currentClient.lines.Count)
             {
                 _currentClient.Speak();
             }
@@ -42,13 +51,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-
     // Client Lines Functions
     public void SetClientLines()
     {
         ClearClientLines();
 
-        foreach (var line in _clientManager.profileSO[_clientManager.currentProfile].dialogueGroups[clientCurrentDialogueGroup].clientLines)
+        foreach (var line in _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].clientLines)
         {
             _currentClient.lines.Add(line);
         }
@@ -57,7 +65,7 @@ public class DialogueManager : MonoBehaviour
     public void ClearClientLines()
     {
         _currentClient.lines.Clear();
-        clientCurrentLine = 0;
+        currentLine = 0;
     }
 
 
@@ -66,9 +74,16 @@ public class DialogueManager : MonoBehaviour
     {
         ClearPlayerResponses();
 
-        foreach (var response in _clientManager.profileSO[_clientManager.currentProfile].dialogueGroups[clientCurrentDialogueGroup].playerResponses)
+        if(_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].playerResponses != null)
         {
-            _playerResponses.responsesLines.Add(response);
+            foreach (var response in _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].playerResponses)
+            {
+                _playerResponses.responsesLines.Add(response);
+            }
+        }
+        else
+        {
+            ClearPlayerResponses();
         }
     }
 
@@ -79,7 +94,7 @@ public class DialogueManager : MonoBehaviour
 
     private void CheckQuestion()
     {
-        if(clientCurrentLine == _currentClient.lines.Count)
+        if(currentLine == _currentClient.lines.Count)
         {
             _playerResponses.ShowResponses();
         }
@@ -87,28 +102,81 @@ public class DialogueManager : MonoBehaviour
     }
 
     // Called by buttons
-    public void OnResponseChosen3()
+    public void OnResponseChosen()
     {
+        string buttonName = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
+
+        if(buttonName == "Response 3")
+        {
+            _response = 0;
+        }
+
+        else if(buttonName == "Response 2")
+        {
+            _response = 1;
+        }
+
+        else if(buttonName == "Response 1")
+        {
+            _response = 2;
+        }
+
+        HandleResponse();
+
         _playerResponses.HideResponses();
 
-        // Calculates client's satisfaction to the response chosen
-        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile]
-            .dialogueGroups[clientCurrentDialogueGroup].answerSatisfaction3;
+        CheckNextDialogue();
+    }
 
+    private void HandleResponse()
+    {
+        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter]
+            .dialogueGroups[currentDialogueGroup].answerSatisfaction[_response];
+
+        if (_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
+            dialogueGroups[currentDialogueGroup].answerSatisfaction[_response] > 0)
+        {
+            // Happy reaction
+            _currentClient.reactions[0].SetActive(true);
+        }
+        else
+        {
+            // Angry reaction
+            _currentClient.reactions[1].SetActive(true);
+        }
+
+        StartCoroutine(ReactionAnim());
+    }
+
+    private void CheckNextDialogue()
+    {
         // Add null verification
         // Add verification of elements in the current group. If it is null, them
         // go to the next group. If the next group is null or higher than the
         // clientMaxLineGroup, than end conversation
 
         // If there's more elements in the current group, go to the next
-        if (clientCurrentDialogueGroup + 1 < clientMaxDialogueGroup)
+        if (_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].isExitDialogue == true)
         {
-            clientCurrentDialogueGroup++;
+            Debug.Log("Exit");
+            Exit();
+        }
+        else if (currentDialogueGroup + 1 <= maxDialogueGroup)
+        {
+            if(_clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].responseIndex == null)
+            {
+                currentDialogueGroup++;
 
-            SetClientLines();
-            SetPlayerResponses();
+                SetClientLines();
+                SetPlayerResponses();
 
-            _currentClient.Speak();
+                _currentClient.Speak();
+            }
+            else
+            {
+                // implement jump to dialogue logic here OR on the HandleResponse function
+            }
+            
         }
         else
         {
@@ -119,67 +187,19 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void OnResponseChosen2()
+    private void Exit()
     {
-        _playerResponses.HideResponses();
-
-        // Calculates client's satisfaction to the response chosen
-        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile]
-            .dialogueGroups[clientCurrentDialogueGroup].answerSatisfaction2;
-
-        // Add null verification
-        // Add verification of elements in the current group. If it is null, them
-        // go to the next group. If the next group is null or higher than the
-        // clientMaxLineGroup, than end conversation
-
-        // If there's more elements in the current group, go to the next
-        if (clientCurrentDialogueGroup + 1 < clientMaxDialogueGroup)
-        {
-            clientCurrentDialogueGroup++;
-
-            SetClientLines();
-            SetPlayerResponses();
-
-            _currentClient.Speak();
-        }
-        else
-        {
-            _currentClient.StopTalk();
-
-            ClearClientLines();
-            ClearPlayerResponses();
-        }
+        Debug.Log("Exit");
+        _currentClient.PlayLeave();
     }
 
-    public void OnResponseChosen1()
+    private IEnumerator ReactionAnim()
     {
-        _playerResponses.HideResponses();
+        yield return new WaitForSeconds(1f);
 
-        // Calculates client's satisfaction to the response chosen
-        _currentClient.clientSatisfaction += _clientManager.profileSO[_clientManager.currentProfile]
-            .dialogueGroups[clientCurrentDialogueGroup].answerSatisfaction1;
-
-        // Add null verification
-        // Add verification of elements in the current group. If it is null, them
-        // go to the next group. If the next group is null or higher than the
-        // clientMaxLineGroup, than end conversation
-
-        // If there's more elements in the current group, go to the next
-        if (clientCurrentDialogueGroup + 1 < clientMaxDialogueGroup)
+        foreach(var reaction in _currentClient.reactions)
         {
-            clientCurrentDialogueGroup++;
-
-            SetClientLines();
-            SetPlayerResponses();
-
-            _currentClient.Speak();
-        }
-        else
-        {
-            _currentClient.StopTalk();
-
-            ClearClientLines();
-            ClearPlayerResponses();
+            reaction.SetActive(false);
         }
     }
 }

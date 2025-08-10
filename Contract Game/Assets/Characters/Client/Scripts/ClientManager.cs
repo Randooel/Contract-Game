@@ -115,8 +115,8 @@ public class ClientManager : MonoBehaviour
         _dialogueManager.SetClientLines();
         _dialogueManager.SetPlayerResponses();
 
-        _dialogueManager.clientMaxDialogueGroup = profileSO[currentProfile].dialogueGroups.Count;
-        _dialogueManager.clientCurrentDialogueGroup = 0;
+        _dialogueManager.maxDialogueGroup = profileSO[currentProfile].encounters[0].dialogueGroups.Count;
+        _dialogueManager.currentDialogueGroup = 0;
 
         _currentClient.PlayEntrance();
     }

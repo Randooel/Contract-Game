@@ -25,7 +25,7 @@ public class QueueManager : MonoBehaviour
             _clientManager.CallNextClient();
             _dialogueManager.ClearClientLines();
             _dialogueManager.ClearPlayerResponses();
-            _dialogueManager.clientCurrentLine = 0;
+            _dialogueManager.currentLine = 0;
         }
     }
 

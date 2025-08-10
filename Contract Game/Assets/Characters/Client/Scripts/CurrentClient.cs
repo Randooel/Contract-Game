@@ -15,8 +15,11 @@ public class CurrentClient : MonoBehaviour
     public SpriteRenderer clientSpriteRenderer;
     public List<GameObject> clientObjectives = new List<GameObject>();
 
+    [Header("Visual")]
+    public GameObject[] reactions;
+
     [Header("Personality")]
-    [Range(-50, 50)] public float clientSatisfaction;
+    [Range(-10, 10)] public float clientSatisfaction;
     [SerializeField][Range(0, 1)] public float clientResolution;
     public ClientGreetingLinesSO clientPersonality;
 
@@ -76,6 +79,12 @@ public class CurrentClient : MonoBehaviour
                 Debug.LogError("NegotiationManager not found!");
             }
         }
+
+        foreach(var reaction in reactions)
+        {
+            Debug.Log("reaction");
+            reaction.SetActive(false);
+        }
     }
 
     void Update()
@@ -101,7 +110,7 @@ public class CurrentClient : MonoBehaviour
     public void Speak()
     {
         _clientDialogueBox.SetActive(true);
-        _clientDialogueText.text = lines[_dialogueManager.clientCurrentLine];
+        _clientDialogueText.text = lines[_dialogueManager.currentLine];
         _animator.SetTrigger("Speak");
     }
 

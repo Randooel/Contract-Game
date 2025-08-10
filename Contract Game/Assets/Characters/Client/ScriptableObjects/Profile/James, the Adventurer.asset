@@ -17,29 +17,58 @@ MonoBehaviour:
   headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
+  satisfaction: 0
   resolution: 0.8
   objective: []
   cash: 300
   possession: []
-  dialogueGroups:
-  - clientLines:
-    - 'Hi, I''m James, the Adventurer. '
-    - I'm looking for my brother, Shames.
-    - Can you help me find him?
-    playerResponses:
-    - Sure!
-    - Sorry, I don't know...
-    - Yes, for the right price.
-    answerSatisfaction3: 1
-    answerSatisfaction2: -1
-    answerSatisfaction1: 0
-  - clientLines:
-    - Great!
-    - Now, how do we proceed?
-    playerResponses:
-    - I'll look for him. Come again tomorrow, ok?
-    - Uhm... Actually, I can't help you.
-    - I just need your soul to do the finding
-    answerSatisfaction3: 1
-    answerSatisfaction2: -1
-    answerSatisfaction1: -2
+  encounters:
+  - encounterTag: FIRST ENCOUNTER
+    dialogueGroups:
+    - dialogueTag: GREETINGS
+      isExitDialogue: 0
+      clientLines:
+      - Hi, my name is James, the Adventurer.
+      - I'm looking for my brother, Shames. He looks just like me.
+      - Can you help me find him? I'll pay for your services, obviously.
+      playerResponses:
+      - Sure!
+      - I can find him, for the right price...
+      - Sorry, I don't think I can help you.
+      answerSatisfaction: 0100000001000000ffffffff
+      responseIndex: 
+      nextDialogueElement: []
+    - dialogueTag: NEGOTIATION 1
+      isExitDialogue: 0
+      clientLines:
+      - This is music to my long ears!
+      - So, what you'll need to find him?
+      playerResponses:
+      - Tell me more about him.
+      - '[Set price]'
+      - Never mind. Go away.
+      answerSatisfaction: 0300000001000000fdffffff
+      responseIndex: 
+      nextDialogueElement: []
+    - dialogueTag: NEGOTIATION 2
+      isExitDialogue: 0
+      clientLines:
+      - NEGOTIATION 2
+      playerResponses: []
+      answerSatisfaction: 000000000000000000000000
+      responseIndex: 
+      nextDialogueElement: []
+    - dialogueTag: EXIT
+      isExitDialogue: 1
+      clientLines:
+      - Oh, I see...
+      playerResponses: []
+      answerSatisfaction: 
+      responseIndex: 
+      nextDialogueElement: []
+  - encounterTag: CHECK PROGRESS - 2
+    dialogueGroups: []
+  - encounterTag: REVENGE SHAMES - 2
+    dialogueGroups: []
+  - encounterTag: GET SHAMES - 3
+    dialogueGroups: []
