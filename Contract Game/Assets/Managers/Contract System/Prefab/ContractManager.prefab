@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93451b37e6834774abedfb232cbacf90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 0}
+  _contractTransform: {fileID: 0}
   assets:
   - contract: {fileID: 0}
     signature: {fileID: 0}

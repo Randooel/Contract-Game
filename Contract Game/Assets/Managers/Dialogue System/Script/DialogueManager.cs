@@ -40,8 +40,6 @@ public class DialogueManager : MonoBehaviour
         {
             currentLine++;
 
-            Debug.Log("Input");
-
             if (currentLine < _currentClient.lines.Count)
             {
                 _currentClient.Speak();
