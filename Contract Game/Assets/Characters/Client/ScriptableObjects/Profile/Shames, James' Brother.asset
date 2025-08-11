@@ -17,14 +17,12 @@ MonoBehaviour:
   headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
+  fullSprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
+  satisfaction: 0
   resolution: 0
-  objective: []
   cash: -10
+  objectiveDescription: 
+  objective:
+  - {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048, type: 2}
   possession: []
-  dialogueGroups:
-  - clientLines:
-    - Hi, I'm Shames, James' Brother
-    playerResponses:
-    - Good for you!
-    - Uh... cool?
-    - Please, go away.
+  encounters: []

@@ -976,7 +976,7 @@ GameObject:
   - component: {fileID: 438966250}
   - component: {fileID: 438966249}
   m_Layer: 0
-  m_Name: Description
+  m_Name: Request Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1343,10 +1343,10 @@ RectTransform:
   m_LocalScale: {x: 0.024722224, y: 0.024722224, z: 0.024722224}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 728290914}
   - {fileID: 31043768}
   - {fileID: 1499548587}
   - {fileID: 933188930}
+  - {fileID: 728290914}
   m_Father: {fileID: 1627837322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3355,7 +3355,7 @@ GameObject:
   - component: {fileID: 1469358811}
   - component: {fileID: 1469358810}
   m_Layer: 0
-  m_Name: Image
+  m_Name: Request Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4302,7 +4302,7 @@ GameObject:
   - component: {fileID: 1711830078}
   - component: {fileID: 1711830077}
   m_Layer: 0
-  m_Name: Description
+  m_Name: Price Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5123,8 +5123,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: PRICE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a5f154ddb2e91204589fac5588b87b70, type: 2}
-  m_sharedMaterial: {fileID: 2445844742275186040, guid: a5f154ddb2e91204589fac5588b87b70,
+  m_fontAsset: {fileID: 11400000, guid: 042239df981b8404bb3da50e49081a24, type: 2}
+  m_sharedMaterial: {fileID: -7359988416209253420, guid: 042239df981b8404bb3da50e49081a24,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -5234,7 +5234,7 @@ RectTransform:
   m_AnchorMin: {x: 0.12200001, y: 0.6131485}
   m_AnchorMax: {x: 0.29000002, y: 0.666594}
   m_AnchoredPosition: {x: 26.04602, y: -51.498253}
-  m_SizeDelta: {x: 0.46001816, y: 0.19000244}
+  m_SizeDelta: {x: 3.73, y: 0.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1950315034
 MonoBehaviour:
@@ -5258,8 +5258,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: REQUEST
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: a5f154ddb2e91204589fac5588b87b70, type: 2}
-  m_sharedMaterial: {fileID: 2445844742275186040, guid: a5f154ddb2e91204589fac5588b87b70,
+  m_fontAsset: {fileID: 11400000, guid: 042239df981b8404bb3da50e49081a24, type: 2}
+  m_sharedMaterial: {fileID: -7359988416209253420, guid: 042239df981b8404bb3da50e49081a24,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -6428,6 +6428,16 @@ PrefabInstance:
       objectReference: {fileID: 136043873}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
+      propertyPath: _priceImage
+      value: 
+      objectReference: {fileID: 1870189031}
+    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
+        type: 3}
+      propertyPath: _requestImage
+      value: 
+      objectReference: {fileID: 1469358810}
+    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
+        type: 3}
       propertyPath: _dealTransform
       value: 
       objectReference: {fileID: 136043873}
@@ -6443,6 +6453,11 @@ PrefabInstance:
       objectReference: {fileID: 1627837321}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
+      propertyPath: _priceDescription
+      value: 
+      objectReference: {fileID: 1711830077}
+    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
+        type: 3}
       propertyPath: _recusedTransform
       value: 
       objectReference: {fileID: 1003347824}
@@ -6451,6 +6466,11 @@ PrefabInstance:
       propertyPath: _contractTransform
       value: 
       objectReference: {fileID: 1627837321}
+    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
+        type: 3}
+      propertyPath: _requestDescription
+      value: 
+      objectReference: {fileID: 438966249}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
       propertyPath: assets.Array.data[0].contract

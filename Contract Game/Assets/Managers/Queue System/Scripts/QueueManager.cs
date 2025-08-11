@@ -20,7 +20,7 @@ public class QueueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && _clientManager.canCallNextClient == true)
+        if (Input.GetKeyDown(KeyCode.R) || Input.GetMouseButtonDown(1) && _clientManager.canCallNextClient == true)
         {
             _clientManager.CallNextClient();
             _dialogueManager.ClearClientLines();

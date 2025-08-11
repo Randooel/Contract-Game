@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CurrentClient : MonoBehaviour
 {
@@ -12,7 +13,6 @@ public class CurrentClient : MonoBehaviour
     public string clientName;
     public TextMeshProUGUI clientTextName;
     public SpriteRenderer clientSpriteRenderer;
-    public List<GameObject> clientObjectives = new List<GameObject>();
 
     [Header("Visual")]
     public GameObject[] reactions;
@@ -34,6 +34,9 @@ public class CurrentClient : MonoBehaviour
 
     [Header("Physical Goods")]
     public int clientCash;
+    public List<GameObject> clientObjectives = new List<GameObject>();
+    public string objectiveDescription;
+    public Sprite objectiveSprite;
     public GameObject[] clientPossessions;
 
     [Header("Dialogue")]

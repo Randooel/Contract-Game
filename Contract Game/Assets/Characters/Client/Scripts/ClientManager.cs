@@ -128,6 +128,8 @@ public class ClientManager : MonoBehaviour
         _currentClient.clientSatisfaction = profileSO[currentProfile].satisfaction;
         _currentClient.clientResolution = profileSO[currentProfile].resolution;
         _currentClient.clientCash = profileSO[currentProfile].cash;
+        _currentClient.objectiveDescription = profileSO[currentProfile].objectiveDescription;
+        _currentClient.objectiveSprite = profileSO[currentProfile].objective[0].fullSprite;
 
         _dialogueManager.SetClientLines();
         _dialogueManager.SetPlayerResponses();

@@ -17,9 +17,11 @@ MonoBehaviour:
   headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
+  fullSprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
   satisfaction: 0
   resolution: 0.8
   cash: 300
+  objectiveDescription: Save Shames
   objective:
   - {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb, type: 2}
   possession:
@@ -28,7 +30,6 @@ MonoBehaviour:
   - encounterTag: FIRST ENCOUNTER
     dialogueGroups:
     - dialogueTag: GREETINGS
-      isExitDialogue: 0
       currentDialogueState: 0
       clientLines:
       - Hi, my name is James, the Adventurer.
@@ -43,7 +44,6 @@ MonoBehaviour:
       nextDialogueElement:
       - EXIT
     - dialogueTag: NEGOTIATION 1
-      isExitDialogue: 0
       currentDialogueState: 1
       clientLines:
       - This is music to my long ears!
@@ -57,7 +57,6 @@ MonoBehaviour:
       nextDialogueElement:
       - EXIT
     - dialogueTag: NEGOTIATION 2
-      isExitDialogue: 1
       currentDialogueState: 2
       clientLines:
       - NEGOTIATION 2
@@ -66,7 +65,6 @@ MonoBehaviour:
       responseIndex: 
       nextDialogueElement: []
     - dialogueTag: EXIT
-      isExitDialogue: 1
       currentDialogueState: 2
       clientLines:
       - Oh, I see...

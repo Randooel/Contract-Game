@@ -4,14 +4,37 @@ using UnityEngine;
 using UnityEngine.VFX;
 using DG.Tweening;
 using Unity.VisualScripting;
+using TMPro;
+using UnityEngine.UI;
+using System.Net.Http.Headers;
 
 public class ContractManager : MonoBehaviour
 {
-    [SerializeField] GameObject _contractObject, _dealObject, _recusedObject;
+    private CurrentClient _currentClient;
+
+    [Header("Contract and Stamps")]
+    [SerializeField] GameObject _contractObject;
+    [SerializeField] GameObject _dealObject;
+    [SerializeField] GameObject _recusedObject;
+
+    [Space(10)]
     [SerializeField] private List<ContractAssets> assets = new List<ContractAssets>();
+
+    [Header("Request")]
+    [SerializeField] private TextMeshProUGUI _requestDescription;
+    [SerializeField] private Image _requestImage;
+
+    ///*
+    [Header("Price")]
+    [SerializeField] private TextMeshProUGUI _priceDescription;
+    [SerializeField] private Image _priceImage;
+    //*/
+
 
     public void Start()
     {
+        _currentClient = FindObjectOfType<CurrentClient>();
+
         _contractObject.transform.DOLocalMoveY(-943f, 0f);
         _dealObject.transform.DOLocalMoveZ(-10, 1f);
         _recusedObject.transform.DOLocalMoveZ(-10, 1f);
@@ -20,6 +43,8 @@ public class ContractManager : MonoBehaviour
     public void ShowContract()
     {
         DOActivateAnim();
+
+        ShowRequest();
 
         assets[0].contract.SetActive(true);
     }
@@ -34,6 +59,12 @@ public class ContractManager : MonoBehaviour
         DODeactivateAnim();
 
         StartCoroutine(WaitToHideContract());
+    }
+
+    public void ShowRequest()
+    {
+        _requestDescription.text = _currentClient.objectiveDescription;
+        _requestImage.sprite = _currentClient.objectiveSprite;
     }
 
     public void PlaySuccessVFX()
