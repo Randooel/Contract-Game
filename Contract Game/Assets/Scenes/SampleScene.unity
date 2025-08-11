@@ -3053,6 +3053,7 @@ MonoBehaviour:
   - {fileID: 1963644875}
   - {fileID: 357401472}
   responsesLines: []
+  isReponseActive: 0
 --- !u!114 &1449835292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5643,6 +5644,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2125196440}
+  - component: {fileID: 2125196441}
   m_Layer: 0
   m_Name: CONTRACT
   m_TagString: Untagged
@@ -5669,9 +5671,30 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.32135415, y: 0.17325923}
   m_AnchorMax: {x: 0.7082916, y: 0.8285926}
-  m_AnchoredPosition: {x: -5.347046, y: 0.09814453}
+  m_AnchoredPosition: {x: -5.347046, y: -948}
   m_SizeDelta: {x: 2.0499878, y: 4.2800293}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &2125196441
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2125196439}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: da9a15cba9abe6d4ebf9e24ff58dc5f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &755870202020558453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6154,9 +6177,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
-      propertyPath: assets.Array.size
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 2125196441}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
       propertyPath: assets.Array.data[0].contract

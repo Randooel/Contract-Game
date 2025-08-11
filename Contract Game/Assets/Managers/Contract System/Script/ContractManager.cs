@@ -5,10 +5,13 @@ using UnityEngine.VFX;
 
 public class ContractManager : MonoBehaviour
 {
+    [SerializeField] Animator _animator;
     [SerializeField] private List<ContractAssets> assets = new List<ContractAssets>();
 
     public void ShowContract()
     {
+        _animator.SetTrigger("activate");
+
         assets[0].contract.SetActive(true);
     }
 
@@ -19,6 +22,8 @@ public class ContractManager : MonoBehaviour
 
     public void HideContract()
     {
+        _animator.SetTrigger("deactivate");
+
         foreach (var asset in assets)
         {
             asset.contract.SetActive(false);

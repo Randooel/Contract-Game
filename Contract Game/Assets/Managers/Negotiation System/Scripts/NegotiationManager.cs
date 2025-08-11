@@ -102,15 +102,15 @@ public class NegotiationManager : MonoBehaviour
 
     private void HandleConclusion()
     {
-        _contractManager.ShowSignature();
-
         if (_currentClient.clientSatisfaction > 0)
         {
+            _contractManager.ShowSignature();
             StartCoroutine(WaitToPlayStampVFX(1));
             
         }
         else if((_currentClient.clientSatisfaction < 0))
         {
+            _contractManager.ShowContract();
             StartCoroutine(WaitToPlayStampVFX(-1));
         }
     }
@@ -126,7 +126,7 @@ public class NegotiationManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        if(stamp < 0)
+        if(stamp > 0)
         {
             _contractManager.PlaySuccessVFX();
         }

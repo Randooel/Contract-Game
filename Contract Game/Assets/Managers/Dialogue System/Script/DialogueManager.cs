@@ -229,7 +229,9 @@ public class DialogueManager : MonoBehaviour
             Debug.LogError("Dialogue Element with tag " + nextIndex + " not found");
         }
 
-        StartCoroutine(WaitToLeave());
+        currentDialogueGroup = 0;
+        _clientManager.CallNextClient();
+
         _negotiationManager.StartCoroutine(_negotiationManager.WaitToHideContract());
     }
 
@@ -241,13 +243,5 @@ public class DialogueManager : MonoBehaviour
         {
             reaction.SetActive(false);
         }
-    }
-
-    private IEnumerator WaitToLeave()
-    {
-        yield return new WaitForSeconds(1f);
-
-        currentDialogueGroup = 0;
-        _clientManager.CallNextClient();
     }
 }
