@@ -52,7 +52,6 @@ public class CurrentClient : MonoBehaviour
     {
         _clientDialogueBox.SetActive(false);
 
-
         // References check
         _animator = GetComponent<Animator>();
 

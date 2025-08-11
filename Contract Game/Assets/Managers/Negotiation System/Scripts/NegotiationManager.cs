@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class NegotiationManager : MonoBehaviour
 {
@@ -19,7 +22,7 @@ public class NegotiationManager : MonoBehaviour
     [SerializeField] private QueueManager _queueSystem;
 
     [Header("Interface References")]
-    [SerializeField] private GameObject _contract;
+    [SerializeField] private List<ContractAssets> assets = new List<ContractAssets>();
     [SerializeField] private PlayerDebt _playerDebt;
 
     void Start()
@@ -59,44 +62,29 @@ public class NegotiationManager : MonoBehaviour
             }
         }
 
-        if (_contract == null)
-        {
-            _contract = FindObjectOfType<GameObject>();
-
-            if(_contract == null)
-            {
-                Debug.LogWarning("Contract not found!");
-            }
-        }
+        HideContract();
     }
 
     private void Update()
     {
-        /*
-        // Placeholder change to Negotiation State logic
-        if(currentState == State.ChitChat)
+        if(Input.GetMouseButtonDown(1))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                currentState = State.Negotiation;
-                SwitchState();
-            }
+            SwitchState(State.Conclusion);
         }
-
-        // Placeholder change to Conclusion State logic
-        if(currentState == State.Negotiation)
+        if(Input.GetKeyDown(KeyCode.Q))
         {
-            if(Input.GetMouseButtonDown(1))
-            {
-                currentState = State.Conclusion;
-                SwitchState();
-            }
+            assets[0].successStamp.SetActive(true);
         }
-        */
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            assets[0].failStamp.SetActive(true);
+        }
     }
 
-    public void SwitchState()
+    public void SwitchState(State state)
     {
+        currentState = state;
+
         switch(currentState)
         {
             case State.ChitChat :
@@ -120,7 +108,7 @@ public class NegotiationManager : MonoBehaviour
 
     private void HandleChitChat()
     {
-        _contract.SetActive(false);
+        HideContract();
 
         HandleEntrance();
 
@@ -129,11 +117,59 @@ public class NegotiationManager : MonoBehaviour
 
     private void HandleNegotiation()
     {
-        _contract.SetActive(true);
+        assets[0].contract.SetActive(true);
     }
 
     private void HandleConclusion()
     {
-        _contract.SetActive(false);
+        assets[0].signature.SetActive(true);
+
+        if (_currentClient.clientSatisfaction > 0)
+        {
+            assets[0].successStamp.gameObject.SetActive(true);
+            assets[0].successStampVFX.Play();
+        }
+        else if((_currentClient.clientSatisfaction < 0))
+        {
+            assets[0].contract.SetActive(true);
+
+            assets[0].failStamp.gameObject.SetActive(true);
+            assets[0].failStampVFX.Play();
+        }
     }
+
+    private void HideContract()
+    {
+        foreach(var asset in assets)
+        {
+            asset.contract.SetActive(false);
+            asset.signature.SetActive(false);
+
+            asset.failStamp.SetActive(false);
+            asset.successStamp.SetActive(false);
+
+            asset.successStampVFX.Stop();
+            asset.failStampVFX.Stop();
+        }
+    }
+
+    public IEnumerator WaitToHideContract()
+    {
+        yield return new WaitForSeconds(1f);
+
+        HideContract();
+    }
+}
+
+[System.Serializable]
+public class ContractAssets
+{
+    public GameObject contract;
+    public GameObject signature;
+
+    public GameObject successStamp;
+    public GameObject failStamp;
+
+    public VisualEffect successStampVFX;
+    public VisualEffect failStampVFX;
 }

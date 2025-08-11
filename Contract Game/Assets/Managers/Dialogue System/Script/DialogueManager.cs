@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("Negotiation System Reference(s)")]
+    private NegotiationManager _negotiationManager;
+
     [Header("Player References")]
     private PlayerResponses _playerResponses;
     private int _response;
@@ -20,6 +23,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Start()
     {
+        _negotiationManager = FindObjectOfType<NegotiationManager>();
+
         _playerResponses = FindObjectOfType<PlayerResponses>();
 
         _clientManager = FindObjectOfType<ClientManager>();
@@ -47,14 +52,18 @@ public class DialogueManager : MonoBehaviour
     // Client Lines Functions
     public void SetClientLines()
     {
-        var clientLines = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].clientLines;
+        var cLines = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].clientLines;
+        var cDialogueState = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].currentDialogueState;
 
         ClearClientLines();
 
-        foreach (var line in clientLines)
+        foreach (var line in cLines)
         {
             _currentClient.lines.Add(line);
         }
+
+        // This is a cast. It can be used only when both enums have the same values
+        _negotiationManager.SwitchState((NegotiationManager.State)cDialogueState);
     }
 
     public void ClearClientLines()
@@ -217,8 +226,6 @@ public class DialogueManager : MonoBehaviour
 
     private void Exit()
     {
-        Debug.Log("Exit");
-
         var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
 
         int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == "EXIT");
@@ -233,6 +240,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         StartCoroutine(WaitToLeave());
+        _negotiationManager.StartCoroutine(_negotiationManager.WaitToHideContract());
     }
 
     private IEnumerator ReactionAnim()

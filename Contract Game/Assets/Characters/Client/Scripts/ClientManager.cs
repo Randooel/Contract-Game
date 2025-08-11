@@ -10,6 +10,9 @@ public class ClientManager : MonoBehaviour
     [Header("Player Reference")]
     private PlayerResponses _playerResponse;
 
+    [Header("Negotiation Reference")]
+    private NegotiationManager _negotiationManager;
+
     [Header("DialogueManager Reference")]
     private DialogueManager _dialogueManager;
 
@@ -55,6 +58,9 @@ public class ClientManager : MonoBehaviour
         }
 
         _dialogueManager = FindObjectOfType<DialogueManager>();
+
+
+        _negotiationManager = FindObjectOfType<NegotiationManager>();
 
         ChooseRandomProfile();
         //GenerateClient();

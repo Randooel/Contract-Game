@@ -21,16 +21,7 @@ public class PlayerResponses : MonoBehaviour
 
     public void Update()
     {
-        // DEBUG CODE
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            HideResponses();
-        }
-        // DEBUG CODE
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            ShowResponses();
-        }
+        
     }
 
     public void ShowResponses(/*string response1, string response2, string response3*/)
