@@ -19,13 +19,13 @@ MonoBehaviour:
   outlineSprite: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}
   satisfaction: 0
   resolution: 0
-  objective: []
   cash: 0
+  objective: []
   possession: []
   encounters:
   - encounterTag: 
     dialogueGroups:
-    - dialogueTag: 
+    - dialogueTag: CHIT CHAT 2
       isExitDialogue: 0
       currentDialogueState: 0
       clientLines:
@@ -39,7 +39,7 @@ MonoBehaviour:
       responseIndex: 02000000
       nextDialogueElement:
       - EXIT
-    - dialogueTag: 
+    - dialogueTag: CHIT CHAT 2
       isExitDialogue: 0
       currentDialogueState: 0
       clientLines:
@@ -51,11 +51,11 @@ MonoBehaviour:
       nextDialogueElement: []
     - dialogueTag: EXIT
       isExitDialogue: 1
-      currentDialogueState: 0
+      currentDialogueState: 2
       clientLines:
       - What, you didn't know this is a videogame?
       - My bad.
       playerResponses: []
-      answerSatisfaction: 01000000fffffffffdffffff
+      answerSatisfaction: 
       responseIndex: 
       nextDialogueElement: []

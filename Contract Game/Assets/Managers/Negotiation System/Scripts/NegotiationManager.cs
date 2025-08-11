@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class NegotiationManager : MonoBehaviour
 {
@@ -22,63 +21,44 @@ public class NegotiationManager : MonoBehaviour
     [SerializeField] private QueueManager _queueSystem;
 
     [Header("Interface References")]
-    [SerializeField] private List<ContractAssets> assets = new List<ContractAssets>();
+    private ContractManager _contractManager;
     [SerializeField] private PlayerDebt _playerDebt;
 
     void Start()
     {
         currentState = State.ChitChat;
 
-        //_contract.SetActive(false);
-
         // References check
+        _contractManager ??= FindObjectOfType<ContractManager>();
+        if( _contractManager == null )
+        {
+            Debug.LogWarning("ContractManager not found!");
+        }
+
+        _currentClient ??= FindObjectOfType<CurrentClient>();
         if (_currentClient == null)
         {
-            _currentClient = FindObjectOfType<CurrentClient>();
-
-            if (_currentClient == null)
-            {
-                Debug.LogWarning("CurrentClient not found!");
-            }
+            Debug.LogWarning("CurrentClient not found!");
         }
-
+        
+        _clientManager ??= FindObjectOfType<ClientManager>();
         if(_clientManager == null)
         {
-            _clientManager = FindObjectOfType<ClientManager>();
-
-            if(_clientManager == null)
-            {
-                Debug.LogWarning("ClientManager not found!");
-            }
+            Debug.LogWarning("ClientManager not found!");
         }
 
+        _queueSystem ??= FindObjectOfType<QueueManager>();
         if(_queueSystem == null)
         {
-            _queueSystem = FindObjectOfType<QueueManager>();
-
-            if(_queueSystem == null)
-            {
-                Debug.LogWarning("QueueSyestem not found!");
-            }
+            Debug.LogWarning("QueueSyestem not found!");
         }
 
-        HideContract();
+        _contractManager.HideContract();
     }
 
     private void Update()
     {
-        if(Input.GetMouseButtonDown(1))
-        {
-            SwitchState(State.Conclusion);
-        }
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            assets[0].successStamp.SetActive(true);
-        }
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-            assets[0].failStamp.SetActive(true);
-        }
+        
     }
 
     public void SwitchState(State state)
@@ -108,7 +88,7 @@ public class NegotiationManager : MonoBehaviour
 
     private void HandleChitChat()
     {
-        HideContract();
+        _contractManager.HideContract();
 
         HandleEntrance();
 
@@ -117,39 +97,21 @@ public class NegotiationManager : MonoBehaviour
 
     private void HandleNegotiation()
     {
-        assets[0].contract.SetActive(true);
+        _contractManager.ShowContract();
     }
 
     private void HandleConclusion()
     {
-        assets[0].signature.SetActive(true);
+        _contractManager.ShowSignature();
 
         if (_currentClient.clientSatisfaction > 0)
         {
-            assets[0].successStamp.gameObject.SetActive(true);
-            assets[0].successStampVFX.Play();
+            StartCoroutine(WaitToPlayStampVFX(1));
+            
         }
         else if((_currentClient.clientSatisfaction < 0))
         {
-            assets[0].contract.SetActive(true);
-
-            assets[0].failStamp.gameObject.SetActive(true);
-            assets[0].failStampVFX.Play();
-        }
-    }
-
-    private void HideContract()
-    {
-        foreach(var asset in assets)
-        {
-            asset.contract.SetActive(false);
-            asset.signature.SetActive(false);
-
-            asset.failStamp.SetActive(false);
-            asset.successStamp.SetActive(false);
-
-            asset.successStampVFX.Stop();
-            asset.failStampVFX.Stop();
+            StartCoroutine(WaitToPlayStampVFX(-1));
         }
     }
 
@@ -157,19 +119,20 @@ public class NegotiationManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
 
-        HideContract();
+        _contractManager.HideContract();
     }
-}
 
-[System.Serializable]
-public class ContractAssets
-{
-    public GameObject contract;
-    public GameObject signature;
+    public IEnumerator WaitToPlayStampVFX(int stamp)
+    {
+        yield return new WaitForSeconds(1f);
 
-    public GameObject successStamp;
-    public GameObject failStamp;
-
-    public VisualEffect successStampVFX;
-    public VisualEffect failStampVFX;
+        if(stamp < 0)
+        {
+            _contractManager.PlaySuccessVFX();
+        }
+        else
+        {
+            _contractManager.PlayFailVFX();
+        }
+    }
 }

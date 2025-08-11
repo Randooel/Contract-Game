@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Ervilha, the Artist
   m_EditorClassIdentifier: 
   clientName: Ervilha, the artist
-  eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
-  headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
+  eyesSprite: {fileID: 21300000, guid: 3849927d865302b44a7d85df7322242d, type: 3}
+  headSprite: {fileID: 21300000, guid: 67479d20b6692de4ca76836907f3cd4d, type: 3}
   teethSprite: {fileID: 0}
-  outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
+  outlineSprite: {fileID: 21300000, guid: 2d0bd27de5e2b434ebfde4fff42ef652, type: 3}
   satisfaction: 0
   resolution: 0
-  objective: []
   cash: 0
+  objective: []
   possession: []
   encounters:
   - encounterTag: 
@@ -41,7 +41,7 @@ MonoBehaviour:
       - EXIT
     - dialogueTag: EXIT
       isExitDialogue: 0
-      currentDialogueState: 0
+      currentDialogueState: 2
       clientLines:
       - What, you didn't know this is a videogame?
       - Sorry. :(

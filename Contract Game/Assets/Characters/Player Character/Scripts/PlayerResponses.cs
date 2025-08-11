@@ -12,6 +12,8 @@ public class PlayerResponses : MonoBehaviour
     
     public List<string> responsesLines = new List<string>();
 
+    public bool isReponseActive;
+
     private void Start()
     {
         currentClient = FindObjectOfType<CurrentClient>();
@@ -28,6 +30,8 @@ public class PlayerResponses : MonoBehaviour
     {
         UpdateResponses();
 
+        isReponseActive = true;
+
         for(int i = 0; i < responsesObjects.Length; i++)
         {
             responsesObjects[i].gameObject.SetActive(true);
@@ -37,6 +41,8 @@ public class PlayerResponses : MonoBehaviour
     public void HideResponses()
     {
         ClearResponses();
+
+        isReponseActive = false;
 
         for (int i = 0; i < responsesObjects.Length; i++)
         {

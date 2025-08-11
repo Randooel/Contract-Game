@@ -11,11 +11,11 @@ public class ClientProfileSO : ScriptableObject
     public Sprite headSprite;
     public Sprite teethSprite;
     public Sprite outlineSprite;
-    public float satisfaction;
+    [Range(-10, 10)] public float satisfaction;
     [Range(0, 1)] public float resolution;
-    public GameObject[] objective;
     public int cash;
-    public GameObject[] possession;
+    public List<ScriptableObject> objective = new List<ScriptableObject>();
+    public List<ScriptableObject> possession = new List<ScriptableObject>();
 
     [System.Serializable]
     public class Encounters

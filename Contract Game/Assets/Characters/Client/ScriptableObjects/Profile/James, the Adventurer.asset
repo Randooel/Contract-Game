@@ -19,9 +19,11 @@ MonoBehaviour:
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
   satisfaction: 0
   resolution: 0.8
-  objective: []
   cash: 300
-  possession: []
+  objective:
+  - {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb, type: 2}
+  possession:
+  - {fileID: 11400000, guid: 0d0503fe33feb5b4d828b586c932595b, type: 2}
   encounters:
   - encounterTag: FIRST ENCOUNTER
     dialogueGroups:
@@ -68,6 +70,7 @@ MonoBehaviour:
       currentDialogueState: 2
       clientLines:
       - Oh, I see...
+      - Bye.
       playerResponses: []
       answerSatisfaction: 
       responseIndex: 

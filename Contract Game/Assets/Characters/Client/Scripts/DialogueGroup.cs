@@ -8,7 +8,7 @@ public class DialogueGroup
     [Header("Dialogue Info")]
     public string dialogueTag;
 
-    public bool isExitDialogue;
+    //public bool isExitDialogue;
 
     public enum DialogueState
     {

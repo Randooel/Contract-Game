@@ -34,28 +34,24 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
         // Player's input
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)
+            && _clientManager.canCallNextClient 
+            && _playerResponses.isReponseActive == false)
         {
-            if(_clientManager.canCallNextClient)
+            currentLine++;
+
+            Debug.Log("Input");
+
+            if (currentLine < _currentClient.lines.Count)
             {
-                currentLine++;
-
-                Debug.Log("if");
-
-                if (currentLine < _currentClient.lines.Count)
-                {
-                    _currentClient.Speak();
-                }
-                else
-                {
-                    CheckQuestion();
-                }
+                _currentClient.Speak();
             }
             else
             {
-                Debug.Log("else");
+                CheckQuestion();
             }
         }
+        else return;
     }
 
     // Client Lines Functions
@@ -172,22 +168,9 @@ public class DialogueManager : MonoBehaviour
 
     private void CheckNextDialogue()
     {
-        // Add null verification
-        // Add verification of elements in the current group. If it is null, them
-        // go to the next group. If the next group is null or higher than the
-        // clientMaxLineGroup, than end conversation
-
-        // If there's more elements in the current group, go to the next
-
-        var isExitDialogue = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].isExitDialogue;
         var responseIndex = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].responseIndex;
 
-        if (isExitDialogue == true)
-        {
-            Debug.Log("Exit");
-            Exit();
-        }
-        else if (currentDialogueGroup + 1 < maxDialogueGroup)
+        if (currentDialogueGroup + 1 < maxDialogueGroup)
         {
             if(responseIndex?.Count > 0 && _response == responseIndex[0])
             {
@@ -206,8 +189,6 @@ public class DialogueManager : MonoBehaviour
                     SetPlayerResponses();
 
                     _currentClient.Speak();
-
-                    Exit();
                 }
                 else
                 {
