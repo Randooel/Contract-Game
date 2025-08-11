@@ -53,13 +53,10 @@ MonoBehaviour:
       nextDialogueElement:
       - EXIT
     - dialogueTag: NEGOTIATION 2
-      isExitDialogue: 0
+      isExitDialogue: 1
       clientLines:
       - NEGOTIATION 2
-      playerResponses:
-      - 
-      - 
-      - 
+      playerResponses: []
       answerSatisfaction: 000000000000000000000000
       responseIndex: 
       nextDialogueElement: []

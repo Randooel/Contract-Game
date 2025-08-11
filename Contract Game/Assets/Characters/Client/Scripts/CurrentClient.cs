@@ -11,7 +11,6 @@ public class CurrentClient : MonoBehaviour
     [Header("Profile")]
     public string clientName;
     public TextMeshProUGUI clientTextName;
-    public Sprite clientSprite;
     public SpriteRenderer clientSpriteRenderer;
     public List<GameObject> clientObjectives = new List<GameObject>();
 
@@ -21,7 +20,6 @@ public class CurrentClient : MonoBehaviour
     [Header("Personality")]
     [Range(-10, 10)] public float clientSatisfaction;
     [SerializeField][Range(0, 1)] public float clientResolution;
-    public ClientGreetingLinesSO clientPersonality;
 
     [SerializeField]
     public enum State

@@ -93,6 +93,7 @@ public class DialogueManager : MonoBehaviour
     {
         var pResponses = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].playerResponses;
 
+        //if (isExitDialogue)
         if (pResponses?.Count > 0)
         {
             _playerResponses.ShowResponses();
