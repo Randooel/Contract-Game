@@ -20,13 +20,14 @@ public class QueueManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R) && _clientManager.canCallNexClient)
+        if (Input.GetKeyDown(KeyCode.R) && _clientManager.canCallNextClient == true)
         {
             _clientManager.CallNextClient();
             _dialogueManager.ClearClientLines();
             _dialogueManager.ClearPlayerResponses();
             _dialogueManager.currentLine = 0;
         }
+        else return;
     }
 
     /*

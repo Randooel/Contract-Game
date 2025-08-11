@@ -38,7 +38,7 @@ public class ClientManager : MonoBehaviour
     [SerializeField] protected ClientLinesListSO _clientLinesList;
 
     [Header("Next Client")]
-    public bool canCallNexClient = true;
+    public bool canCallNextClient = true;
 
     void Start()
     {
@@ -73,24 +73,35 @@ public class ClientManager : MonoBehaviour
 
     public void CallNextClient()
     {
-        canCallNexClient = false;
-
-        _currentClient.lines.Clear();
-        _currentClient.currentLine = 0;
-
-        _playerResponse.HideResponses();
-
-        _currentClient.PlayLeave();
-
-        //DOTween.Kill(this.gameObject);
-
-        DOVirtual.DelayedCall(1f, () =>
+        if (canCallNextClient == true)
         {
-            //GenerateClient();
-            ChooseRandomProfile();
+            canCallNextClient = false;
 
-            canCallNexClient = true;
-        });
+            _currentClient.lines.Clear();
+            _currentClient.currentLine = 0;
+
+            _playerResponse.HideResponses();
+
+            _currentClient.PlayLeave();
+
+            //DOTween.Kill(this.gameObject);
+
+            DOVirtual.DelayedCall(2f, () =>
+            {
+                canCallNextClient = true;
+            });
+
+            StartCoroutine(WaitToNextClient());
+        }
+        else return;
+        
+    }
+
+    private IEnumerator WaitToNextClient()
+    {
+        yield return new WaitForSeconds(1f);
+
+        ChooseRandomProfile();
     }
 
 

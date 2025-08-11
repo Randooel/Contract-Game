@@ -46,8 +46,6 @@ public class CurrentClient : MonoBehaviour
 
     private Coroutine typingCoroutine;
 
-
-
     private void Start()
     {
         _clientDialogueBox.SetActive(false);
@@ -85,20 +83,7 @@ public class CurrentClient : MonoBehaviour
 
     void Update()
     {
-        /*
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            currentLine++;
-            if(currentLine < sentences.Count)
-            {
-                Speak();
-            }
-            else
-            {
-                StopTalk();
-            }
-        }
-        */
+        
     }
 
 

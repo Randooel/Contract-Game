@@ -2666,7 +2666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 26.299988, y: -262.39}
+  m_AnchoredPosition: {x: 26.299927, y: -262.39}
   m_SizeDelta: {x: -567.34985, y: -651.109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1553229924
@@ -4396,13 +4396,31 @@ PrefabInstance:
     - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
         type: 3}
       propertyPath: profileSO.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
         type: 3}
       propertyPath: profileSO.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048,
+        type: 2}
+    - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
+        type: 3}
+      propertyPath: profileSO.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c1fd31d3fe406b4ba47d32383b172b9,
+        type: 2}
+    - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
+        type: 3}
+      propertyPath: profileSO.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2da9afbc6a5642e4596d9333ed38dd0e,
+        type: 2}
+    - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
+        type: 3}
+      propertyPath: profileSO.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2da9afbc6a5642e4596d9333ed38dd0e,
         type: 2}
     - target: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
         type: 3}

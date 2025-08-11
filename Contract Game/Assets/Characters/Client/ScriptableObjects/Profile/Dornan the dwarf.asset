@@ -17,14 +17,20 @@ MonoBehaviour:
   headSprite: {fileID: 21300000, guid: 67479d20b6692de4ca76836907f3cd4d, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 2d0bd27de5e2b434ebfde4fff42ef652, type: 3}
+  satisfaction: 0
   resolution: 0
   objective: []
   cash: 15
   possession: []
-  dialogueGroups:
-  - clientLines:
-    - Name is Dornan.
-    playerResponses:
-    - Cool!
-    - Ok.
-    - ...
+  encounters:
+  - encounterTag: 
+    dialogueGroups:
+    - dialogueTag: 
+      isExitDialogue: 0
+      currentDialogueState: 0
+      clientLines:
+      - 
+      playerResponses: []
+      answerSatisfaction: 
+      responseIndex: 
+      nextDialogueElement: []

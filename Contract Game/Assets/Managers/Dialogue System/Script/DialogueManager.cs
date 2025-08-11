@@ -36,15 +36,24 @@ public class DialogueManager : MonoBehaviour
         // Player's input
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
-            currentLine++;
-
-            if(currentLine < _currentClient.lines.Count)
+            if(_clientManager.canCallNextClient)
             {
-                _currentClient.Speak();
+                currentLine++;
+
+                Debug.Log("if");
+
+                if (currentLine < _currentClient.lines.Count)
+                {
+                    _currentClient.Speak();
+                }
+                else
+                {
+                    CheckQuestion();
+                }
             }
             else
             {
-                CheckQuestion();
+                Debug.Log("else");
             }
         }
     }
