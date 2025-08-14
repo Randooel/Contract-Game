@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
-  m_Name: Leo, the Designer
+  m_Name: DON'T USE Ervilha, the Artist
   m_EditorClassIdentifier: 
-  clientName: Leo, the tech designer
-  eyesSprite: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}
-  headSprite: {fileID: 21300000, guid: 9b014f6432bd39d49b4df9fac1d80c24, type: 3}
-  teethSprite: {fileID: 21300000, guid: 7cfacafbd4569744ca9bc1f79556a0fa, type: 3}
-  outlineSprite: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}
-  fullSprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
+  clientName: Ervilha, the artist
+  eyesSprite: {fileID: 21300000, guid: 3849927d865302b44a7d85df7322242d, type: 3}
+  headSprite: {fileID: 21300000, guid: 67479d20b6692de4ca76836907f3cd4d, type: 3}
+  teethSprite: {fileID: 0}
+  outlineSprite: {fileID: 21300000, guid: 2d0bd27de5e2b434ebfde4fff42ef652, type: 3}
+  fullSprite: {fileID: 21300000, guid: 549b0ade932399346a976fcd1682d9d4, type: 3}
   satisfaction: 0
   resolution: 0
   cash: 0
@@ -28,33 +28,24 @@ MonoBehaviour:
   encounters:
   - encounterTag: 
     dialogueGroups:
-    - dialogueTag: CHIT CHAT 2
+    - dialogueTag: 
       currentDialogueState: 0
       clientLines:
-      - Hi, my name is Leo, the designer (and programmer).
-      - Did you know I did all this game's code?
+      - Hello, there! My name is Ervilha, the Artist.
+      - Did you know I made all the art for this game? Including you.
       playerResponses:
-      - What do you mean?
+      - That's great!
       - Are you crazy?
       - Whatever, go away.
-      answerSatisfaction: 01000000fffffffffdffffff
+      answerSatisfaction: 03000000fffffffffdffffff
       responseIndex: 02000000
       nextDialogueElement:
       - EXIT
-    - dialogueTag: CHIT CHAT 2
-      currentDialogueState: 0
-      clientLines:
-      - What, you didn't know this is a videogame?
-      - My bad.
-      playerResponses: []
-      answerSatisfaction: 01000000fffffffffdffffff
-      responseIndex: 
-      nextDialogueElement: []
     - dialogueTag: EXIT
       currentDialogueState: 2
       clientLines:
       - What, you didn't know this is a videogame?
-      - My bad.
+      - Sorry. :(
       playerResponses: []
       answerSatisfaction: 
       responseIndex: 

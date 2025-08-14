@@ -21,13 +21,14 @@ MonoBehaviour:
   satisfaction: 0
   resolution: 0.8
   cash: 300
-  objectiveDescription: Save Shames
-  objective:
-  - {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb, type: 2}
-  possession:
-  - {fileID: 11400000, guid: 0d0503fe33feb5b4d828b586c932595b, type: 2}
+  possessions: []
   encounters:
   - encounterTag: FIRST ENCOUNTER
+    objectives:
+      objectiveDescription: Save Shames
+      character:
+      - {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb, type: 2}
+      item: []
     dialogueGroups:
     - dialogueTag: GREETINGS
       currentDialogueState: 0
@@ -74,8 +75,20 @@ MonoBehaviour:
       responseIndex: 
       nextDialogueElement: []
   - encounterTag: CHECK PROGRESS - 2
+    objectives:
+      objectiveDescription: 
+      character: []
+      item: []
     dialogueGroups: []
   - encounterTag: REVENGE SHAMES - 2
+    objectives:
+      objectiveDescription: 
+      character: []
+      item: []
     dialogueGroups: []
   - encounterTag: GET SHAMES - 3
+    objectives:
+      objectiveDescription: 
+      character: []
+      item: []
     dialogueGroups: []

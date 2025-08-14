@@ -10,58 +10,58 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
-  m_Name: Dornan the dwarf
+  m_Name: Millionare Orc
   m_EditorClassIdentifier: 
-  clientName: Dornan, the Dwarf
-  eyesSprite: {fileID: 21300000, guid: 3849927d865302b44a7d85df7322242d, type: 3}
-  headSprite: {fileID: 21300000, guid: 67479d20b6692de4ca76836907f3cd4d, type: 3}
-  teethSprite: {fileID: 0}
-  outlineSprite: {fileID: 21300000, guid: 2d0bd27de5e2b434ebfde4fff42ef652, type: 3}
-  fullSprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
+  clientName: Millionaire Orc
+  eyesSprite: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}
+  headSprite: {fileID: 21300000, guid: 9b014f6432bd39d49b4df9fac1d80c24, type: 3}
+  teethSprite: {fileID: 21300000, guid: 7cfacafbd4569744ca9bc1f79556a0fa, type: 3}
+  outlineSprite: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}
+  fullSprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
   satisfaction: 0
-  resolution: 0
-  cash: 15
+  resolution: 1
+  cash: 30000
   possessions: []
   encounters:
   - encounterTag: 
     objectives:
-      objectiveDescription: New forge
+      objectiveDescription: Get safe key
       character: []
       item:
-      - {fileID: 11400000, guid: e2c1213a25005b141929e101f1cb53d4, type: 2}
+      - {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
     dialogueGroups:
     - dialogueTag: 
       currentDialogueState: 0
       clientLines:
-      - Hi. Name's Dornan, the Blacksmith.
-      - My aprentice exploded my forge, so I need a new one.
-      - No need to say this is terrible for the business.
-      - So, can you help this old man?
+      - Hi. I'm here in secret, so you can just call me Millionaire Orc.
+      - You see, I have worked really hard to make myself a fortune and lock it out
+        in my safe.
+      - 'The problem here is: I lost my key. And I reaaally need to pay a certain
+        debt right now, so...'
+      - Come on, help me out. If you want money, just ask. I've got lots of it.
       playerResponses:
       - Sure!
-      - '[Set Price]'
-      - Sorry, I can't.
-      answerSatisfaction: 0300000001000000feffffff
+      - '[Set price]'
+      - Sorry, can't help you pal.
+      answerSatisfaction: 02000000fffffffffdffffff
       responseIndex: 02000000
       nextDialogueElement:
       - EXIT
     - dialogueTag: NEGOTIATION 1
       currentDialogueState: 1
       clientLines:
-      - 3
-      - 2
-      - 1
+      - Negotiation
       playerResponses:
       - 3
       - 2
       - 1
-      answerSatisfaction: 030000000200000001000000
+      answerSatisfaction: 0200000001000000ffffffff
       responseIndex: 
       nextDialogueElement: []
     - dialogueTag: NEGOTIATION 2
       currentDialogueState: 2
       clientLines:
-      - Negotiation 2
+      - Negotiation 2.
       playerResponses: []
       answerSatisfaction: 
       responseIndex: 
@@ -69,7 +69,7 @@ MonoBehaviour:
     - dialogueTag: EXIT
       currentDialogueState: 2
       clientLines:
-      - Hmph.
+      - Grrr! You made a HUGE mistake.
       playerResponses: []
       answerSatisfaction: 
       responseIndex: 

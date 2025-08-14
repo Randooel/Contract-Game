@@ -128,8 +128,16 @@ public class ClientManager : MonoBehaviour
         _currentClient.clientSatisfaction = profileSO[currentProfile].satisfaction;
         _currentClient.clientResolution = profileSO[currentProfile].resolution;
         _currentClient.clientCash = profileSO[currentProfile].cash;
-        _currentClient.objectiveDescription = profileSO[currentProfile].objectiveDescription;
-        _currentClient.objectiveSprite = profileSO[currentProfile].objective[0].fullSprite;
+        _currentClient.objectiveDescription = profileSO[currentProfile].encounters[0].objectives.objectiveDescription;
+        if (profileSO[currentProfile].encounters?[0].objectives.character.Count > 0)
+        {
+            _currentClient.objectiveSprite = profileSO[currentProfile].encounters[0].objectives.character[0].fullSprite;
+        }
+        else
+        {
+            _currentClient.objectiveSprite = profileSO[currentProfile].encounters[0].objectives.item[0].sprite;
+        }
+        
 
         _dialogueManager.SetClientLines();
         _dialogueManager.SetPlayerResponses();

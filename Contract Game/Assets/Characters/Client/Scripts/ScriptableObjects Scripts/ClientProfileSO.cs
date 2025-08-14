@@ -24,9 +24,7 @@ public class ClientProfileSO : ScriptableObject
 
     [Header("Property")]
     public int cash;
-    public string objectiveDescription;
-    public List<ClientProfileSO> objective = new List<ClientProfileSO>();
-    public List<ScriptableObject> possession = new List<ScriptableObject>();
+    public List<ScriptableObject> possessions = new List<ScriptableObject>();
 
     [Header("Dialogue")]
     public List<Encounters> encounters = new List<Encounters>();
@@ -36,5 +34,14 @@ public class ClientProfileSO : ScriptableObject
 public class Encounters
 {
     public string encounterTag;
+    public Objectives objectives;
     public List<DialogueGroup> dialogueGroups = new List<DialogueGroup>();
+}
+
+[System.Serializable]
+public class Objectives
+{
+    public string objectiveDescription;
+    public List<ClientProfileSO> character = new List<ClientProfileSO>();
+    public List<ItemSO> item = new List<ItemSO>();
 }

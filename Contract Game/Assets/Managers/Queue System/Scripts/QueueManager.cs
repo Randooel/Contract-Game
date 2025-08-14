@@ -8,6 +8,9 @@ public class QueueManager : MonoBehaviour
     private ClientManager _clientManager;
     private DialogueManager _dialogueManager;
 
+    [Header("Served Clients")]
+    public List<ClientProfileSO> _profiles;
+
 
     void Start()
     {
@@ -40,5 +43,13 @@ public class QueueManager : MonoBehaviour
     public void NextRandomProfile()
     {
         _clientManager.ChooseRandomProfile();
+        _profiles.Add(_clientManager.profileSO[_clientManager.currentProfile]);
+    }
+
+    // Insert logic to not call client's fully served and update their quests based on the deal
+
+    public void UpdatCharacterDialogue()
+    {
+        
     }
 }

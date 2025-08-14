@@ -96,13 +96,13 @@ public class ContractManager : MonoBehaviour
     private void DODealAnim()
     {
         _dealObject.SetActive(true);
-        _dealObject.transform.DOLocalMoveZ(0, 2f);
+        _dealObject.transform.DOLocalMoveZ(0, 10f);
     }
 
     private void DORecusedAnim()
     {
         _recusedObject.SetActive(true);
-        _recusedObject.transform.DOLocalMoveZ(0, 2f);
+        _recusedObject.transform.DOLocalMoveZ(0, 4f);
     }
 
     private IEnumerator WaitToHideContract()
