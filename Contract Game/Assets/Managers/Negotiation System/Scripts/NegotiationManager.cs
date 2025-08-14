@@ -20,6 +20,9 @@ public class NegotiationManager : MonoBehaviour
     [SerializeField] private ClientManager _clientManager;
     [SerializeField] private QueueManager _queueSystem;
 
+    [Header("Player References")]
+    private PlayerResponses _playerResponses;
+
     [Header("Interface References")]
     private ContractManager _contractManager;
     [SerializeField] private PlayerDebt _playerDebt;
@@ -52,6 +55,8 @@ public class NegotiationManager : MonoBehaviour
         {
             Debug.LogWarning("QueueSyestem not found!");
         }
+
+        _playerResponses = FindObjectOfType<PlayerResponses>();
 
         _contractManager.HideContract();
     }
@@ -106,12 +111,15 @@ public class NegotiationManager : MonoBehaviour
         {
             _contractManager.ShowSignature();
             StartCoroutine(WaitToPlayStampVFX(1));
-            
+
+            _playerResponses.Reaction(1,0);
         }
         else if((_currentClient.clientSatisfaction < 0))
         {
             _contractManager.ShowContract();
             StartCoroutine(WaitToPlayStampVFX(-1));
+
+            _playerResponses.Reaction(2,1);
         }
     }
 

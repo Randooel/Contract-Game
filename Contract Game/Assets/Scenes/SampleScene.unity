@@ -3315,6 +3315,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfb260bea8aeba645a525a41321b9877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerRenderer: {fileID: 1938619758}
+  playerExpressions:
+  - {fileID: 21300000, guid: b5da8559e83338a4f8f86dd50b353e81, type: 3}
+  - {fileID: 21300000, guid: 8a93835a6cb57f047b15d7f91bd20403, type: 3}
+  - {fileID: 21300000, guid: 8aedd93c1ff2a1343b874fb762033255, type: 3}
+  - {fileID: 21300000, guid: c376e501828fa914c895971c3c8b8b82, type: 3}
+  reactions:
+  - {fileID: 1681819351}
+  - {fileID: 1866157307}
   responsesObjects:
   - {fileID: 906605602}
   - {fileID: 1304543741}
@@ -4825,7 +4834,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1866157306
 Transform:
   m_ObjectHideFlags: 0
@@ -5238,6 +5247,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891584929}
   m_CullTransparentMesh: 1
+--- !u!212 &1938619758 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6624091089849323604, guid: f5ddd94fc8ac6f749a1d43d17d77d2a0,
+    type: 3}
+  m_PrefabInstance: {fileID: 7929697125942955231}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1950315032
 GameObject:
   m_ObjectHideFlags: 0

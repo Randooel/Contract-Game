@@ -7,6 +7,12 @@ public class PlayerResponses : MonoBehaviour
 {
     private CurrentClient currentClient;
 
+    [Header("Visual")]
+    [SerializeField] private SpriteRenderer _playerRenderer;
+    public Sprite[] playerExpressions;
+    public SpriteRenderer[] reactions;
+
+    [Header("Responses")]
     public GameObject[] responsesObjects;
     public TextMeshProUGUI[] responsesText;
     
@@ -19,6 +25,11 @@ public class PlayerResponses : MonoBehaviour
         currentClient = FindObjectOfType<CurrentClient>();
 
         HideResponses();
+
+        foreach(var reaction in reactions)
+        {
+            reaction.gameObject.SetActive(false);
+        }
     }
 
     public void Update()
@@ -61,5 +72,26 @@ public class PlayerResponses : MonoBehaviour
     private void ClearResponses()
     {
         responsesLines.Clear();
+    }
+
+    // REACTIONS
+    public void Reaction(int expressionIndex, int reactionIndex)
+    {
+        _playerRenderer.sprite = playerExpressions[expressionIndex];
+        reactions[reactionIndex].gameObject.SetActive(true);
+
+        StartCoroutine(WaitToIdle());
+    }
+
+    private IEnumerator WaitToIdle()
+    {
+        yield return new WaitForSeconds(1f);
+
+        _playerRenderer.sprite = playerExpressions[0];
+
+        foreach (var reaction in reactions)
+        {
+            reaction.gameObject.SetActive(false);
+        }
     }
 }
