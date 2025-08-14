@@ -33,7 +33,7 @@ MonoBehaviour:
     - dialogueTag: GREETINGS
       currentDialogueState: 0
       clientLines:
-      - Hi, my name is James, the Adventurer.
+      - Hi, my name is <link=RainbowWave>James, the Adventurer</link>.
       - I'm looking for my brother, Shames. He looks just like me.
       - Can you help me find him? I'll pay for your services, obviously.
       playerResponses:

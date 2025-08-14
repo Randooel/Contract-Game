@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EasyTextEffects;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class DialogueManager : MonoBehaviour
     [Range(0, 5)] public int maxDialogueGroup;
     [SerializeField] public int currentEncounter;
 
+    [Header("Visual")]
+    [SerializeField] TextEffect textEffect;
+
     private void Start()
     {
         _negotiationManager = FindObjectOfType<NegotiationManager>();
@@ -29,6 +33,8 @@ public class DialogueManager : MonoBehaviour
 
         _clientManager = FindObjectOfType<ClientManager>();
         _currentClient = FindObjectOfType<CurrentClient>();
+
+        textEffect = FindObjectOfType<TextEffect>();
     }
 
     private void Update()

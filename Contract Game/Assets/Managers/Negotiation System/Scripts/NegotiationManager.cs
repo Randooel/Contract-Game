@@ -117,7 +117,7 @@ public class NegotiationManager : MonoBehaviour
 
     public IEnumerator WaitToHideContract()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.25f);
 
         _contractManager.HideContract();
     }

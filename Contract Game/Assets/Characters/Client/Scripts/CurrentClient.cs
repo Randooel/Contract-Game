@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using EasyTextEffects;
+using JetBrains.Annotations;
 
 public class CurrentClient : MonoBehaviour
 {
@@ -93,8 +95,17 @@ public class CurrentClient : MonoBehaviour
     // DIALOGUE
     public void Speak()
     {
-        _clientDialogueBox.SetActive(true);
+        var textEffect = _clientDialogueText.GetComponent<TextEffect>();
+
         _clientDialogueText.text = lines[_dialogueManager.currentLine];
+        _clientDialogueBox.SetActive(true);
+
+        textEffect.StopAllEffects();
+        textEffect.Refresh();
+
+        textEffect.StartManualEffect("Typewritter");
+        textEffect.StartManualTagEffect("RainbowWave");
+
         _animator.SetTrigger("Speak");
     }
 

@@ -3428,6 +3428,7 @@ GameObject:
   - component: {fileID: 1490848002}
   - component: {fileID: 1490848004}
   - component: {fileID: 1490848003}
+  - component: {fileID: 1490848005}
   m_Layer: 0
   m_Name: Client Text
   m_TagString: Untagged
@@ -3474,10 +3475,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Client Text
+  m_text: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3551,6 +3552,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1490848001}
   m_CullTransparentMesh: 1
+--- !u!114 &1490848005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490848001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9840f87219df84505803024c796e739d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: {fileID: 1490848003}
+  usePreset: 1
+  preset: {fileID: 0}
+  tagEffects:
+  - triggerWhen: 1
+    effect: {fileID: 11400000, guid: 7c168d5997a57a0449d3873f74e6a116, type: 2}
+    onEffectCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+  globalEffects:
+  - triggerWhen: 1
+    effect: {fileID: 11400000, guid: 1ac6cb99de330544a9db2f41bad513cd, type: 2}
+    onEffectCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+    overrideTagEffects: 0
+  updatesPerSecond: 30
 --- !u!1 &1499548586
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,6 +6222,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 988166671}
     m_Modifications:
+    - target: {fileID: 1914848002682148457, guid: d9d8eedbbc3cb594d8fc9d5863db9b5f,
+        type: 3}
+      propertyPath: textEffect
+      value: 
+      objectReference: {fileID: 1490848005}
     - target: {fileID: 1914848002682148457, guid: d9d8eedbbc3cb594d8fc9d5863db9b5f,
         type: 3}
       propertyPath: SEXO.Array.size
