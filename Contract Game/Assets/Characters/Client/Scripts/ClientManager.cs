@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 
@@ -22,13 +23,17 @@ public class ClientManager : MonoBehaviour
     [SerializeField] SpriteRenderer _clientHead;
     [SerializeField] SpriteRenderer _clientTeeth;
     [SerializeField] SpriteRenderer _clientOutline;
+    [Space(5)]
+    [SerializeField] Image _dialogueBoxBackground;
 
     [Header("SO References")]
     public ClientNameSO clientNameSO;
     public ClientSpritesListSO spritesListSO;
     public ClientObjectiveSO objectivesSO;
+    /*
     public ClientGreetingLinesSO personalitySO;
     public ClientProfileSO clientSO;
+    */
 
     public List<ClientProfileSO> profileSO = new List<ClientProfileSO>();
     public int currentProfile;
@@ -211,5 +216,6 @@ public class ClientManager : MonoBehaviour
     {
         Color randomColor = new Color(Random.value, Random.value, Random.value);
         _clientHead.color = randomColor;
+        _dialogueBoxBackground.color = randomColor;
     }
 }

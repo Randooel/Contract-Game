@@ -34,10 +34,9 @@ MonoBehaviour:
       currentDialogueState: 0
       clientLines:
       - Hi. I'm here in secret, so you can just call me Millionaire Orc.
-      - You see, I have worked really hard to make myself a fortune and lock it out
-        in my safe.
-      - 'The problem here is: I lost my key. And I reaaally need to pay a certain
-        debt right now, so...'
+      - You see, I have worked really hard to make myself a fortune.
+      - I locked it in my safe but... <size=75%><color=#979797><i>how do I put this...</i></color></size>
+        I lost the key.
       - Come on, help me out. If you want money, just ask. I've got lots of it.
       playerResponses:
       - Sure!

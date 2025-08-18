@@ -35,8 +35,8 @@ MonoBehaviour:
       clientLines:
       - Hi. Name's Dornan, the Blacksmith.
       - My aprentice exploded my forge, so I need a new one.
-      - No need to say this is terrible for the business.
-      - So, can you help this old man?
+      - No need to say this is terrible for da business.
+      - Would you be so kind to help this old man?
       playerResponses:
       - Sure!
       - '[Set Price]'
