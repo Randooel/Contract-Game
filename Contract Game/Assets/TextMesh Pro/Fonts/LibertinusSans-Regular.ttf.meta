@@ -10,7 +10,9 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Libertinus Sans
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 7713dc9922565044890532b10651ca0e, type: 3}
+  - {fileID: 12800000, guid: 647b064f726ab8b4084f1a937fa02246, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

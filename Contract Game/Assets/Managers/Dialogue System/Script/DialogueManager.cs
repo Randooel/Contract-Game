@@ -10,7 +10,7 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Player References")]
     private PlayerResponses _playerResponses;
-    private int _response;
+    private int _responseIndex;
 
     [Header("Client References")]
     private ClientManager _clientManager;
@@ -91,9 +91,15 @@ public class DialogueManager : MonoBehaviour
 
         if(playerResponses != null && playerResponses.Count > 0)
         {
+            /*
             foreach (var response in playerResponses)
             {
                 _playerResponses.responsesLines.Add(response);
+            }
+            */
+            for (int i = 0; i < playerResponses.Count; i++)
+            {
+                _playerResponses.responsesLines.Add(playerResponses[i].responseLine);
             }
         }
         else
@@ -129,17 +135,17 @@ public class DialogueManager : MonoBehaviour
 
         if(buttonName == "Response 3")
         {
-            _response = 0;
+            _responseIndex = 0;
         }
 
         else if(buttonName == "Response 2")
         {
-            _response = 1;
+            _responseIndex = 1;
         }
 
         else if(buttonName == "Response 1")
         {
-            _response = 2;
+            _responseIndex = 2;
         }
 
         HandleResponse();
@@ -152,7 +158,7 @@ public class DialogueManager : MonoBehaviour
     private void HandleResponse()
     {
         var answerSatisfaction = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter]
-            .dialogueGroups[currentDialogueGroup].answerSatisfaction[_response];
+            .dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].answerSatisfaction;
 
         _currentClient.clientSatisfaction += answerSatisfaction;
 
@@ -172,13 +178,20 @@ public class DialogueManager : MonoBehaviour
 
     private void CheckNextDialogue()
     {
-        var responseIndex = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].responseIndex;
+        var nextDialogue = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
+            dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].nextDialogueTag;
+
 
         if (currentDialogueGroup + 1 < maxDialogueGroup)
         {
-            if(responseIndex?.Count > 0 && _response == responseIndex[0])
+            var shouldSkipToDialogueX = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
+                    dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].skipToDialogueX;
+
+            if (shouldSkipToDialogueX)
             {
-                string nextDialogueTag = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups[currentDialogueGroup].nextDialogueElement[0];
+                string nextDialogueTag = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
+                    dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].nextDialogueTag;
+
                 var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
 
                 int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);

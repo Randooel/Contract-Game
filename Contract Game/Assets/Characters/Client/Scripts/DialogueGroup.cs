@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EasyTextEffects.Editor.MyBoxCopy.Attributes;
 
 [System.Serializable]
 public class DialogueGroup
@@ -22,13 +23,22 @@ public class DialogueGroup
     [TextArea(1, 3)]
     public List<string> clientLines;
 
+    public List<PlayerResponsesList> playerResponses = new List<PlayerResponsesList>();
+}
+
+[System.Serializable]
+public class PlayerResponsesList
+{
     [TextArea(1, 3)]
-    public List<string> playerResponses;
+    public string responseLine;
 
-    [Header("Satisfaction")]
-    [Range(-3, 3)] public List<int> answerSatisfaction = new List<int>();
+    [Space(5)]
+    [Range(-3, 3)] public int answerSatisfaction;
 
-    [Header("Jump to Dialogue")]
-    public List<int> responseIndex = new List<int>();
-    public List<string> nextDialogueElement = new List<string>();
+    [Space(5)]
+    public bool skipToDialogueX;
+
+    [ConditionalField(nameof(skipToDialogueX), false)]
+    [Space(5)]
+    public string nextDialogueTag;
 }

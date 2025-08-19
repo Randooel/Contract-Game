@@ -39,37 +39,42 @@ MonoBehaviour:
         I lost the key.
       - Come on, help me out. If you want money, just ask. I've got lots of it.
       playerResponses:
-      - Sure!
-      - '[Set price]'
-      - Sorry, can't help you pal.
-      answerSatisfaction: 02000000fffffffffdffffff
-      responseIndex: 02000000
-      nextDialogueElement:
-      - EXIT
+      - responseLine: Sure!
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: <i>[Set Price]</i>
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: Sorry.
+        answerSatisfaction: -3
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 1
       currentDialogueState: 1
       clientLines:
       - Negotiation
       playerResponses:
-      - 3
-      - 2
-      - 1
-      answerSatisfaction: 0200000001000000ffffffff
-      responseIndex: 
-      nextDialogueElement: []
+      - responseLine: 3
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: 2
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: 1
+        answerSatisfaction: -3
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 2
       currentDialogueState: 2
       clientLines:
       - Negotiation 2.
       playerResponses: []
-      answerSatisfaction: 
-      responseIndex: 
-      nextDialogueElement: []
     - dialogueTag: EXIT
       currentDialogueState: 2
       clientLines:
       - Grrr! You made a HUGE mistake.
       playerResponses: []
-      answerSatisfaction: 
-      responseIndex: 
-      nextDialogueElement: []

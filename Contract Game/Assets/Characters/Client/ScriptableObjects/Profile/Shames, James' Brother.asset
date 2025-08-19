@@ -21,8 +21,20 @@ MonoBehaviour:
   satisfaction: 0
   resolution: 0
   cash: -10
-  objectiveDescription: 
-  objective:
-  - {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048, type: 2}
-  possession: []
-  encounters: []
+  possessions: []
+  encounters:
+  - encounterTag: 
+    objectives:
+      objectiveDescription: 
+      character: []
+      item: []
+    dialogueGroups:
+    - dialogueTag: 
+      currentDialogueState: 0
+      clientLines:
+      - 
+      playerResponses:
+      - responseLine: 
+        answerSatisfaction: 0
+        skipToDialogueX: 0
+        nextDialogueTag: 

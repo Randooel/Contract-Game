@@ -37,43 +37,47 @@ MonoBehaviour:
       - I'm looking for my brother, Shames. He looks just like me.
       - Can you help me find him? I'll pay for your services, obviously.
       playerResponses:
-      - Sure!
-      - I can find him, for the right price...
-      - Sorry, I don't think I can help you.
-      answerSatisfaction: 0100000001000000ffffffff
-      responseIndex: 02000000
-      nextDialogueElement:
-      - EXIT
+      - responseLine: Sure!
+        answerSatisfaction: 2
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: Tell me more.
+        answerSatisfaction: 1
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: Sorry. I don't think I can help.
+        answerSatisfaction: -3
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 1
       currentDialogueState: 1
       clientLines:
       - This is music to my long ears!
       - So, what you'll need to find him?
       playerResponses:
-      - Tell me more about him.
-      - '[Set price]'
-      - Never mind. Go away.
-      answerSatisfaction: 0300000001000000fdffffff
-      responseIndex: 02000000
-      nextDialogueElement:
-      - EXIT
+      - responseLine: Tell me more about him.
+        answerSatisfaction: 2
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: <i>[Set Price]</i>
+        answerSatisfaction: 1
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: Sorry, I've changed my mind.
+        answerSatisfaction: -2
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 2
       currentDialogueState: 2
       clientLines:
       - NEGOTIATION 2
       playerResponses: []
-      answerSatisfaction: 000000000000000000000000
-      responseIndex: 
-      nextDialogueElement: []
     - dialogueTag: EXIT
       currentDialogueState: 2
       clientLines:
       - Oh, I see...
       - Bye.
       playerResponses: []
-      answerSatisfaction: 
-      responseIndex: 
-      nextDialogueElement: []
   - encounterTag: CHECK PROGRESS - 2
     objectives:
       objectiveDescription: 

@@ -38,13 +38,18 @@ MonoBehaviour:
       - No need to say this is terrible for da business.
       - Would you be so kind to help this old man?
       playerResponses:
-      - Sure!
-      - '[Set Price]'
-      - Sorry, I can't.
-      answerSatisfaction: 0300000001000000feffffff
-      responseIndex: 02000000
-      nextDialogueElement:
-      - EXIT
+      - responseLine: Sure!
+        answerSatisfaction: 1
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: <i>[Set Price]</i>
+        answerSatisfaction: 0
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: Sorry.
+        answerSatisfaction: -1
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 1
       currentDialogueState: 1
       clientLines:
@@ -52,25 +57,25 @@ MonoBehaviour:
       - 2
       - 1
       playerResponses:
-      - 3
-      - 2
-      - 1
-      answerSatisfaction: 030000000200000001000000
-      responseIndex: 
-      nextDialogueElement: []
+      - responseLine: 3
+        answerSatisfaction: 1
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: 2
+        answerSatisfaction: 0
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: 1
+        answerSatisfaction: -1
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 2
       currentDialogueState: 2
       clientLines:
       - Negotiation 2
       playerResponses: []
-      answerSatisfaction: 
-      responseIndex: 
-      nextDialogueElement: []
     - dialogueTag: EXIT
       currentDialogueState: 2
       clientLines:
       - Hmph.
       playerResponses: []
-      answerSatisfaction: 
-      responseIndex: 
-      nextDialogueElement: []
