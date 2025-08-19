@@ -46,7 +46,7 @@ MonoBehaviour:
         skipToDialogueX: 0
         nextDialogueTag: 
       - responseLine: Sorry. I don't think I can help.
-        answerSatisfaction: -3
+        answerSatisfaction: -6
         skipToDialogueX: 1
         nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 1
@@ -64,7 +64,7 @@ MonoBehaviour:
         skipToDialogueX: 0
         nextDialogueTag: 
       - responseLine: Sorry, I've changed my mind.
-        answerSatisfaction: -2
+        answerSatisfaction: -6
         skipToDialogueX: 1
         nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 2

@@ -19,7 +19,7 @@ public class ClientProfileSO : ScriptableObject
     public Sprite fullSprite;
 
     [Header("Moral")]
-    [Range(-10, 10)] public float satisfaction;
+    [Range(-4, 3)] public float satisfaction;
     [Range(0, 1)] public float resolution;
 
     [Header("Property")]

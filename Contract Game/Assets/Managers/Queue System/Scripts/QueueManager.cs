@@ -7,6 +7,7 @@ public class QueueManager : MonoBehaviour
     [Header("Scripts References")]
     private ClientManager _clientManager;
     private DialogueManager _dialogueManager;
+    private ContractManager _contractManager;
 
     [Header("Served Clients")]
     public List<ClientProfileSO> _profiles;
@@ -16,6 +17,7 @@ public class QueueManager : MonoBehaviour
     {
         _clientManager = FindObjectOfType<ClientManager>();
         _dialogueManager = FindObjectOfType<DialogueManager>();
+        _contractManager = FindObjectOfType<ContractManager>();
 
         // Insert random queue logic here, without repetition
         // And SetClient logic (and remove the one on the ClientManager script)
@@ -29,6 +31,8 @@ public class QueueManager : MonoBehaviour
             _dialogueManager.ClearClientLines();
             _dialogueManager.ClearPlayerResponses();
             _dialogueManager.currentLine = 0;
+
+            _contractManager.HideContract();
         }
         else return;
     }

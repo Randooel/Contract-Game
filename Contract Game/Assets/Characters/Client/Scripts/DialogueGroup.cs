@@ -32,13 +32,12 @@ public class PlayerResponsesList
     [TextArea(1, 3)]
     public string responseLine;
 
-    [Space(5)]
-    [Range(-3, 3)] public int answerSatisfaction;
+    [Space(10)]
+    [Range(-6, 5)] public int answerSatisfaction;
 
-    [Space(5)]
+    [Space(10)]
     public bool skipToDialogueX;
 
     [ConditionalField(nameof(skipToDialogueX), false)]
-    [Space(5)]
     public string nextDialogueTag;
 }

@@ -20,7 +20,7 @@ public class CurrentClient : MonoBehaviour
     public GameObject[] reactions;
 
     [Header("Personality")]
-    [Range(-10, 10)] public float clientSatisfaction;
+    [Range(-4, 3)] public float clientSatisfaction;
     [SerializeField][Range(0, 1)] public float clientResolution;
 
     [SerializeField]
