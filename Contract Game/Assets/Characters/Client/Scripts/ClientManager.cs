@@ -8,6 +8,8 @@ using Unity.VisualScripting;
 
 public class ClientManager : MonoBehaviour
 {
+    private QueueManager _queueManager;
+
     [Header("Player Reference")]
     private PlayerResponses _playerResponse;
 
@@ -35,6 +37,7 @@ public class ClientManager : MonoBehaviour
     public ClientProfileSO clientSO;
     */
 
+    [Space(10)]
     public List<ClientProfileSO> profileSO = new List<ClientProfileSO>();
     public int currentProfile;
 
@@ -47,6 +50,8 @@ public class ClientManager : MonoBehaviour
 
     void Start()
     {
+        _queueManager = FindObjectOfType<QueueManager>(); 
+
         if(_currentClient == null)
         {
             _currentClient = FindObjectOfType<CurrentClient>();
@@ -114,10 +119,28 @@ public class ClientManager : MonoBehaviour
     // Comment this script after the QueueManager profile pick logic is implemented
     public void ChooseRandomProfile()
     {
+        bool wasServed = false;
         int rand = Random.Range(0, profileSO.Count);
-        currentProfile = rand;
 
-        SetProfile();
+        foreach (var profile in _queueManager.servedClients)
+        {
+            if(profileSO[rand] == profile)
+            {
+                wasServed = true;
+
+                break;
+            }
+        }
+
+        if(wasServed)
+        {
+            ChooseRandomProfile();
+        }
+        else
+        {
+            currentProfile = rand;
+            SetProfile();
+        }
     }
 
     public void SetProfile()
