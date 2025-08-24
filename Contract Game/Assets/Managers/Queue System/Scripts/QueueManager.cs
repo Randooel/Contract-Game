@@ -25,7 +25,7 @@ public class QueueManager : MonoBehaviour
         _dialogueManager = FindObjectOfType<DialogueManager>();
         _contractManager = FindObjectOfType<ContractManager>();
 
-        StartCoroutine(WaitToAddClient());
+        //StartCoroutine(WaitToAddClient());
 
         // Insert random queue logic here, without repetition
         // And SetClient logic (and remove the one on the ClientManager script)
@@ -41,8 +41,6 @@ public class QueueManager : MonoBehaviour
             _dialogueManager.currentLine = 0;
 
             _contractManager.HideContract();
-
-            AddServedClient();
         }
         else return;
     }
@@ -61,6 +59,32 @@ public class QueueManager : MonoBehaviour
         servedClients.Add(_clientManager.profileSO[_clientManager.currentProfile]);
     }
 
+    public void CheckServed(int rand)
+    {
+        bool wasServed = false;
+
+        foreach (var profile in servedClients)
+        {
+            if (_clientManager.profileSO[rand] == profile)
+            {
+                wasServed = true;
+                break;
+            }
+        }
+
+        if (!wasServed)
+        {
+            _clientManager.currentProfile = rand;
+            _clientManager.SetProfile();
+            AddServedClient();
+        }
+        else
+        {
+            _clientManager.ChooseRandomProfile();
+        }
+    }
+
+
     // Insert logic to not call client's fully served and update their quests based on the deal
 
     public void UpdatCharacterDialogue()
@@ -68,10 +92,12 @@ public class QueueManager : MonoBehaviour
         
     }
 
+    /*
     private IEnumerator WaitToAddClient()
     {
         yield return new WaitForSeconds(0.05f);
 
         AddServedClient();
     }
+    */
 }

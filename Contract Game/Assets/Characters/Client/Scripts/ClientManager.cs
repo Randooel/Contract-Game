@@ -28,11 +28,12 @@ public class ClientManager : MonoBehaviour
     [Space(5)]
     [SerializeField] Image _dialogueBoxBackground;
 
+    /*
     [Header("SO References")]
     public ClientNameSO clientNameSO;
     public ClientSpritesListSO spritesListSO;
     public ClientObjectiveSO objectivesSO;
-    /*
+    
     public ClientGreetingLinesSO personalitySO;
     public ClientProfileSO clientSO;
     */
@@ -119,28 +120,9 @@ public class ClientManager : MonoBehaviour
     // Comment this script after the QueueManager profile pick logic is implemented
     public void ChooseRandomProfile()
     {
-        bool wasServed = false;
         int rand = Random.Range(0, profileSO.Count);
 
-        foreach (var profile in _queueManager.servedClients)
-        {
-            if(profileSO[rand] == profile)
-            {
-                wasServed = true;
-
-                break;
-            }
-        }
-
-        if(wasServed)
-        {
-            ChooseRandomProfile();
-        }
-        else
-        {
-            currentProfile = rand;
-            SetProfile();
-        }
+        _queueManager.CheckServed(rand);        
     }
 
     public void SetProfile()
