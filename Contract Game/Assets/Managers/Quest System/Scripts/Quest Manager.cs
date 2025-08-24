@@ -28,6 +28,17 @@ public class QuestManager : MonoBehaviour
 [System.Serializable]
 public class ClientQuest
 {
+    [Header("Quest State")]
+    public QuestState currentQuestState;
+    public enum QuestState
+    {
+        NotStarted,
+        Ongoing,
+        GoodDeal,
+        NeutralDeal,
+        BadDeal
+    }
+
     [Header("Visual")]
     public string currentName;
     public Sprite eye, head, teeth, outline;
@@ -40,16 +51,5 @@ public class ClientQuest
     public List<ScriptableObject> possessions = new List<ScriptableObject>();
 
     [Header("Dialogue")]
-    public string nextDialogueTag;
-
-    [Header("Quest State")]
-    public QuestState currentQuestState;
-    public enum QuestState
-    {
-        NotStarted,
-        Ongoing,
-        GoodDeal,
-        NeutralDeal,
-        BadDeal
-    }
+    public string nextEncounter; // _dialogueManager.currentEncounter = nextEncounter;
 }

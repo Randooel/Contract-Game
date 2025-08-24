@@ -5759,6 +5759,55 @@ PrefabInstance:
       propertyPath: _clientManager
       value: 
       objectReference: {fileID: 1140809202}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[0].dayIndex
+      value: Day One
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[1].dayIndex
+      value: Day Two
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[0].profileList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[1].profileList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[0].profileList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048,
+        type: 2}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[0].profileList.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8426836a714a3be468c09e8e9690fd98,
+        type: 2}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[0].profileList.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0da3e0686c1b66f42a7d504a643bfe41,
+        type: 2}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[1].profileList.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb,
+        type: 2}
     - target: {fileID: 6325910276625180250, guid: 47c2e87d0f8fa394cbade70253ea0b27,
         type: 3}
       propertyPath: m_Name
@@ -6252,7 +6301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc88054e3f8496b4b9ac88ffc87c3786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clientQuests: []
+  originalInfo: []
+  currentInfo: []
 --- !u!1001 &7929697125942955231
 PrefabInstance:
   m_ObjectHideFlags: 0

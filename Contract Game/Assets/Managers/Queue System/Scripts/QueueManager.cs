@@ -10,13 +10,16 @@ public class QueueManager : MonoBehaviour
     private DialogueManager _dialogueManager;
     private ContractManager _contractManager;
 
+    [Header("Day System")]
+    [SerializeField] public int currentDay = 1;
+    [SerializeField] private TextMeshProUGUI _dayText;
+
     [Header("Served Clients")]
     public List<ClientProfileSO> servedClients;
-    // Add a List of possible clients for each day
 
-    [Header("Day System")]
-    [SerializeField] private int _currentDay = 1;
-    [SerializeField] private TextMeshProUGUI _dayText;
+    [Header("Client Lists")]
+    public List<ProfileList> profilesPerDay = new List<ProfileList>();
+
 
 
     void Start()
@@ -24,6 +27,9 @@ public class QueueManager : MonoBehaviour
         _clientManager = FindObjectOfType<ClientManager>();
         _dialogueManager = FindObjectOfType<DialogueManager>();
         _contractManager = FindObjectOfType<ContractManager>();
+
+        _dayText.text = "Day: " + currentDay + "/3";
+        UpdateClientManagerProfileList();
 
         //StartCoroutine(WaitToAddClient());
 
@@ -54,8 +60,6 @@ public class QueueManager : MonoBehaviour
 
     public void AddServedClient()
     {
-        //_clientManager.ChooseRandomProfile();
-
         servedClients.Add(_clientManager.profileSO[_clientManager.currentProfile]);
     }
 
@@ -74,6 +78,7 @@ public class QueueManager : MonoBehaviour
 
         if (!wasServed)
         {
+            var index = currentDay - 1;
             _clientManager.currentProfile = rand;
             _clientManager.SetProfile();
             AddServedClient();
@@ -84,8 +89,15 @@ public class QueueManager : MonoBehaviour
         }
     }
 
+    public void UpdateClientManagerProfileList()
+    {
+        _clientManager.profileSO.Clear();
 
-    // Insert logic to not call client's fully served and update their quests based on the deal
+        foreach(var profile in profilesPerDay[currentDay - 1].profileList)
+        {
+            _clientManager.profileSO.Add(profile);
+        }
+    }
 
     public void UpdatCharacterDialogue()
     {
@@ -100,4 +112,21 @@ public class QueueManager : MonoBehaviour
         AddServedClient();
     }
     */
+
+    public void HandleNextDay()
+    {
+        currentDay++;
+        servedClients.Clear();
+        UpdateClientManagerProfileList();
+
+        // JUST FOR TESTS
+        _clientManager.CallNextClient();
+    }
+}
+
+[System.Serializable]
+public class ProfileList
+{
+    public string dayIndex;
+    public List<ClientProfileSO> profileList = new List<ClientProfileSO>();
 }

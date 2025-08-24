@@ -84,28 +84,34 @@ public class ClientManager : MonoBehaviour
 
     public void CallNextClient()
     {
-        if (canCallNextClient == true)
+        if(_queueManager.servedClients.Count < profileSO.Count)
         {
-            canCallNextClient = false;
-
-            _currentClient.lines.Clear();
-            _currentClient.currentLine = 0;
-
-            _playerResponse.HideResponses();
-
-            _currentClient.PlayLeave();
-
-            //DOTween.Kill(this.gameObject);
-
-            DOVirtual.DelayedCall(2f, () =>
+            if (canCallNextClient == true)
             {
-                canCallNextClient = true;
-            });
+                canCallNextClient = false;
 
-            StartCoroutine(WaitToNextClient());
+                _currentClient.lines.Clear();
+                _currentClient.currentLine = 0;
+
+                _playerResponse.HideResponses();
+
+                _currentClient.PlayLeave();
+
+                //DOTween.Kill(this.gameObject);
+
+                DOVirtual.DelayedCall(2f, () =>
+                {
+                    canCallNextClient = true;
+                });
+
+                StartCoroutine(WaitToNextClient());
+            }
+            else return;
         }
-        else return;
-        
+        else
+        {
+            _queueManager.HandleNextDay();
+        }
     }
 
     private IEnumerator WaitToNextClient()
