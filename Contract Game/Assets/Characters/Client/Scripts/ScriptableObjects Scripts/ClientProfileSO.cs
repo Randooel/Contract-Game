@@ -17,9 +17,6 @@ public class ClientProfileSO : PossessionSO
     public Sprite teethSprite;
     public Sprite outlineSprite;
 
-    [Space(5)]
-    public SpriteSO fullSprite;
-
     [Header("Moral")]
     [Range(-4, 3)] public float satisfaction;
     [Range(0, 1)] public float resolution;

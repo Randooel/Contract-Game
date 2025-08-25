@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
   m_Name: Mephisto
   m_EditorClassIdentifier: 
-  hidePossessionInfo: 1
+  hidePossessionInfo: 0
   possessionName: 
-  sprite: {fileID: 0}
-  possessionType: 0
+  sprite: {fileID: 21300000, guid: e326aac205ff3534aa4196368241d7c7, type: 3}
+  possessionType: 5
   clientName: {fileID: 11400000, guid: 529a9b4422c66fe43b262c68a6f37b81, type: 2}
   eyesSprite: {fileID: 0}
-  headSprite: {fileID: 0}
+  headSprite: {fileID: 21300000, guid: e326aac205ff3534aa4196368241d7c7, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 0}
-  fullSprite: {fileID: 11400000, guid: 332a222fd7fd4c44082787adfff360a7, type: 2}
   satisfaction: 0
   resolution: 0
   cash: 0
@@ -33,4 +32,26 @@ MonoBehaviour:
     objectives:
       objectiveDescription: Cash (x666.666,99)
       objective: {fileID: 11400000, guid: 784e85bb8063e4f42a8469650f12cdd6, type: 2}
-    dialogueGroups: []
+    dialogueGroups:
+    - dialogueTag: 
+      currentDialogueState: 0
+      clientLines:
+      - Pay your debt.
+      playerResponses:
+      - responseLine: Right away!
+        answerSatisfaction: -6
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: '[Use item]'
+        answerSatisfaction: 5
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: No.
+        answerSatisfaction: 5
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
+    - dialogueTag: EXIT
+      currentDialogueState: 2
+      clientLines:
+      - Hahaha. Bye.
+      playerResponses: []

@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
   m_Name: Shames, James' Brother
   m_EditorClassIdentifier: 
-  hidePossessionInfo: 1
+  hidePossessionInfo: 0
   possessionName: 
-  sprite: {fileID: 0}
-  possessionType: 0
+  sprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
+  possessionType: 5
   clientName: {fileID: 11400000, guid: cb51f48b7b8cee043b95db2aeaecbe98, type: 2}
   eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
   headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
-  fullSprite: {fileID: 11400000, guid: b3625e6ca4f3d814584efdcef38a8903, type: 2}
   satisfaction: 0
   resolution: 0
   cash: -10
