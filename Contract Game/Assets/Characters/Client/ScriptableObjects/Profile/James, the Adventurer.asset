@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
   m_Name: James, the Adventurer
   m_EditorClassIdentifier: 
-  clientName: James, the Adventurer
+  hidePossessionInfo: 1
+  possessionName: 
+  sprite: {fileID: 0}
+  possessionType: 5
+  clientName: {fileID: 11400000, guid: 800b5ec3db8ac5a4fa6cc33274b2d5ef, type: 2}
   eyesSprite: {fileID: 21300000, guid: 39d69242baa005a469abb7adcae5c21f, type: 3}
   headSprite: {fileID: 21300000, guid: 699b0ff336db74046aefff4acfe5547b, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 3632f2a02003ee64fafb4ed9a7e21248, type: 3}
-  fullSprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
+  fullSprite: {fileID: 11400000, guid: b3625e6ca4f3d814584efdcef38a8903, type: 2}
   satisfaction: 0
   resolution: 0.8
   cash: 300
@@ -26,9 +30,7 @@ MonoBehaviour:
   - encounterTag: FIRST ENCOUNTER
     objectives:
       objectiveDescription: Save Shames
-      character:
-      - {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb, type: 2}
-      item: []
+      objective: {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb, type: 2}
     dialogueGroups:
     - dialogueTag: GREETINGS
       currentDialogueState: 0
@@ -81,18 +83,15 @@ MonoBehaviour:
   - encounterTag: CHECK PROGRESS - 2
     objectives:
       objectiveDescription: 
-      character: []
-      item: []
+      objective: {fileID: 0}
     dialogueGroups: []
   - encounterTag: REVENGE SHAMES - 2
     objectives:
       objectiveDescription: 
-      character: []
-      item: []
+      objective: {fileID: 0}
     dialogueGroups: []
   - encounterTag: GET SHAMES - 3
     objectives:
       objectiveDescription: 
-      character: []
-      item: []
+      objective: {fileID: 0}
     dialogueGroups: []

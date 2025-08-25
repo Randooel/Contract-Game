@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EasyTextEffects.Editor.MyBoxCopy.Attributes;
 
 [CreateAssetMenu(fileName = "ClientSO", menuName = "Client/Profile")]
 [System.Serializable]
-public class ClientProfileSO : ScriptableObject
+public class ClientProfileSO : PossessionSO
 {
     [Header("Visual")]
-    public string clientName;
+    public NameSO clientName;
+
     [Space(10)]
     public Sprite eyesSprite;
     public Sprite headSprite;
@@ -16,7 +18,7 @@ public class ClientProfileSO : ScriptableObject
     public Sprite outlineSprite;
 
     [Space(5)]
-    public Sprite fullSprite;
+    public SpriteSO fullSprite;
 
     [Header("Moral")]
     [Range(-4, 3)] public float satisfaction;
@@ -24,7 +26,7 @@ public class ClientProfileSO : ScriptableObject
 
     [Header("Property")]
     public int cash;
-    public List<ScriptableObject> possessions = new List<ScriptableObject>();
+    public List<PossessionSO> possessions = new List<PossessionSO>();
 
     [Header("Dialogue")]
     public List<Encounters> encounters = new List<Encounters>();
@@ -34,7 +36,11 @@ public class ClientProfileSO : ScriptableObject
 public class Encounters
 {
     public string encounterTag;
+
+    [Header("Objective")]
     public Objectives objectives;
+
+    [Header("Dialogue")]
     public List<DialogueGroup> dialogueGroups = new List<DialogueGroup>();
 }
 
@@ -42,6 +48,6 @@ public class Encounters
 public class Objectives
 {
     public string objectiveDescription;
-    public List<ClientProfileSO> character = new List<ClientProfileSO>();
-    public List<ItemSO> item = new List<ItemSO>();
+
+    public PossessionSO objective;
 }

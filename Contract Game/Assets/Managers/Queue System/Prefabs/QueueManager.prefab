@@ -44,4 +44,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 213be60a636d44b4c84c6931f4c049ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _clientManager: {fileID: 0}
+  currentDay: 1
+  maxDay: 3
+  _dayText: {fileID: 0}
+  servedClients: []
+  profilesPerDay:
+  - dayIndex: Day One
+    profileList:
+    - {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048, type: 2}
+    - {fileID: 11400000, guid: 8426836a714a3be468c09e8e9690fd98, type: 2}
+    - {fileID: 11400000, guid: 0da3e0686c1b66f42a7d504a643bfe41, type: 2}
+  - dayIndex: Day Two
+    profileList:
+    - {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048, type: 2}

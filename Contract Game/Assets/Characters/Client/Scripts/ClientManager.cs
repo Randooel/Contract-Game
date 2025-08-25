@@ -133,8 +133,10 @@ public class ClientManager : MonoBehaviour
 
     public void SetProfile()
     {
-        _currentClient.clientName = profileSO[currentProfile].clientName;
-        _currentClient.clientTextName.text = profileSO[currentProfile].clientName;
+        var currentEncounter = _dialogueManager.currentEncounter;
+
+        _currentClient.clientName = profileSO[currentProfile].clientName.possessionName;
+        _currentClient.clientTextName.text = profileSO[currentProfile].clientName.possessionName;
         _clientEyes.sprite = profileSO[currentProfile].eyesSprite;
         _clientHead.sprite = profileSO[currentProfile].headSprite;
         _clientTeeth.sprite = profileSO[currentProfile].teethSprite;
@@ -144,16 +146,10 @@ public class ClientManager : MonoBehaviour
         _currentClient.clientSatisfaction = profileSO[currentProfile].satisfaction;
         _currentClient.clientResolution = profileSO[currentProfile].resolution;
         _currentClient.clientCash = profileSO[currentProfile].cash;
-        _currentClient.objectiveDescription = profileSO[currentProfile].encounters[0].objectives.objectiveDescription;
-        if (profileSO[currentProfile].encounters?[0].objectives.character.Count > 0)
-        {
-            _currentClient.objectiveSprite = profileSO[currentProfile].encounters[0].objectives.character[0].fullSprite;
-        }
-        else
-        {
-            _currentClient.objectiveSprite = profileSO[currentProfile].encounters[0].objectives.item[0].sprite;
-        }
-        
+
+        _currentClient.objectiveDescription = profileSO[currentProfile].encounters[currentEncounter].objectives.objectiveDescription;
+        _currentClient.objectiveSprite = profileSO[currentProfile].encounters[currentEncounter].objectives.objective.sprite;
+
 
         _dialogueManager.SetClientLines();
         _dialogueManager.SetPlayerResponses();
@@ -163,7 +159,6 @@ public class ClientManager : MonoBehaviour
 
         _currentClient.PlayEntrance();
     }
-
 
     // RANDOM CLIENTS
     /*

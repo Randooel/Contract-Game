@@ -1,24 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-//using EasyTextEffects.Editor.MyBoxCopy.Attributes;
+using EasyTextEffects.Editor.MyBoxCopy.Attributes;
 
 [CreateAssetMenu(fileName = "Item", menuName = "Possession/Item")]
-public class ItemSO : ScriptableObject
+public class ItemSO : PossessionSO
 {
     [Header("Item Info")]
-    public string itemName;
     public string description;
-    public Sprite sprite;
 
-    public bool inspectorTest;
+    [Space(5)]
+    public bool containsSomething;
 
-    /*
-    [ConditionalField(nameof(inspectorTest), false)]
-    [Range(-1, 1)] public int vitaminC;
-    */
-
-    [Header("If it contains a character")]
-    public ClientProfileSO clientProfile;
+    [ConditionalField(nameof(containsSomething), false)]
+    public PossessionSO content;
 }

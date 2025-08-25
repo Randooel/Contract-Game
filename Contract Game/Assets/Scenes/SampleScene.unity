@@ -1227,10 +1227,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 618698797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.448, y: 0.9432963}
-  m_AnchorMax: {x: 0.552146, y: 0.9907778}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -1}
+  m_AnchorMin: {x: 0.388, y: 0.94329625}
+  m_AnchorMax: {x: 0.61300004, y: 0.9907778}
+  m_AnchoredPosition: {x: -0.5, y: 0}
+  m_SizeDelta: {x: -0.11000061, y: -1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &475694602
 MonoBehaviour:
@@ -2740,18 +2740,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 755870202020558453}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1140809202 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1006248628171043804, guid: 8798482dad495344a8a56f68ba7444b6,
-    type: 3}
-  m_PrefabInstance: {fileID: 755870202020558453}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9667787467c607845991b4bc13408fac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1221555065 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5106637729146141543, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
@@ -5756,57 +5744,29 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
         type: 3}
-      propertyPath: _clientManager
+      propertyPath: _dayText
       value: 
-      objectReference: {fileID: 1140809202}
+      objectReference: {fileID: 475694602}
     - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
         type: 3}
       propertyPath: profilesPerDay.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
-        type: 3}
-      propertyPath: profilesPerDay.Array.data[0].dayIndex
-      value: Day One
-      objectReference: {fileID: 0}
-    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
-        type: 3}
-      propertyPath: profilesPerDay.Array.data[1].dayIndex
-      value: Day Two
-      objectReference: {fileID: 0}
-    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
-        type: 3}
-      propertyPath: profilesPerDay.Array.data[0].profileList.Array.size
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
         type: 3}
-      propertyPath: profilesPerDay.Array.data[1].profileList.Array.size
+      propertyPath: profilesPerDay.Array.data[2].dayIndex
+      value: Day Two
+      objectReference: {fileID: 0}
+    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
+        type: 3}
+      propertyPath: profilesPerDay.Array.data[2].profileList.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
         type: 3}
-      propertyPath: profilesPerDay.Array.data[0].profileList.Array.data[0]
+      propertyPath: profilesPerDay.Array.data[2].profileList.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048,
-        type: 2}
-    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
-        type: 3}
-      propertyPath: profilesPerDay.Array.data[0].profileList.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 8426836a714a3be468c09e8e9690fd98,
-        type: 2}
-    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
-        type: 3}
-      propertyPath: profilesPerDay.Array.data[0].profileList.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 0da3e0686c1b66f42a7d504a643bfe41,
-        type: 2}
-    - target: {fileID: 2114840652948928887, guid: 47c2e87d0f8fa394cbade70253ea0b27,
-        type: 3}
-      propertyPath: profilesPerDay.Array.data[1].profileList.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb,
         type: 2}
     - target: {fileID: 6325910276625180250, guid: 47c2e87d0f8fa394cbade70253ea0b27,
         type: 3}

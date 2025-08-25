@@ -10,14 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
-  m_Name: Millionare Orc
+  m_Name: Millionaire Orc
   m_EditorClassIdentifier: 
-  clientName: Millionaire Orc
+  hidePossessionInfo: 1
+  possessionName: 
+  sprite: {fileID: 0}
+  possessionType: 0
+  clientName: {fileID: 11400000, guid: 4059a0bd1685ce5419581fc83adcdb85, type: 2}
   eyesSprite: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}
   headSprite: {fileID: 21300000, guid: 9b014f6432bd39d49b4df9fac1d80c24, type: 3}
   teethSprite: {fileID: 21300000, guid: 7cfacafbd4569744ca9bc1f79556a0fa, type: 3}
   outlineSprite: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}
-  fullSprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
+  fullSprite: {fileID: 11400000, guid: bd245dcb2657be744a3cd030fc19d280, type: 2}
   satisfaction: 0
   resolution: 1
   cash: 30000
@@ -25,10 +29,8 @@ MonoBehaviour:
   encounters:
   - encounterTag: 
     objectives:
-      objectiveDescription: Get safe key
-      character: []
-      item:
-      - {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
+      objectiveDescription: Master key
+      objective: {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
     dialogueGroups:
     - dialogueTag: 
       currentDialogueState: 0

@@ -11,7 +11,8 @@ public class QueueManager : MonoBehaviour
     private ContractManager _contractManager;
 
     [Header("Day System")]
-    [SerializeField] public int currentDay = 1;
+    public int currentDay = 1;
+    public int maxDay;
     [SerializeField] private TextMeshProUGUI _dayText;
 
     [Header("Served Clients")]
@@ -28,7 +29,7 @@ public class QueueManager : MonoBehaviour
         _dialogueManager = FindObjectOfType<DialogueManager>();
         _contractManager = FindObjectOfType<ContractManager>();
 
-        _dayText.text = "Day: " + currentDay + "/3";
+        _dayText.text = "Day: " + currentDay + "/" + maxDay;
         UpdateClientManagerProfileList();
 
         //StartCoroutine(WaitToAddClient());
@@ -116,11 +117,22 @@ public class QueueManager : MonoBehaviour
     public void HandleNextDay()
     {
         currentDay++;
-        servedClients.Clear();
-        UpdateClientManagerProfileList();
 
-        // JUST FOR TESTS
-        _clientManager.CallNextClient();
+        if(currentDay <= maxDay)
+        {
+            _dayText.text = "Day: " + currentDay + "/3";
+
+            servedClients.Clear();
+            UpdateClientManagerProfileList();
+
+            // JUST FOR TESTS
+            _clientManager.CallNextClient();
+        }
+        else
+        {
+            _dayText.text = "<color=red>DEADLINE CLOSED</color>";
+        }
+        
     }
 }
 

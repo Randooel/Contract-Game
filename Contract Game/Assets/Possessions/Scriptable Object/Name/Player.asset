@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76155efb35b0c64409f53e7699baede3, type: 3}
-  m_Name: Key
+  m_Script: {fileID: 11500000, guid: 575e13ee4cd530744a59437d461a3f19, type: 3}
+  m_Name: Player
   m_EditorClassIdentifier: 
-  itemName: Master Key
-  description: Open any door.
+  possessionName: Eve
   sprite: {fileID: 0}
-  clientProfile: {fileID: 0}
+  possessionType: 0

@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
   m_Name: Dornan the dwarf
   m_EditorClassIdentifier: 
-  clientName: Dornan, the Dwarf
+  hidePossessionInfo: 1
+  possessionName: 
+  sprite: {fileID: 0}
+  possessionType: 0
+  clientName: {fileID: 11400000, guid: 3f917e27aa7fcfa449f0103a65661499, type: 2}
   eyesSprite: {fileID: 21300000, guid: 3849927d865302b44a7d85df7322242d, type: 3}
   headSprite: {fileID: 21300000, guid: 67479d20b6692de4ca76836907f3cd4d, type: 3}
   teethSprite: {fileID: 0}
   outlineSprite: {fileID: 21300000, guid: 2d0bd27de5e2b434ebfde4fff42ef652, type: 3}
-  fullSprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
+  fullSprite: {fileID: 11400000, guid: 12f3ba61d892260468b335a959ab62ff, type: 2}
   satisfaction: 0
   resolution: 0
   cash: 15
@@ -25,10 +29,8 @@ MonoBehaviour:
   encounters:
   - encounterTag: 
     objectives:
-      objectiveDescription: New forge
-      character: []
-      item:
-      - {fileID: 11400000, guid: e2c1213a25005b141929e101f1cb53d4, type: 2}
+      objectiveDescription: Cash (500)
+      objective: {fileID: 11400000, guid: 784e85bb8063e4f42a8469650f12cdd6, type: 2}
     dialogueGroups:
     - dialogueTag: 
       currentDialogueState: 0

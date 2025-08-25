@@ -24,11 +24,10 @@ public class ContractManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _requestDescription;
     [SerializeField] private Image _requestImage;
 
-    ///*
     [Header("Price")]
     [SerializeField] private TextMeshProUGUI _priceDescription;
     [SerializeField] private Image _priceImage;
-    //*/
+    [SerializeField] private List<ClientPossessions> _clientPossessions = new List<ClientPossessions>(new ClientPossessions[1]);
 
 
     public void Start()
@@ -40,6 +39,17 @@ public class ContractManager : MonoBehaviour
         _recusedObject.transform.DOLocalMoveZ(-10, 1f);
     }
 
+    public void SetPossiblePrices()
+    {
+        
+    }
+
+    public void SetPrice()
+    {
+
+    }
+
+    // ANIMATIONS
     public void ShowContract()
     {
         DOActivateAnim();
