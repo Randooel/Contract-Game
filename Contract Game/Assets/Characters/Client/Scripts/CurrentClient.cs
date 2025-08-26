@@ -34,12 +34,15 @@ public class CurrentClient : MonoBehaviour
     [Header("Negotiation Reference")]
     protected NegotiationManager negotiationManager;
 
-    [Header("Physical Goods")]
-    public int clientCash;
-    public List<GameObject> clientObjectives = new List<GameObject>();
+    [Header("Objectives")]
+    public PossessionSO objective;
     public string objectiveDescription;
     public Sprite objectiveSprite;
-    public GameObject[] clientPossessions;
+
+    [Header("Possessions")]
+    public int clientCash;
+
+    public List<PossessionSO> clientPossessions = new List<PossessionSO>();
 
     [Header("Dialogue")]
     [SerializeField] protected GameObject _clientDialogueBox;

@@ -91,6 +91,7 @@ public class ClientManager : MonoBehaviour
                 canCallNextClient = false;
 
                 _currentClient.lines.Clear();
+                _currentClient.clientPossessions.Clear();
                 _currentClient.currentLine = 0;
 
                 _playerResponse.HideResponses();
@@ -133,28 +134,41 @@ public class ClientManager : MonoBehaviour
 
     public void SetProfile()
     {
+        var profile = profileSO[currentProfile];
         var currentEncounter = _dialogueManager.currentEncounter;
 
-        _currentClient.clientName = profileSO[currentProfile].clientName.possessionName;
-        _currentClient.clientTextName.text = profileSO[currentProfile].clientName.possessionName;
-        _clientEyes.sprite = profileSO[currentProfile].eyesSprite;
-        _clientHead.sprite = profileSO[currentProfile].headSprite;
-        _clientTeeth.sprite = profileSO[currentProfile].teethSprite;
-        _clientOutline.sprite = profileSO[currentProfile].outlineSprite;
+        _currentClient.clientName = profile.clientName.possessionName;
+        _currentClient.clientTextName.text = profile.clientName.possessionName;
+        _clientEyes.sprite = profile.eyesSprite;
+        _clientHead.sprite = profile.headSprite;
+        _clientTeeth.sprite = profile.teethSprite;
+        _clientOutline.sprite = profile.outlineSprite;
         RandomizeColor();
         //currentClient.clientObjectives = profileSO[currentProfile].objective;
-        _currentClient.clientSatisfaction = profileSO[currentProfile].satisfaction;
-        _currentClient.clientResolution = profileSO[currentProfile].resolution;
-        _currentClient.clientCash = profileSO[currentProfile].cash;
+        _currentClient.clientSatisfaction = profile.satisfaction;
+        _currentClient.clientResolution = profile.resolution;
+        _currentClient.clientCash = profile.cash;
 
-        _currentClient.objectiveDescription = profileSO[currentProfile].encounters[currentEncounter].objectives.objectiveDescription;
-        _currentClient.objectiveSprite = profileSO[currentProfile].encounters[currentEncounter].objectives.objective.sprite;
+        _currentClient.objective = profile.encounters[currentEncounter].objectives.objective;
+        _currentClient.objectiveDescription = profile.encounters[currentEncounter].objectives.objectiveDescription;
+        _currentClient.objectiveSprite = profile.encounters[currentEncounter].objectives.objective.possessionSprite.sprite;
 
+        if(profile.possessions != null)
+        {
+            foreach(var possession in profile.possessions)
+            {
+                _currentClient.clientPossessions.Add(possession);
+            }
+        }
+
+        // Possessions
+        _currentClient.clientPossessions.Add(profile.clientName);
+        _currentClient.clientPossessions.Add(profile.possessionSprite);
 
         _dialogueManager.SetClientLines();
         _dialogueManager.SetPlayerResponses();
 
-        _dialogueManager.maxDialogueGroup = profileSO[currentProfile].encounters[0].dialogueGroups.Count;
+        _dialogueManager.maxDialogueGroup = profile.encounters[0].dialogueGroups.Count;
         _dialogueManager.currentDialogueGroup = 0;
 
         _currentClient.PlayEntrance();

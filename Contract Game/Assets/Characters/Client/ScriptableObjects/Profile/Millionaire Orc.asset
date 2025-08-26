@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hidePossessionInfo: 0
   possessionName: 
-  sprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
+  possessionSprite: {fileID: 11400000, guid: bd245dcb2657be744a3cd030fc19d280, type: 2}
   possessionType: 5
   clientName: {fileID: 11400000, guid: 4059a0bd1685ce5419581fc83adcdb85, type: 2}
   eyesSprite: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}

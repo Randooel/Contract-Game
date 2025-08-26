@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "visual", menuName = "Possession/Visual")]
 public class SpriteSO : PossessionSO
 {
-    
+    public Sprite sprite;
 }

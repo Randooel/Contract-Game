@@ -26,7 +26,7 @@ public class ClientObjectiveSO : ScriptableObject
         for (int i = 0; i < rand1; i++)
         {
             int rand = Random.Range(0, objectives.Count);
-            currentClient.clientObjectives.Add(objectives[rand]);
+            //currentClient.clientObjectives.Add(objectives[rand]);
         }
 
         if (objectives.Count > 0)

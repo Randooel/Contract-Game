@@ -12,7 +12,7 @@ public class PossessionSO : ScriptableObject
     public string possessionName;
 
     [ConditionalField(nameof(hidePossessionInfo), true)]
-    public Sprite sprite;
+    public SpriteSO possessionSprite;
 
     [ConditionalField(nameof(hidePossessionInfo), true)]
     [Space(10)]

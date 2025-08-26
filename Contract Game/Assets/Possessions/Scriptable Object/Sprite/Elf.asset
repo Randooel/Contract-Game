@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdb325be9a943146b224ca2cd216987, type: 3}
   m_Name: Elf
   m_EditorClassIdentifier: 
+  hidePossessionInfo: 0
   possessionName: 
-  sprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
+  possessionSprite: {fileID: 0}
   possessionType: 1
+  sprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}

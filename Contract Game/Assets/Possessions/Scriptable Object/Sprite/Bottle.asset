@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfdb325be9a943146b224ca2cd216987, type: 3}
-  m_Name: MC Human
+  m_Name: Bottle
   m_EditorClassIdentifier: 
   hidePossessionInfo: 0
   possessionName: 
   possessionSprite: {fileID: 0}
   possessionType: 1
-  sprite: {fileID: 21300000, guid: c376e501828fa914c895971c3c8b8b82, type: 3}
+  sprite: {fileID: 0}
