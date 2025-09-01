@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe210298dd09afc45aa477f875c08745, type: 3}
+  m_Name: Millionaire Orc
+  m_EditorClassIdentifier: 
+  profileName: Millionaire Orc
+  eyesSprite: {fileID: 21300000, guid: 2e5cb057fac807b49911788560ef087a, type: 3}
+  headSprite: {fileID: 21300000, guid: 9b014f6432bd39d49b4df9fac1d80c24, type: 3}
+  teethSprite: {fileID: 21300000, guid: 7cfacafbd4569744ca9bc1f79556a0fa, type: 3}
+  outlineSprite: {fileID: 21300000, guid: 606d9cc91747742448755d461294f910, type: 3}
+  fullSprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
+  satisfaction: 0
+  resolution: 1
+  cash: 30000
+  encounters:
+  - encounterTag: 
+    objectives:
+      objectiveDescription: Master key
+      objectiveCharacter: {fileID: 0}
+      objectiveItem: {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
+    dialogueGroups:
+    - dialogueTag: 
+      currentDialogueState: 0
+      clientLines:
+      - Hi. I'm here in secret, so you can just call me Millionaire Orc.
+      - You see, I have worked really hard to make myself a fortune.
+      - I locked it in my safe but... <size=75%><color=#979797><i>how do I put this...</i></color></size>
+        I lost the key.
+      - Come on, help me out. If you want money, just ask. I've got lots of it.
+      playerResponses:
+      - responseLine: Sure!
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: <i>[Set Price]</i>
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: Sorry.
+        answerSatisfaction: -3
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
+    - dialogueTag: NEGOTIATION 1
+      currentDialogueState: 1
+      clientLines:
+      - Negotiation
+      playerResponses:
+      - responseLine: 3
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: 2
+        answerSatisfaction: 3
+        skipToDialogueX: 0
+        nextDialogueTag: 
+      - responseLine: 1
+        answerSatisfaction: -3
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
+    - dialogueTag: NEGOTIATION 2
+      currentDialogueState: 2
+      clientLines:
+      - Negotiation 2.
+      playerResponses: []
+    - dialogueTag: EXIT
+      currentDialogueState: 2
+      clientLines:
+      - Grrr! You made a HUGE mistake.
+      playerResponses: []
