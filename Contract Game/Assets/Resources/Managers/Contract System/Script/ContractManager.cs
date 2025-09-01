@@ -61,7 +61,7 @@ public class ContractManager : MonoBehaviour
         c.currentResolution = _currentClient.clientResolution;
 
         // Objective
-        c.currentObjectiveDescription = o.objectiveDescription;
+        //c.currentObjectiveDescription = o.objectiveDescription;
         //c.currentObjectiveCharacter = o.objectiveCharacter;
         //c.currentObjectiveItem = o.objectiveItem;
 
@@ -104,8 +104,10 @@ public class ContractManager : MonoBehaviour
 
     public void ShowRequest()
     {
+        /*
         _requestDescription.text = _currentClient.objectiveDescription;
         _requestImage.sprite = _currentClient.objectiveSprite;
+        */
     }
 
     public void PlaySuccessVFX()

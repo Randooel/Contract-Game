@@ -153,17 +153,9 @@ public class ClientManager : MonoBehaviour
         //currentClient.clientObjectives = profileSO[currentProfile].objective;
         _currentClient.clientSatisfaction = profile.satisfaction;
         _currentClient.clientResolution = profile.resolution;
-        _currentClient.clientCash = profile.cash;
+        //_currentClient.clientCash = profile.cash;
 
-        if(profile.encounters[currentEncounter].objectives.objectiveCharacter != null)
-        {
-            _currentClient.objectiveCharacter = profile.encounters[currentEncounter].objectives.objectiveCharacter;
-        }
-        else if(profile.encounters[currentEncounter].objectives.objectiveItem != null)
-        {
-            _currentClient.objectiveItem = profile.encounters[currentEncounter].objectives.objectiveItem;
-        }
-        _currentClient.objectiveDescription = profile.encounters[currentEncounter].objectives.objectiveDescription;
+        SetObjectives(profile, currentEncounter);
         //_currentClient.objectiveSprite = profile.encounters[currentEncounter].objectives.objective.sprite;
 
         if(profile.profilePossessions != null)
@@ -189,6 +181,25 @@ public class ClientManager : MonoBehaviour
         _dialogueManager.currentDialogueGroup = 0;
 
         _currentClient.PlayEntrance();
+    }
+
+    private void SetObjectives(ClientProfileSO profile, int currentEncounter)
+    {
+        //_currentClient.objectiveDescription = profile.encounters[currentEncounter].objectives.objectiveDescription;
+
+
+
+        /*
+        if (profile.encounters[currentEncounter].objectives.character != null)
+        {
+            _currentClient.objectiveCharacter = profile.encounters[currentEncounter].objectives.character;
+        }
+        else if (profile.encounters[currentEncounter].objectives.item != null)
+        {
+            _currentClient.objectiveItem = profile.encounters[currentEncounter].objectives.item;
+        }
+        */
+        
     }
 
     // RANDOM CLIENTS

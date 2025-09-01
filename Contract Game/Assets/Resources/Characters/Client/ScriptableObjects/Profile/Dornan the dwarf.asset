@@ -21,10 +21,33 @@ MonoBehaviour:
   satisfaction: 0
   resolution: 0
   cash: 15
+  profilePossessions:
+    description: 
+    names: []
+    visuals:
+    - eye: {fileID: 0}
+      head: {fileID: 0}
+      teeth: {fileID: 0}
+      outline: {fileID: 0}
+      fullSprite: {fileID: 0}
+    cash: 0
+    useStatus: 0
+    satisfaction: 0
+    resolution: 0
+    characters: []
+    item: []
   encounters:
   - encounterTag: 
     objectives:
-      objectiveDescription: Cash (500)
+      description: New Forge
+      names: []
+      visuals: []
+      cash: 300
+      useStatus: 0
+      satisfaction: 0
+      resolution: 0
+      characters: []
+      item: []
     dialogueGroups:
     - dialogueTag: 
       currentDialogueState: 0

@@ -20,14 +20,29 @@ MonoBehaviour:
   fullSprite: {fileID: 21300000, guid: b60de52870f956749a73dbc09f1e0d41, type: 3}
   satisfaction: 0
   resolution: 0.8
-  cash: 300
+  profilePossessions:
+    description: 
+    names: []
+    visuals: []
+    cash: 300
+    useStatus: 0
+    satisfaction: 0
+    resolution: 0
+    characters: []
+    item:
+    - {fileID: 11400000, guid: 0d0503fe33feb5b4d828b586c932595b, type: 2}
   encounters:
   - encounterTag: FIRST ENCOUNTER
     objectives:
-      objectiveDescription: Save Shames
-      objectiveCharacter: {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb,
-        type: 2}
-      objectiveItem: {fileID: 0}
+      description: 
+      names: []
+      visuals: []
+      cash: 0
+      useStatus: 0
+      satisfaction: 0
+      resolution: 0
+      characters: []
+      item: []
     dialogueGroups:
     - dialogueTag: GREETINGS
       currentDialogueState: 0
@@ -79,19 +94,37 @@ MonoBehaviour:
       playerResponses: []
   - encounterTag: CHECK PROGRESS - 2
     objectives:
-      objectiveDescription: 
-      objectiveCharacter: {fileID: 0}
-      objectiveItem: {fileID: 0}
+      description: 
+      names: []
+      visuals: []
+      cash: 0
+      useStatus: 0
+      satisfaction: 0
+      resolution: 0
+      characters: []
+      item: []
     dialogueGroups: []
   - encounterTag: REVENGE SHAMES - 2
     objectives:
-      objectiveDescription: 
-      objectiveCharacter: {fileID: 0}
-      objectiveItem: {fileID: 0}
+      description: 
+      names: []
+      visuals: []
+      cash: 0
+      useStatus: 0
+      satisfaction: 0
+      resolution: 0
+      characters: []
+      item: []
     dialogueGroups: []
   - encounterTag: GET SHAMES - 3
     objectives:
-      objectiveDescription: 
-      objectiveCharacter: {fileID: 0}
-      objectiveItem: {fileID: 0}
+      description: 
+      names: []
+      visuals: []
+      cash: 0
+      useStatus: 0
+      satisfaction: 0
+      resolution: 0
+      characters: []
+      item: []
     dialogueGroups: []

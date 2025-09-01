@@ -38,7 +38,7 @@ public class QuestManager : MonoBehaviour
         vitamin.currentResolution = c.clientResolution;
 
         // Objective
-        vitamin.currentObjectiveDescription = c.objectiveDescription;
+        //vitamin.currentObjectiveDescription = c.objectiveDescription;
 
         // Property
         vitamin.currentCash = c.clientCash;

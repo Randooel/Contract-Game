@@ -34,11 +34,7 @@ public class CurrentClient : MonoBehaviour
     [Header("Negotiation Reference")]
     protected NegotiationManager negotiationManager;
 
-    [Header("Objectives")]
-    public ClientProfileSO objectiveCharacter;
-    public ItemSO objectiveItem;
-    public string objectiveDescription;
-    public Sprite objectiveSprite;
+    public PossessionList objectives;
 
     [Header("Possessions")]
     public int clientCash;
@@ -98,10 +94,11 @@ public class CurrentClient : MonoBehaviour
     public void UpdatePossessions(Sprite fullSprite)
     {
         var c = clientPossessions;
-        
+        /*
         c.name = clientName;
         c.sprite = fullSprite;
         c.cash = clientCash;
+        */
         //c.item = ;
     }
 

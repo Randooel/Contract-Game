@@ -20,13 +20,31 @@ MonoBehaviour:
   fullSprite: {fileID: 21300000, guid: 6363330e417e6544aa4270899d0c6db7, type: 3}
   satisfaction: 0
   resolution: 1
-  cash: 30000
+  profilePossessions:
+    description: 
+    names: []
+    visuals: []
+    cash: 10000000
+    useStatus: 0
+    satisfaction: 0
+    resolution: 0
+    characters: []
+    item:
+    - {fileID: 11400000, guid: 0d0503fe33feb5b4d828b586c932595b, type: 2}
   encounters:
   - encounterTag: 
     objectives:
-      objectiveDescription: Master key
-      objectiveCharacter: {fileID: 0}
-      objectiveItem: {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
+      description: Master Key
+      names:
+      - 
+      visuals: []
+      cash: 0
+      useStatus: 0
+      satisfaction: 0
+      resolution: 0
+      characters: []
+      item:
+      - {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
     dialogueGroups:
     - dialogueTag: 
       currentDialogueState: 0
