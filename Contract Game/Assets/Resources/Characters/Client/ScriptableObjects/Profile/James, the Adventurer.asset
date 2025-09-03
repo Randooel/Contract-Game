@@ -22,7 +22,10 @@ MonoBehaviour:
   resolution: 0.8
   profilePossessions:
     description: 
-    names: []
+    names:
+    - Leo
+    - Ervilha
+    - Paullo
     visuals: []
     cash: 300
     useStatus: 0

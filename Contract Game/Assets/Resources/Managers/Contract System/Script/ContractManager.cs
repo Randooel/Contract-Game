@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using TMPro;
 using UnityEngine.UI;
 using System.Net.Http.Headers;
+using UnityEditor;
+using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 
 public class ContractManager : MonoBehaviour
 {
@@ -21,14 +23,19 @@ public class ContractManager : MonoBehaviour
     [Space(10)]
     [SerializeField] private List<ContractAssets> assets = new List<ContractAssets>();
 
+    [Space(10)]
+    [SerializeField] private GameObject _contractField;
+
     [Header("Request")]
     [SerializeField] private TextMeshProUGUI _requestDescription;
     [SerializeField] private Image _requestImage;
+    [SerializeField] private List<GameObject> _requestField = new List<GameObject>();
 
     [Header("Price")]
     [SerializeField] private TextMeshProUGUI _priceDescription;
     [SerializeField] private Image _priceImage;
-    //[SerializeField] private ClientPossessions _clientPossessions;
+    [SerializeField] private List<GameObject> _priceField = new List<GameObject>();
+
 
 
     public void Start()
@@ -41,39 +48,51 @@ public class ContractManager : MonoBehaviour
         _recusedObject.transform.DOLocalMoveZ(-10, 1f);
     }
 
-    public void SetPossiblePrices(int currentProfile, int currentEncounter)
+    public void SetPossiblePrices()
     {
-        /*
-        var c = _clientPossessions;
-        var p = _clientManager.profileSO[currentProfile];
-        //var o = _clientManager.profileSO[currentProfile].encounters[currentEncounter].objectives;
+        var cc = _currentClient.possessions;
 
-        c.currentName = _currentClient.name;
+        Debug.Log($"names count: {cc.names?.Count}");
 
-        // Sprites
-        c.eye = p.eyesSprite;
-        c.head = p.headSprite;
-        c.teeth = p.teethSprite;
-        c.outline = p.outlineSprite;
-        c.currentFullSprite = p.fullSprite;
-
-        // Status
-        c.currentSatisfaction = _currentClient.clientSatisfaction;
-        c.currentResolution = _currentClient.clientResolution;
-
-        // Objective
-        //c.currentObjectiveDescription = o.objectiveDescription;
-        //c.currentObjectiveCharacter = o.objectiveCharacter;
-        //c.currentObjectiveItem = o.objectiveItem;
-
-        // Properties
-        c.currentCash = _currentClient.clientCash;
-        /*
-        foreach(var item in _currentClient.items)
+        // First Client's info
+        foreach (var name in cc.names)
         {
-            c.items.Add(item);
+            Debug.Log("Foreach");
+
+            GameObject fieldInstance = Instantiate(_contractField);
+
+            TMPro.TextMeshProUGUI description = fieldInstance.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
+            description.text = name;
+
+            _priceField.Add(fieldInstance);
         }
-        */
+
+        // Then Client's possessions
+    }
+
+    public void ShowPrices()
+    {
+        foreach(var price in _priceField)
+        {
+
+        }
+    }
+
+    public void ShowRequests()
+    {
+        foreach(var request in _requestField)
+        {
+
+        }
+    }
+
+    public void InstantiateField()
+    {
+        var cc = _currentClient.possessions;
+
+        GameObject fieldInstance = Instantiate(_contractField);
+
+        TMPro.TextMeshProUGUI description = fieldInstance.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     public void SetPrice()

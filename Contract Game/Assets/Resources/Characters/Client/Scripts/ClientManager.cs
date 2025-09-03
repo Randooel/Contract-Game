@@ -142,9 +142,6 @@ public class ClientManager : MonoBehaviour
         var cc = _currentClient;
         var currentEncounter = _dialogueManager.currentEncounter;
 
-        // Contract Manager
-        _contractManager.SetPossiblePrices(currentProfile, currentEncounter);
-
         // Client name
         cc.clientName = profile.profileName;
         cc.textName.text = cc.clientName;
@@ -162,8 +159,12 @@ public class ClientManager : MonoBehaviour
         // Possessions
         SetPossessions(profile);
 
+
         // Dialogue
         SetDialogue(profile);
+
+        // Contract Manager
+        _contractManager.SetPossiblePrices();
 
         // Animation
         _currentClient.PlayEntrance();
