@@ -53,7 +53,7 @@ public class ClientManager : MonoBehaviour
     void Start()
     {
         _queueManager = FindObjectOfType<QueueManager>(); 
-        _contractManager = GetComponent<ContractManager>();
+        _contractManager = FindObjectOfType<ContractManager>();
 
         if(_currentClient == null)
         {
@@ -93,7 +93,9 @@ public class ClientManager : MonoBehaviour
                 canCallNextClient = false;
 
                 _currentClient.lines.Clear();
-                //_currentClient.clientPossessions.Clear();
+                ClearObjectives();
+                ClearPossessions();
+
                 _currentClient.currentLine = 0;
 
                 _playerResponse.HideResponses();
@@ -137,69 +139,151 @@ public class ClientManager : MonoBehaviour
     public void SetProfile()
     {
         var profile = profileSO[currentProfile];
+        var cc = _currentClient;
         var currentEncounter = _dialogueManager.currentEncounter;
 
-
+        // Contract Manager
         _contractManager.SetPossiblePrices(currentProfile, currentEncounter);
 
+        // Client name
+        cc.clientName = profile.profileName;
+        cc.textName.text = cc.clientName;
 
-        _currentClient.clientName = profile.profileName;
-        _currentClient.clientTextName.text = profile.profileName;
+        // Client visual
+        SetVisuals(profile);
+        
+        // Client status
+        cc.satisfaction = profile.satisfaction;
+        cc.resolution = profile.resolution;
+
+        // Objectives
+        SetObjectives(profile, currentEncounter);
+
+        // Possessions
+        SetPossessions(profile);
+
+        // Dialogue
+        SetDialogue(profile);
+
+        // Animation
+        _currentClient.PlayEntrance();
+    }
+
+    private void SetVisuals(ClientProfileSO profile)
+    {
         _clientEyes.sprite = profile.eyesSprite;
         _clientHead.sprite = profile.headSprite;
         _clientTeeth.sprite = profile.teethSprite;
         _clientOutline.sprite = profile.outlineSprite;
+
         RandomizeColor();
-        //currentClient.clientObjectives = profileSO[currentProfile].objective;
-        _currentClient.clientSatisfaction = profile.satisfaction;
-        _currentClient.clientResolution = profile.resolution;
-        //_currentClient.clientCash = profile.cash;
+    }
 
-        SetObjectives(profile, currentEncounter);
-        //_currentClient.objectiveSprite = profile.encounters[currentEncounter].objectives.objective.sprite;
+    private void SetObjectives(ClientProfileSO profile, int currentEncounter)
+    {
+        var o = profile.encounters[currentEncounter].objectives;
+        var c = _currentClient.objectives;
 
-        if(profile.profilePossessions != null)
+        c.description = o.description;
+
+        foreach (var name in o.names)
         {
-            /*
-            foreach(var possession in profile.possessions)
-            {
-                _currentClient.clientPossessions.Add(possession);
-            }
-            */
+            c.names.Add(name);
         }
 
-        // Possessions
-        /*
-        _currentClient.clientPossessions.Add(profile.profileName);
-        _currentClient.clientPossessions.Add(profile.fullSprite);
-        */
+        foreach (var visual in o.visuals)
+        {
+            c.visuals.Add(visual);
+        }
 
+        c.cash = o.cash;
+
+        if (o.useStatus)
+        {
+            c.satisfaction = profile.satisfaction;
+            c.resolution = profile.resolution;
+        }
+
+        foreach (var character in o.characters)
+        {
+            c.characters.Add(character);
+        }
+
+        foreach (var item in o.items)
+        {
+            c.items.Add(item);
+        }
+    }
+
+    private void ClearObjectives()
+    {
+        var o = _currentClient.objectives;
+
+        o.names.Clear();
+        o.visuals.Clear();
+        o.cash = 0;
+        o.useStatus = false;
+        o.satisfaction = 0;
+        o.resolution = 0;
+        o.characters.Clear();
+        o.items.Clear();
+    }
+
+    private void SetPossessions(ClientProfileSO profile)
+    {
+        var p = profile.profilePossessions;
+        var c = _currentClient.possessions;
+
+        foreach (var name in p.names)
+        {
+            c.names.Add(name);
+        }
+
+        foreach (var visual in p.visuals)
+        {
+            c.visuals.Add(visual);
+        }
+
+        c.cash = profile.profilePossessions.cash;
+
+        if (p.useStatus)
+        {
+            c.satisfaction = profile.satisfaction;
+            c.resolution = profile.resolution;
+        }
+
+        foreach (var character in p.characters)
+        {
+            c.characters.Add(character);
+        }
+
+        foreach(var item in p.items)
+        {
+            c.items.Add(item);
+        }
+    }
+
+    private void ClearPossessions()
+    {
+        var c = _currentClient.possessions;
+
+        c.names.Clear();
+        c.visuals.Clear();
+        c.cash = 0;
+        c.useStatus = false;
+        c.satisfaction = 0;
+        c.resolution = 0;
+        c.characters.Clear();
+        c.items.Clear();
+    }
+
+    private void SetDialogue(ClientProfileSO profile)
+    {
         _dialogueManager.SetClientLines();
         _dialogueManager.SetPlayerResponses();
 
         _dialogueManager.maxDialogueGroup = profile.encounters[0].dialogueGroups.Count;
         _dialogueManager.currentDialogueGroup = 0;
-
-        _currentClient.PlayEntrance();
-    }
-
-    private void SetObjectives(ClientProfileSO profile, int currentEncounter)
-    {
-        //_currentClient.objectiveDescription = profile.encounters[currentEncounter].objectives.objectiveDescription;
-
-
-
-        /*
-        if (profile.encounters[currentEncounter].objectives.character != null)
-        {
-            _currentClient.objectiveCharacter = profile.encounters[currentEncounter].objectives.character;
-        }
-        else if (profile.encounters[currentEncounter].objectives.item != null)
-        {
-            _currentClient.objectiveItem = profile.encounters[currentEncounter].objectives.item;
-        }
-        */
-        
     }
 
     // RANDOM CLIENTS

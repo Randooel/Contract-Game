@@ -6021,45 +6021,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
         type: 3}
-      propertyPath: clientTextName
+      propertyPath: textName
       value: 
       objectReference: {fileID: 2018511000}
     - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
         type: 3}
-      propertyPath: _clientDialogueBox
+      propertyPath: _dialogueBox
       value: 
       objectReference: {fileID: 1639413865}
     - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
         type: 3}
-      propertyPath: _clientDialogueText
+      propertyPath: _dialogueText
       value: 
       objectReference: {fileID: 1490848003}
-    - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
-        type: 3}
-      propertyPath: objectives.useStatus
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
-        type: 3}
-      propertyPath: objectives.names.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
-        type: 3}
-      propertyPath: objectives.character.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
-        type: 3}
-      propertyPath: objectives.objectiveDescription
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 5236824465576426691, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
-        type: 3}
-      propertyPath: objectives.character.Array.data[0].character
-      value: 
-      objectReference: {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

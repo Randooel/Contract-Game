@@ -160,7 +160,7 @@ public class DialogueManager : MonoBehaviour
         var answerSatisfaction = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter]
             .dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].answerSatisfaction;
 
-        _currentClient.clientSatisfaction += answerSatisfaction;
+        _currentClient.satisfaction += answerSatisfaction;
 
         if (answerSatisfaction > 0)
         {

@@ -164,21 +164,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clientName: 
-  clientTextName: {fileID: 0}
-  clientSpriteRenderer: {fileID: 2110491569814535394}
+  textName: {fileID: 0}
+  spriteRenderer: {fileID: 2110491569814535394}
   reactions:
   - {fileID: 8893474530352051647}
   - {fileID: 8233870311936525687}
-  clientSatisfaction: 0
-  clientResolution: 0
-  objectiveCharacter: {fileID: 0}
-  objectiveItem: {fileID: 0}
-  objectiveDescription: 
-  objectiveSprite: {fileID: 0}
-  clientCash: 0
-  clientPossessions: {fileID: 0}
-  _clientDialogueBox: {fileID: 0}
-  _clientDialogueText: {fileID: 0}
+  satisfaction: 0
+  resolution: 0
+  objectives:
+    description: 
+    names: []
+    visuals: []
+    cash: 0
+    useStatus: 0
+    satisfaction: 0
+    resolution: 0
+    characters: []
+    items: []
+  possessions:
+    description: 
+    names: []
+    visuals: []
+    cash: 0
+    useStatus: 0
+    satisfaction: 0
+    resolution: 0
+    characters: []
+    items: []
+  _dialogueBox: {fileID: 0}
+  _dialogueText: {fileID: 0}
   currentLine: 0
   lines: []
 --- !u!212 &2110491569814535394

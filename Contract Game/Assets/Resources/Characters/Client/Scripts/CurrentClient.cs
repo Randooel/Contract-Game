@@ -8,20 +8,22 @@ using JetBrains.Annotations;
 
 public class CurrentClient : MonoBehaviour
 {
-    private Animator _animator;
     private DialogueManager _dialogueManager;
+    private ClientManager _clientManager;
+
+    private Animator _animator;
 
     [Header("Profile")]
     public string clientName;
-    public TextMeshProUGUI clientTextName;
-    public SpriteRenderer clientSpriteRenderer;
+    public TextMeshProUGUI textName;
+    public SpriteRenderer spriteRenderer;
 
     [Header("Visual")]
     public GameObject[] reactions;
 
     [Header("Personality")]
-    [Range(-4, 3)] public float clientSatisfaction;
-    [SerializeField][Range(0, 1)] public float clientResolution;
+    [Range(-4, 3)] public float satisfaction;
+    [SerializeField][Range(0, 1)] public float resolution;
 
     [SerializeField]
     public enum State
@@ -36,14 +38,12 @@ public class CurrentClient : MonoBehaviour
 
     public PossessionList objectives;
 
-    [Header("Possessions")]
-    public int clientCash;
-
-    public PossessionList clientPossessions;
+    [Space(10)]
+    public PossessionList possessions;
 
     [Header("Dialogue")]
-    [SerializeField] protected GameObject _clientDialogueBox;
-    [SerializeField] protected TextMeshProUGUI _clientDialogueText;
+    [SerializeField] protected GameObject _dialogueBox;
+    [SerializeField] protected TextMeshProUGUI _dialogueText;
     // [SerializeField] private float typingSpeed = 0.05f;
     public int currentLine = 0;
     public List<string> lines = new List<string>();
@@ -53,19 +53,21 @@ public class CurrentClient : MonoBehaviour
 
     private void Start()
     {
-        _clientDialogueBox.SetActive(false);
+        _dialogueBox.SetActive(false);
 
         // References check
         _animator = GetComponent<Animator>();
 
         _dialogueManager = FindObjectOfType<DialogueManager>();
 
-        if (clientSpriteRenderer == null)
+        _clientManager = FindObjectOfType<ClientManager>();
+
+        if (spriteRenderer == null)
         {
-            clientSpriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
-        if (clientTextName == null)
+        if (textName == null)
         {
             Debug.LogError("TMP component not assigned to clientTextName variable.");
         }
@@ -91,25 +93,24 @@ public class CurrentClient : MonoBehaviour
         
     }
 
-    public void UpdatePossessions(Sprite fullSprite)
+    public void UpdatePossessions()
     {
-        var c = clientPossessions;
-        /*
-        c.name = clientName;
-        c.sprite = fullSprite;
-        c.cash = clientCash;
-        */
-        //c.item = ;
+        
+    }
+
+    public void ResetPossessions()
+    {
+
     }
 
 
     // DIALOGUE
     public void Speak()
     {
-        var textEffect = _clientDialogueText.GetComponent<TextEffect>();
+        var textEffect = _dialogueText.GetComponent<TextEffect>();
 
-        _clientDialogueText.text = lines[_dialogueManager.currentLine];
-        _clientDialogueBox.SetActive(true);
+        _dialogueText.text = lines[_dialogueManager.currentLine];
+        _dialogueBox.SetActive(true);
 
         textEffect.StopAllEffects();
         textEffect.Refresh();
@@ -122,7 +123,7 @@ public class CurrentClient : MonoBehaviour
 
     public void StopTalk()
     {
-        _clientDialogueBox.SetActive(false);
+        _dialogueBox.SetActive(false);
     }
 
     // ANIMATIONS

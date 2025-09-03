@@ -29,7 +29,7 @@ MonoBehaviour:
     satisfaction: 0
     resolution: 0
     characters: []
-    item:
+    items:
     - {fileID: 11400000, guid: 0d0503fe33feb5b4d828b586c932595b, type: 2}
   encounters:
   - encounterTag: FIRST ENCOUNTER
@@ -41,8 +41,9 @@ MonoBehaviour:
       useStatus: 0
       satisfaction: 0
       resolution: 0
-      characters: []
-      item: []
+      characters:
+      - {fileID: 11400000, guid: 8e28ea663d3bd93459ccf20223f985cb, type: 2}
+      items: []
     dialogueGroups:
     - dialogueTag: GREETINGS
       currentDialogueState: 0
@@ -102,7 +103,7 @@ MonoBehaviour:
       satisfaction: 0
       resolution: 0
       characters: []
-      item: []
+      items: []
     dialogueGroups: []
   - encounterTag: REVENGE SHAMES - 2
     objectives:
@@ -114,7 +115,7 @@ MonoBehaviour:
       satisfaction: 0
       resolution: 0
       characters: []
-      item: []
+      items: []
     dialogueGroups: []
   - encounterTag: GET SHAMES - 3
     objectives:
@@ -126,5 +127,5 @@ MonoBehaviour:
       satisfaction: 0
       resolution: 0
       characters: []
-      item: []
+      items: []
     dialogueGroups: []

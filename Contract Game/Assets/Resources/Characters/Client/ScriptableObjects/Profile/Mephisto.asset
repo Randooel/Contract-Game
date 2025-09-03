@@ -22,19 +22,16 @@ MonoBehaviour:
   resolution: 0
   profilePossessions:
     description: 
-    names: []
+    names:
+    - Eve
     visuals:
-    - eye: {fileID: 0}
-      head: {fileID: 0}
-      teeth: {fileID: 0}
-      outline: {fileID: 0}
-      fullSprite: {fileID: 21300000, guid: c376e501828fa914c895971c3c8b8b82, type: 3}
+    - {fileID: 21300000, guid: c376e501828fa914c895971c3c8b8b82, type: 3}
     cash: 666666
     useStatus: 0
     satisfaction: 0
     resolution: 0
     characters: []
-    item:
+    items:
     - {fileID: 11400000, guid: 2c73ce2b2b27e214d85ddb31e0e75239, type: 2}
   encounters:
   - encounterTag: 
@@ -43,12 +40,12 @@ MonoBehaviour:
       names: []
       visuals: []
       cash: 0
-      useStatus: 0
-      satisfaction: 0
-      resolution: 0
+      useStatus: 1
+      satisfaction: -4
+      resolution: 1
       characters:
       - {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048, type: 2}
-      item: []
+      items: []
     dialogueGroups:
     - dialogueTag: 
       currentDialogueState: 0

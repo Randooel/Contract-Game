@@ -29,21 +29,19 @@ MonoBehaviour:
     satisfaction: 0
     resolution: 0
     characters: []
-    item:
-    - {fileID: 11400000, guid: 0d0503fe33feb5b4d828b586c932595b, type: 2}
+    items: []
   encounters:
   - encounterTag: 
     objectives:
       description: Master Key
-      names:
-      - 
+      names: []
       visuals: []
       cash: 0
       useStatus: 0
       satisfaction: 0
       resolution: 0
       characters: []
-      item:
+      items:
       - {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
     dialogueGroups:
     - dialogueTag: 

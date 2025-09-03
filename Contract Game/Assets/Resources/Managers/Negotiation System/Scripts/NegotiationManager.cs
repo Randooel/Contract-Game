@@ -107,14 +107,14 @@ public class NegotiationManager : MonoBehaviour
 
     private void HandleConclusion()
     {
-        if (_currentClient.clientSatisfaction > 0)
+        if (_currentClient.satisfaction > 0)
         {
             _contractManager.ShowSignature();
             StartCoroutine(WaitToPlayStampVFX(1));
 
             _playerResponses.Reaction(1,0);
         }
-        else if((_currentClient.clientSatisfaction < 0))
+        else if((_currentClient.satisfaction < 0))
         {
             _contractManager.ShowContract();
             StartCoroutine(WaitToPlayStampVFX(-1));

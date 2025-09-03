@@ -28,7 +28,7 @@ public class ContractManager : MonoBehaviour
     [Header("Price")]
     [SerializeField] private TextMeshProUGUI _priceDescription;
     [SerializeField] private Image _priceImage;
-    [SerializeField] private ClientPossessions _clientPossessions;
+    //[SerializeField] private ClientPossessions _clientPossessions;
 
 
     public void Start()
@@ -43,9 +43,10 @@ public class ContractManager : MonoBehaviour
 
     public void SetPossiblePrices(int currentProfile, int currentEncounter)
     {
+        /*
         var c = _clientPossessions;
         var p = _clientManager.profileSO[currentProfile];
-        var o = _clientManager.profileSO[currentProfile].encounters[currentEncounter].objectives;
+        //var o = _clientManager.profileSO[currentProfile].encounters[currentEncounter].objectives;
 
         c.currentName = _currentClient.name;
 
