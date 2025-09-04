@@ -28,14 +28,10 @@ public class ContractManager : MonoBehaviour
     [SerializeField][Range(0, 50)] private float distanceBetweenFields;
 
     [Header("Request")]
-    [SerializeField] private TextMeshProUGUI _requestDescription;
-    [SerializeField] private Image _requestImage;
     [SerializeField] private List<GameObject> _requestField = new List<GameObject>();
     [SerializeField] private Transform _requestTransform;
 
     [Header("Price")]
-    [SerializeField] private TextMeshProUGUI _priceDescription;
-    [SerializeField] private Image _priceImage;
     [SerializeField] private List<GameObject> _priceField = new List<GameObject>();
     [SerializeField] private Transform _priceTransform;
 
@@ -69,7 +65,7 @@ public class ContractManager : MonoBehaviour
         // Then Client's possessions
         foreach (var name in cc.names)
         {
-            var fieldInstance = InstantiateField(setPrice, transformParent);
+            var fieldInstance = InstantiateField(setPrice, transformParent, name);
 
             // Updating text
             ChangeText(fieldInstance, name);
@@ -79,7 +75,7 @@ public class ContractManager : MonoBehaviour
 
         foreach(var visual in cc.visuals)
         {
-            var fieldInstance = InstantiateField(setPrice,transformParent);
+            var fieldInstance = InstantiateField(setPrice,transformParent, visual.name);
 
             // Updating text
             ChangeText(fieldInstance, visual.name);
@@ -94,20 +90,20 @@ public class ContractManager : MonoBehaviour
         // CASH
         if(cc.cash != 0)
         {
-            var fieldInstance = InstantiateField(setPrice, transformParent);
-            ChangeText(fieldInstance, cc.description);
+            var fieldInstance = InstantiateField(setPrice, transformParent, "Cash");
+            ChangeText(fieldInstance, "x" + cc.cash.ToString());
 
             field.Add(fieldInstance);
         }
 
         if(cc.useStatus)
         {
-            var sat = InstantiateField(setPrice, transformParent);
+            var sat = InstantiateField(setPrice, transformParent, "Satisfaction");
             ChangeText(sat, "Satisfaction: " + _currentClient.satisfaction.ToString());
 
             field.Add(sat);
 
-            var res = InstantiateField(setPrice,transformParent);
+            var res = InstantiateField(setPrice,transformParent, "Resolution");
             ChangeText(res, "Resolution: " + _currentClient.satisfaction.ToString());
 
             field.Add(res);
@@ -115,7 +111,7 @@ public class ContractManager : MonoBehaviour
 
         foreach(var character in cc.characters)
         {
-            var fieldInstance = InstantiateField(setPrice, transformParent);
+            var fieldInstance = InstantiateField(setPrice, transformParent, character.name);
             ChangeText(fieldInstance, cc.description);
             ChangeSprite(fieldInstance, character.fullSprite);
 
@@ -124,7 +120,7 @@ public class ContractManager : MonoBehaviour
 
         foreach(var item in cc.items)
         {
-            var fieldInstance = InstantiateField(setPrice, transformParent);
+            var fieldInstance = InstantiateField(setPrice, transformParent, item.name);
             ChangeText(fieldInstance, cc.description);
             ChangeSprite(fieldInstance, item.sprite);
 
@@ -132,10 +128,12 @@ public class ContractManager : MonoBehaviour
         }
     }
 
-    private GameObject InstantiateField(bool isPrice, Transform parent)
+    private GameObject InstantiateField(bool isPrice, Transform parent, string name)
     {
         GameObject fieldInstance = Instantiate(_contractField, parent, false);
         fieldInstance.transform.localScale = Vector3.one;
+
+        fieldInstance.name = name;
 
         var qtd = _priceField.Count;
         if(!isPrice)
@@ -146,6 +144,30 @@ public class ContractManager : MonoBehaviour
         fieldInstance.transform.localPosition = new Vector3(0f, -distanceBetweenFields, 0f) * qtd;
 
         return fieldInstance;
+    }
+
+    public void ClearLists()
+    {
+        foreach (var price in _priceField)
+        {
+            Destroy(price);
+        }
+        foreach (var request in _requestField)
+        {
+            Destroy(request);
+        }
+
+        _priceField.Clear();
+        _requestField.Clear();
+    }
+
+    public void InstantiateField()
+    {
+        var cc = _currentClient.possessions;
+
+        GameObject fieldInstance = Instantiate(_contractField);
+
+        TMPro.TextMeshProUGUI description = fieldInstance.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     private string ChangeText(GameObject instance, string text)
@@ -181,15 +203,6 @@ public class ContractManager : MonoBehaviour
                 request.SetActive(true);
             }
         }
-    }
-
-    public void InstantiateField()
-    {
-        var cc = _currentClient.possessions;
-
-        GameObject fieldInstance = Instantiate(_contractField);
-
-        TMPro.TextMeshProUGUI description = fieldInstance.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     public void SetPrice()

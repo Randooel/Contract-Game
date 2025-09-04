@@ -37,7 +37,7 @@ MonoBehaviour:
   encounters:
   - encounterTag: FIRST ENCOUNTER
     objectives:
-      description: 
+      description: Save Shames
       names: []
       visuals: []
       cash: 0

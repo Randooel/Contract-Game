@@ -93,8 +93,11 @@ public class ClientManager : MonoBehaviour
                 canCallNextClient = false;
 
                 _currentClient.lines.Clear();
+                _dialogueManager.currentDialogueGroup = 0;
                 ClearObjectives();
                 ClearPossessions();
+
+                _contractManager.ClearLists();
 
                 _currentClient.currentLine = 0;
 
