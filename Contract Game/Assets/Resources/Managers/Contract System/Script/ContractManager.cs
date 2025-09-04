@@ -25,17 +25,19 @@ public class ContractManager : MonoBehaviour
 
     [Space(10)]
     [SerializeField] private GameObject _contractField;
+    [SerializeField][Range(0, 50)] private float distanceBetweenFields;
 
     [Header("Request")]
     [SerializeField] private TextMeshProUGUI _requestDescription;
     [SerializeField] private Image _requestImage;
     [SerializeField] private List<GameObject> _requestField = new List<GameObject>();
+    [SerializeField] private Transform _requestTransform;
 
     [Header("Price")]
     [SerializeField] private TextMeshProUGUI _priceDescription;
     [SerializeField] private Image _priceImage;
     [SerializeField] private List<GameObject> _priceField = new List<GameObject>();
-
+    [SerializeField] private Transform _priceTransform;
 
 
     public void Start()
@@ -48,41 +50,136 @@ public class ContractManager : MonoBehaviour
         _recusedObject.transform.DOLocalMoveZ(-10, 1f);
     }
 
-    public void SetPossiblePrices()
+    // if setPrice is false PRICES will be setted. Else REQUEST
+    public void SetPossibleValues(bool setPrice)
     {
         var cc = _currentClient.possessions;
-
-        Debug.Log($"names count: {cc.names?.Count}");
+        var field = _priceField;
+        var transformParent = _priceTransform;
+        if (!setPrice)
+        {
+            cc = _currentClient.objectives;
+            field = _requestField;
+            transformParent = _requestTransform;
+        }
 
         // First Client's info
-        foreach (var name in cc.names)
-        {
-            Debug.Log("Foreach");
 
-            GameObject fieldInstance = Instantiate(_contractField);
-
-            TMPro.TextMeshProUGUI description = fieldInstance.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
-            description.text = name;
-
-            _priceField.Add(fieldInstance);
-        }
 
         // Then Client's possessions
-    }
-
-    public void ShowPrices()
-    {
-        foreach(var price in _priceField)
+        foreach (var name in cc.names)
         {
+            var fieldInstance = InstantiateField(setPrice, transformParent);
 
+            // Updating text
+            ChangeText(fieldInstance, name);
+
+            field.Add(fieldInstance);
+        }
+
+        foreach(var visual in cc.visuals)
+        {
+            var fieldInstance = InstantiateField(setPrice,transformParent);
+
+            // Updating text
+            ChangeText(fieldInstance, visual.name);
+
+            // Updating image
+            ChangeSprite(fieldInstance, visual);
+
+            field.Add(fieldInstance);
+        }
+
+        // ADD CASH SPRITE
+        // CASH
+        if(cc.cash != 0)
+        {
+            var fieldInstance = InstantiateField(setPrice, transformParent);
+            ChangeText(fieldInstance, cc.description);
+
+            field.Add(fieldInstance);
+        }
+
+        if(cc.useStatus)
+        {
+            var sat = InstantiateField(setPrice, transformParent);
+            ChangeText(sat, "Satisfaction: " + _currentClient.satisfaction.ToString());
+
+            field.Add(sat);
+
+            var res = InstantiateField(setPrice,transformParent);
+            ChangeText(res, "Resolution: " + _currentClient.satisfaction.ToString());
+
+            field.Add(res);
+        }
+
+        foreach(var character in cc.characters)
+        {
+            var fieldInstance = InstantiateField(setPrice, transformParent);
+            ChangeText(fieldInstance, cc.description);
+            ChangeSprite(fieldInstance, character.fullSprite);
+
+            field.Add(fieldInstance);
+        }
+
+        foreach(var item in cc.items)
+        {
+            var fieldInstance = InstantiateField(setPrice, transformParent);
+            ChangeText(fieldInstance, cc.description);
+            ChangeSprite(fieldInstance, item.sprite);
+
+            field.Add(fieldInstance);
         }
     }
 
-    public void ShowRequests()
+    private GameObject InstantiateField(bool isPrice, Transform parent)
     {
-        foreach(var request in _requestField)
-        {
+        GameObject fieldInstance = Instantiate(_contractField, parent, false);
+        fieldInstance.transform.localScale = Vector3.one;
 
+        var qtd = _priceField.Count;
+        if(!isPrice)
+        {
+            qtd = _requestField.Count;
+        }
+
+        fieldInstance.transform.localPosition = new Vector3(0f, -distanceBetweenFields, 0f) * qtd;
+
+        return fieldInstance;
+    }
+
+    private string ChangeText(GameObject instance, string text)
+    {
+        TMPro.TextMeshProUGUI description = instance.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
+        description.text = text;
+
+        return description.text;
+    }
+
+    private Sprite ChangeSprite(GameObject instance, Sprite sprite)
+    {
+        Image imageField = instance.transform.Find("Field Image").GetComponent<Image>();
+        imageField.sprite = sprite;
+
+        return imageField.sprite;
+    }
+
+    public void ShowValues(bool showPrice, bool showRequest)
+    {
+        if(showPrice)
+        {
+            foreach (var price in _priceField)
+            {
+                price.SetActive(true);
+            }
+        }
+        
+        if(showRequest)
+        {
+            foreach (var request in _requestField)
+            {
+                request.SetActive(true);
+            }
         }
     }
 
