@@ -64,7 +64,7 @@ public class ContractManager : MonoBehaviour
 
         // Then Client's possessions
         foreach (var name in cc.names)
-        {
+        {  
             var fieldInstance = InstantiateField(setPrice, transformParent, name);
 
             // Updating text
@@ -136,38 +136,22 @@ public class ContractManager : MonoBehaviour
         fieldInstance.name = name;
 
         var qtd = _priceField.Count;
-        if(!isPrice)
+
+        // Button
+        Button instanceButton = fieldInstance.GetComponentInChildren<Button>();
+        //instanceButton.onClick.AddListener(this.OnPriceSelect);
+
+        if (!isPrice)
         {
             qtd = _requestField.Count;
+
+            // Disables Button Component if this instance is a Request Field
+            instanceButton.enabled = false;
         }
 
         fieldInstance.transform.localPosition = new Vector3(0f, -distanceBetweenFields, 0f) * qtd;
 
         return fieldInstance;
-    }
-
-    public void ClearLists()
-    {
-        foreach (var price in _priceField)
-        {
-            Destroy(price);
-        }
-        foreach (var request in _requestField)
-        {
-            Destroy(request);
-        }
-
-        _priceField.Clear();
-        _requestField.Clear();
-    }
-
-    public void InstantiateField()
-    {
-        var cc = _currentClient.possessions;
-
-        GameObject fieldInstance = Instantiate(_contractField);
-
-        TMPro.TextMeshProUGUI description = fieldInstance.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
     }
 
     private string ChangeText(GameObject instance, string text)
@@ -186,7 +170,53 @@ public class ContractManager : MonoBehaviour
         return imageField.sprite;
     }
 
-    public void ShowValues(bool showPrice, bool showRequest)
+    public void ClearLists()
+    {
+        foreach (var price in _priceField)
+        {
+            /*
+            var button = price.GetComponentInChildren<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+            }
+            */
+
+            Destroy(price);
+        }
+        foreach (var request in _requestField)
+        {
+            /*
+            var button = request.GetComponentInChildren<Button>();
+            if (button != null)
+            {
+                button.onClick.RemoveAllListeners();
+            }
+            */
+
+            Destroy(request);
+        }
+
+        _priceField.Clear();
+        _requestField.Clear();
+    }
+
+    public void OnPriceSelect(GameObject clickedPrice)
+    {
+        Debug.Log("OnPriceSelect");
+
+        int index = _priceField.IndexOf(clickedPrice);
+
+        Image clickedImage = clickedPrice.transform.Find("Field Image").GetComponent<Image>();
+        TMPro.TextMeshProUGUI clickedText = clickedPrice.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
+
+        ChangeText(_priceField[0], clickedText.text);
+        ChangeSprite(_priceField[0], clickedImage.sprite);
+
+        HideFields(true, false);
+    }
+
+    public void ShowFields(bool showPrice, bool showRequest)
     {
         if(showPrice)
         {
@@ -201,6 +231,25 @@ public class ContractManager : MonoBehaviour
             foreach (var request in _requestField)
             {
                 request.SetActive(true);
+            }
+        }
+    }
+
+    public void HideFields(bool hidePrice, bool hideRequest)
+    {
+        if(hidePrice)
+        {
+            for (int i = 1; i < _priceField.Count; i++)
+            {
+                _priceField[i].SetActive(false);
+            }
+        }
+
+        if(hideRequest)
+        {
+            for(int i = 1; i < _requestField.Count; i++)
+            {
+                _requestField[i].SetActive(false);
             }
         }
     }

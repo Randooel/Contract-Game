@@ -56,6 +56,8 @@ public class NegotiationManager : MonoBehaviour
             Debug.LogWarning("QueueSyestem not found!");
         }
 
+        _playerDebt = FindObjectOfType<PlayerDebt>();
+
         _playerResponses = FindObjectOfType<PlayerResponses>();
 
         _contractManager.HideContract();

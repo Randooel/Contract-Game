@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93451b37e6834774abedfb232cbacf90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _contractTransform: {fileID: 0}
+  _contractObject: {fileID: 0}
+  _dealObject: {fileID: 0}
+  _recusedObject: {fileID: 0}
   assets:
   - contract: {fileID: 0}
     signature: {fileID: 0}
@@ -52,3 +54,10 @@ MonoBehaviour:
     failStamp: {fileID: 0}
     successStampVFX: {fileID: 0}
     failStampVFX: {fileID: 0}
+  _contractField: {fileID: 3904672025476049648, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+    type: 3}
+  distanceBetweenFields: 39
+  _requestField: []
+  _requestTransform: {fileID: 0}
+  _priceField: []
+  _priceTransform: {fileID: 0}

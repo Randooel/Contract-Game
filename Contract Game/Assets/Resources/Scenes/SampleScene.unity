@@ -1758,6 +1758,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559124400}
   m_CullTransparentMesh: 1
+--- !u!1 &575115799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3904672025476049648, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1214190008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &576412741
 GameObject:
   m_ObjectHideFlags: 0
@@ -2481,6 +2487,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995793238}
   m_CullTransparentMesh: 1
+--- !u!4 &1000338243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1214190008}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1003347824
 GameObject:
   m_ObjectHideFlags: 0
@@ -2847,6 +2859,89 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 755870202020558453}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1214190008
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1627837322}
+    m_Modifications:
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3786048381161369396, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3904672025476049648, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_Name
+      value: ContractField
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875879363462516136, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875879363462516136, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 575115799}
+    - target: {fileID: 5875879363462516136, guid: 2ec5264d8b95df14b8c74461e5e320c9,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2ec5264d8b95df14b8c74461e5e320c9, type: 3}
 --- !u!212 &1221555065 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 5106637729146141543, guid: 0b5bfc0f952471f46bfc11af84d87dfc,
@@ -3850,6 +3945,7 @@ Transform:
   - {fileID: 486005496}
   - {fileID: 1553229923}
   - {fileID: 1805725348}
+  - {fileID: 1000338243}
   m_Father: {fileID: 618698797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1636106956
@@ -6253,27 +6349,6 @@ PrefabInstance:
       objectReference: {fileID: 136043873}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
-      propertyPath: _priceImage
-      value: 
-      objectReference: {fileID: 1870189031}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _requestImage
-      value: 
-      objectReference: {fileID: 1469358810}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _contractField
-      value: 
-      objectReference: {fileID: 3904672025476049648, guid: 2ec5264d8b95df14b8c74461e5e320c9,
-        type: 3}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _dealTransform
-      value: 
-      objectReference: {fileID: 136043873}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
       propertyPath: _recusedObject
       value: 
       objectReference: {fileID: 1003347824}
@@ -6286,47 +6361,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _priceTransform
       value: 
-      objectReference: {fileID: 1499548587}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _priceDescription
-      value: 
-      objectReference: {fileID: 1711830077}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _recusedTransform
-      value: 
-      objectReference: {fileID: 1003347824}
+      objectReference: {fileID: 605225233}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
       propertyPath: _requestTransform
       value: 
       objectReference: {fileID: 233046518}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _contractTransform
-      value: 
-      objectReference: {fileID: 1627837321}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _requestDescription
-      value: 
-      objectReference: {fileID: 438966249}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: distanceBetweenFields
-      value: 39
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _requestField.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
-        type: 3}
-      propertyPath: _requestField.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5863537408804873246, guid: 25e4c58dbc8cb6a459cb70b381d2382d,
         type: 3}
       propertyPath: assets.Array.data[0].contract
@@ -6561,6 +6601,11 @@ PrefabInstance:
       propertyPath: _contract
       value: 
       objectReference: {fileID: 486005495}
+    - target: {fileID: 3543802758636345945, guid: 6ffed72bc9dc79a499403166e7586aca,
+        type: 3}
+      propertyPath: _playerDebt
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3543802758636345945, guid: 6ffed72bc9dc79a499403166e7586aca,
         type: 3}
       propertyPath: assets.Array.size
