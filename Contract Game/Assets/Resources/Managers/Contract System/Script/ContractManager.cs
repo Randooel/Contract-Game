@@ -141,7 +141,11 @@ public class ContractManager : MonoBehaviour
         Button instanceButton = fieldInstance.GetComponentInChildren<Button>();
         //instanceButton.onClick.AddListener(this.OnPriceSelect);
 
-        if (!isPrice)
+        if (isPrice)
+        {
+            instanceButton.onClick.AddListener(() => OnPriceSelect(fieldInstance));
+        }
+        else
         {
             qtd = _requestField.Count;
 
@@ -203,15 +207,18 @@ public class ContractManager : MonoBehaviour
 
     public void OnPriceSelect(GameObject clickedPrice)
     {
-        Debug.Log("OnPriceSelect");
+        Debug.Log(_priceField.Count);
 
-        int index = _priceField.IndexOf(clickedPrice);
+        if(clickedPrice != _priceField[0])
+        {
+            int index = _priceField.IndexOf(clickedPrice);
 
-        Image clickedImage = clickedPrice.transform.Find("Field Image").GetComponent<Image>();
-        TMPro.TextMeshProUGUI clickedText = clickedPrice.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
+            Image clickedImage = clickedPrice.transform.Find("Field Image").GetComponent<Image>();
+            TMPro.TextMeshProUGUI clickedText = clickedPrice.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
 
-        ChangeText(_priceField[0], clickedText.text);
-        ChangeSprite(_priceField[0], clickedImage.sprite);
+            ChangeText(_priceField[0], clickedText.text);
+            ChangeSprite(_priceField[0], clickedImage.sprite);
+        }
 
         HideFields(true, false);
     }
