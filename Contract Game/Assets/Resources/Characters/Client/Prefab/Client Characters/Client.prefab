@@ -126,6 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4513569517007247847}
   - component: {fileID: 5236824465576426691}
+  - component: {fileID: 4962343475917028107}
   - component: {fileID: 2110491569814535394}
   - component: {fileID: 2710791649035151198}
   m_Layer: 0
@@ -195,6 +196,23 @@ MonoBehaviour:
   _dialogueText: {fileID: 0}
   currentLine: 0
   lines: []
+--- !u!114 &4962343475917028107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601633597385791974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f184a34cef1213b439d30fccb2bcc660, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileSO: {fileID: 0}
+  satisfaction: 0
+  resolution: 0
+  price: []
+  request: []
 --- !u!212 &2110491569814535394
 SpriteRenderer:
   m_ObjectHideFlags: 0

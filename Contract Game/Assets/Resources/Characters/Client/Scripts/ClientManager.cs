@@ -10,6 +10,7 @@ public class ClientManager : MonoBehaviour
 {
     private QueueManager _queueManager;
     private ContractManager _contractManager;
+    private AppraisePrice _appraisePrice;
 
     [Header("Player Reference")]
     private PlayerResponses _playerResponse;
@@ -54,6 +55,7 @@ public class ClientManager : MonoBehaviour
     {
         _queueManager = FindObjectOfType<QueueManager>(); 
         _contractManager = FindObjectOfType<ContractManager>();
+        _appraisePrice = FindObjectOfType<AppraisePrice>();
 
         if(_currentClient == null)
         {
@@ -144,6 +146,10 @@ public class ClientManager : MonoBehaviour
         var profile = profileSO[currentProfile];
         var cc = _currentClient;
         var currentEncounter = _dialogueManager.currentEncounter;
+
+        //Appraise Price
+        _appraisePrice.profileSO = profile;
+        _appraisePrice.SetPossessionsValues();
 
         // Client name
         cc.clientName = profile.profileName;

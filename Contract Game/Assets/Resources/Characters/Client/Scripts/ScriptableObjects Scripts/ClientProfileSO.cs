@@ -28,6 +28,9 @@ public class ClientProfileSO : ScriptableObject
     [Header("Property")]
     public PossessionList profilePossessions;
 
+    [Header("Possession Valuation")]
+    public PossessionsValues values;
+
     [Header("Dialogue")]
     public List<Encounters> encounters = new List<Encounters>();
 }
