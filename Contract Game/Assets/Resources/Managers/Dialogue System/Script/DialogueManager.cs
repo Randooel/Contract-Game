@@ -122,6 +122,10 @@ public class DialogueManager : MonoBehaviour
         {
             _playerResponses.ShowResponses();
         }
+        else if(_negotiationManager.currentState == NegotiationManager.State.DiscussTerms)
+        {
+            StartCoroutine(WaitToStopTalk());
+        }
         else
         {
             Exit();
@@ -176,45 +180,37 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(ReactionAnim());
     }
 
-    private void CheckNextDialogue()
+    public void CheckNextDialogue()
     {
-        var nextDialogue = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
-            dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].nextDialogueTag;
+        StopAllCoroutines();
 
-
-        if (currentDialogueGroup + 1 < maxDialogueGroup)
+        if (_negotiationManager.currentState == NegotiationManager.State.DiscussTerms)
         {
-            var shouldSkipToDialogueX = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
-                    dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].skipToDialogueX;
+            var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
+            string nextDialogueTag = "";
 
-            if (shouldSkipToDialogueX)
+            // INSERT CLIENT'S EVALUATION LOGIC HERE
+
+            if(_currentClient.satisfaction > 0)
             {
-                string nextDialogueTag = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
-                    dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].nextDialogueTag;
-
-                var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
+                nextDialogueTag = "DEAL";
 
                 int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);
 
-                // The list function 'FindIndex' returns '-1' when the it doesn't find the list element
-                // So, in this context, -1 = null
-                if (nextIndex != -1)
-                {
-                    currentDialogueGroup = nextIndex;
+                currentDialogueGroup = nextIndex;
 
-                    SetClientLines();
-                    SetPlayerResponses();
+                SetClientLines();
+                SetPlayerResponses();
 
-                    _currentClient.Speak();
-                }
-                else
-                {
-                    Debug.LogError("Dialogue with tag " + nextDialogueTag + " not found");
-                }
+                _currentClient.Speak();
             }
-            else
+            else if(_currentClient.satisfaction <= 0)
             {
-                currentDialogueGroup++;
+                nextDialogueTag = "REFUSED";
+
+                int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);
+
+                currentDialogueGroup = nextIndex;
 
                 SetClientLines();
                 SetPlayerResponses();
@@ -224,10 +220,54 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            _currentClient.StopTalk();
+            if (currentDialogueGroup + 1 < maxDialogueGroup)
+            {
 
-            ClearClientLines();
-            ClearPlayerResponses();
+                var shouldSkipToDialogueX = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
+                        dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].skipToDialogueX;
+
+                if (shouldSkipToDialogueX)
+                {
+                    string nextDialogueTag = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].
+                        dialogueGroups[currentDialogueGroup].playerResponses[_responseIndex].nextDialogueTag;
+
+                    var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
+
+                    int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);
+
+                    // The list function 'FindIndex' returns '-1' when the it doesn't find the list element
+                    // So, in this context, -1 = null
+                    if (nextIndex != -1)
+                    {
+                        currentDialogueGroup = nextIndex;
+
+                        SetClientLines();
+                        SetPlayerResponses();
+
+                        _currentClient.Speak();
+                    }
+                    else
+                    {
+                        Debug.LogError("Dialogue with tag " + nextDialogueTag + " not found");
+                    }
+                }
+                else
+                {
+                    currentDialogueGroup++;
+
+                    SetClientLines();
+                    SetPlayerResponses();
+
+                    _currentClient.Speak();
+                }
+            }
+            else
+            {
+                _currentClient.StopTalk();
+
+                ClearClientLines();
+                ClearPlayerResponses();
+            }
         }
     }
 
@@ -260,5 +300,13 @@ public class DialogueManager : MonoBehaviour
         {
             reaction.SetActive(false);
         }
+    }
+
+    private IEnumerator WaitToStopTalk()
+    {
+        yield return new WaitForSeconds(3f);
+        _currentClient.StopTalk();
+
+        Debug.Log("Coroutine");
     }
 }

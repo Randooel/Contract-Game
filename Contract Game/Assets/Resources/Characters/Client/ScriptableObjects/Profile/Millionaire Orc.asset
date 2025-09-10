@@ -88,7 +88,7 @@ MonoBehaviour:
       - Negotiation 2.
       playerResponses: []
     - dialogueTag: EXIT
-      currentDialogueState: 2
+      currentDialogueState: 3
       clientLines:
       - Grrr! You made a HUGE mistake.
       playerResponses: []

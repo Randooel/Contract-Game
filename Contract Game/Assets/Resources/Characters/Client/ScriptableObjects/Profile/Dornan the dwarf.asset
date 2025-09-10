@@ -85,8 +85,7 @@ MonoBehaviour:
         nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 2
       currentDialogueState: 2
-      clientLines:
-      - Negotiation 2
+      clientLines: []
       playerResponses: []
     - dialogueTag: EXIT
       currentDialogueState: 2

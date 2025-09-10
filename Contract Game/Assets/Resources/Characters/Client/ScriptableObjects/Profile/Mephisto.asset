@@ -65,7 +65,7 @@ MonoBehaviour:
         skipToDialogueX: 1
         nextDialogueTag: EXIT
     - dialogueTag: EXIT
-      currentDialogueState: 2
+      currentDialogueState: 3
       clientLines:
       - Hahaha. Bye.
       playerResponses: []

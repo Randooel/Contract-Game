@@ -14,6 +14,8 @@ public class ContractManager : MonoBehaviour
 {
     private CurrentClient _currentClient;
     private ClientManager _clientManager;
+    private DialogueManager _dialogueManager;
+    private NegotiationManager _negotiationManager;
 
     [Header("Contract and Stamps")]
     [SerializeField] GameObject _contractObject;
@@ -39,7 +41,9 @@ public class ContractManager : MonoBehaviour
     public void Start()
     {
         _currentClient = FindObjectOfType<CurrentClient>();
-        _clientManager = GetComponent<ClientManager>();
+        _clientManager = FindObjectOfType<ClientManager>();
+        _dialogueManager = FindObjectOfType<DialogueManager>();
+        _negotiationManager = FindObjectOfType<NegotiationManager>();
 
         _contractObject.transform.DOLocalMoveY(-943f, 0f);
         _dealObject.transform.DOLocalMoveZ(-10, 1f);
@@ -47,7 +51,7 @@ public class ContractManager : MonoBehaviour
     }
 
     // if setPrice is false PRICES will be setted. Else REQUEST
-    public void SetPossibleValues(bool setPrice)
+    public void SetContractFields(bool setPrice)
     {
         var cc = _currentClient.possessions;
         var field = _priceField;
@@ -139,7 +143,8 @@ public class ContractManager : MonoBehaviour
 
         // Button
         Button instanceButton = fieldInstance.GetComponentInChildren<Button>();
-        //instanceButton.onClick.AddListener(this.OnPriceSelect);
+        // Disables Button Component
+        instanceButton.enabled = false;
 
         if (isPrice)
         {
@@ -148,9 +153,6 @@ public class ContractManager : MonoBehaviour
         else
         {
             qtd = _requestField.Count;
-
-            // Disables Button Component if this instance is a Request Field
-            instanceButton.enabled = false;
         }
 
         fieldInstance.transform.localPosition = new Vector3(0f, -distanceBetweenFields, 0f) * qtd;
@@ -205,10 +207,17 @@ public class ContractManager : MonoBehaviour
         _requestField.Clear();
     }
 
+    public void UnlockButton()
+    {
+        foreach(var price in _priceField)
+        {
+            Button priceButton = price.GetComponentInChildren<Button>();
+            priceButton.enabled = true;
+        }
+    }
+
     public void OnPriceSelect(GameObject clickedPrice)
     {
-        Debug.Log(_priceField.Count);
-
         if(clickedPrice != _priceField[0])
         {
             int index = _priceField.IndexOf(clickedPrice);
@@ -221,6 +230,10 @@ public class ContractManager : MonoBehaviour
         }
 
         HideFields(true, false);
+
+        _dialogueManager.CheckNextDialogue();
+
+        _negotiationManager.canSetPrice = false;
     }
 
     public void ShowFields(bool showPrice, bool showRequest)
@@ -259,11 +272,6 @@ public class ContractManager : MonoBehaviour
                 _requestField[i].SetActive(false);
             }
         }
-    }
-
-    public void SetPrice()
-    {
-
     }
 
     // ANIMATIONS

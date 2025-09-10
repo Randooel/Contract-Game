@@ -55,46 +55,59 @@ MonoBehaviour:
       - I'm looking for my brother, Shames. He looks just like me.
       - Can you help me find him? I'll pay for your services, obviously.
       playerResponses:
-      - responseLine: Sure!
-        answerSatisfaction: 2
-        skipToDialogueX: 0
-        nextDialogueTag: 
-      - responseLine: Tell me more.
-        answerSatisfaction: 1
-        skipToDialogueX: 0
-        nextDialogueTag: 
-      - responseLine: Sorry. I don't think I can help.
-        answerSatisfaction: -6
-        skipToDialogueX: 1
-        nextDialogueTag: EXIT
-    - dialogueTag: NEGOTIATION 1
-      currentDialogueState: 1
-      clientLines:
-      - This is music to my long ears!
-      - So, what you'll need to find him?
-      playerResponses:
-      - responseLine: Tell me more about him.
+      - responseLine: Sure! Tell me more.
         answerSatisfaction: 2
         skipToDialogueX: 0
         nextDialogueTag: 
       - responseLine: <i>[Set Price]</i>
         answerSatisfaction: 1
-        skipToDialogueX: 0
-        nextDialogueTag: 
-      - responseLine: Sorry, I've changed my mind.
+        skipToDialogueX: 1
+        nextDialogueTag: DISCUSS TERMS
+      - responseLine: Sorry. I don't think I can help.
         answerSatisfaction: -6
         skipToDialogueX: 1
         nextDialogueTag: EXIT
     - dialogueTag: NEGOTIATION 2
+      currentDialogueState: 1
+      clientLines:
+      - Shames and I were exploring a dungeon when he simply vanished.
+      - My brother has gotten involved with some bad people
+      - "I\u2019m worried some of them have come to take revenge."
+      playerResponses:
+      - responseLine: I see. I will help you. <i>[SetPrice]</i>
+        answerSatisfaction: 0
+        skipToDialogueX: 1
+        nextDialogueTag: DISCUSS TERMS
+      - responseLine: <i>[SetPrice]</i>
+        answerSatisfaction: 0
+        skipToDialogueX: 1
+        nextDialogueTag: DISCUSS TERMS
+      - responseLine: I do'nt want to get involved.
+        answerSatisfaction: 0
+        skipToDialogueX: 1
+        nextDialogueTag: EXIT
+    - dialogueTag: DISCUSS TERMS
       currentDialogueState: 2
       clientLines:
-      - NEGOTIATION 2
+      - Straight to the point. I like it.
       playerResponses: []
     - dialogueTag: EXIT
-      currentDialogueState: 2
+      currentDialogueState: 3
       clientLines:
       - Oh, I see...
       - Bye.
+      playerResponses: []
+    - dialogueTag: DEAL
+      currentDialogueState: 3
+      clientLines:
+      - I'm counting on you.
+      - I'll be back to check on your progress tomorrow.
+      - See ya.
+      playerResponses: []
+    - dialogueTag: REFUSED
+      currentDialogueState: 3
+      clientLines:
+      - I see. Thank you for your time.
       playerResponses: []
   - encounterTag: CHECK PROGRESS - 2
     objectives:

@@ -15,6 +15,7 @@ public class DialogueGroup
     {
         Chitchat,
         Negotiation,
+        DiscussTerms,
         Conclusion
     }
     public DialogueState currentDialogueState;

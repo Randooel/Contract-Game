@@ -167,8 +167,8 @@ public class ClientManager : MonoBehaviour
         SetDialogue(profile);
 
         // Contract Manager
-        _contractManager.SetPossibleValues(true);
-        _contractManager.SetPossibleValues(false);
+        _contractManager.SetContractFields(true);
+        _contractManager.SetContractFields(false);
 
         // Animation
         _currentClient.PlayEntrance();

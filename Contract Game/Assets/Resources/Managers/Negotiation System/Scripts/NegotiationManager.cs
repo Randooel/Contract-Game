@@ -12,8 +12,11 @@ public class NegotiationManager : MonoBehaviour
     {
         ChitChat,
         Negotiation,
+        DiscussTerms,
         Conclusion
     }
+
+    public bool canSetPrice;
 
     [Header("Client References")]
     [SerializeField] private CurrentClient _currentClient;
@@ -71,6 +74,7 @@ public class NegotiationManager : MonoBehaviour
     public void SwitchState(State state)
     {
         currentState = state;
+        canSetPrice = false;
 
         switch(currentState)
         {
@@ -79,6 +83,9 @@ public class NegotiationManager : MonoBehaviour
                 break;
             case State.Negotiation :
                 HandleNegotiation();
+                break;
+            case State.DiscussTerms:
+                HandleDiscussTerms();
                 break;
             case State.Conclusion :
                 HandleConclusion();
@@ -105,6 +112,14 @@ public class NegotiationManager : MonoBehaviour
     private void HandleNegotiation()
     {
         _contractManager.ShowContract();
+    }
+
+    private void HandleDiscussTerms()
+    {
+        _contractManager.ShowContract();
+        canSetPrice = true;
+
+        _contractManager.UnlockButton();
     }
 
     private void HandleConclusion()
