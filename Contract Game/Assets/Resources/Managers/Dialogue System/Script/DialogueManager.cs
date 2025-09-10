@@ -186,37 +186,8 @@ public class DialogueManager : MonoBehaviour
 
         if (_negotiationManager.currentState == NegotiationManager.State.DiscussTerms)
         {
-            var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
-            string nextDialogueTag = "";
-
             // INSERT CLIENT'S EVALUATION LOGIC HERE
-
-            if(_currentClient.satisfaction > 0)
-            {
-                nextDialogueTag = "DEAL";
-
-                int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);
-
-                currentDialogueGroup = nextIndex;
-
-                SetClientLines();
-                SetPlayerResponses();
-
-                _currentClient.Speak();
-            }
-            else if(_currentClient.satisfaction <= 0)
-            {
-                nextDialogueTag = "REFUSED";
-
-                int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);
-
-                currentDialogueGroup = nextIndex;
-
-                SetClientLines();
-                SetPlayerResponses();
-
-                _currentClient.Speak();
-            }
+            return;
         }
         else
         {
@@ -271,6 +242,20 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void PlayDialogue(string nextDialogueTag)
+    {
+        Debug.Log("PlayDialogue nextTag: " + nextDialogueTag);
+        var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
+        int nextIndex = dialogueGroups.FindIndex(d => d.dialogueTag == nextDialogueTag);
+
+        currentDialogueGroup = nextIndex;
+
+        SetClientLines();
+        SetPlayerResponses();
+
+        _currentClient.Speak();
+    }
+
     private void Exit()
     {
         var dialogueGroups = _clientManager.profileSO[_clientManager.currentProfile].encounters[currentEncounter].dialogueGroups;
@@ -306,7 +291,5 @@ public class DialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         _currentClient.StopTalk();
-
-        Debug.Log("Coroutine");
     }
 }

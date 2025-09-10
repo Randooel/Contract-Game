@@ -30,6 +30,12 @@ MonoBehaviour:
     resolution: 0
     characters: []
     items: []
+  values:
+    name: 0
+    visuals: 0
+    cash: 2
+    items: 0
+    characters: 2
   encounters:
   - encounterTag: 
     objectives:

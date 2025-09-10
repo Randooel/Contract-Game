@@ -107,6 +107,8 @@ public class ClientManager : MonoBehaviour
 
                 _currentClient.PlayLeave();
 
+                _appraisePrice.ClearPrice();
+
                 //DOTween.Kill(this.gameObject);
 
                 DOVirtual.DelayedCall(2f, () =>

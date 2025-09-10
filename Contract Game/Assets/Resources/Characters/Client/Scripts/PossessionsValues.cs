@@ -12,6 +12,6 @@ public class PossessionsValues
         Low
     }
 
-    public Values name, visuals, cash, items, characters;
+    public Values name, visuals, cash, satisfaction, resolution, items, characters;
 }
 

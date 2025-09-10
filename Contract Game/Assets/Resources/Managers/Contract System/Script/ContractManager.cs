@@ -16,6 +16,7 @@ public class ContractManager : MonoBehaviour
     private ClientManager _clientManager;
     private DialogueManager _dialogueManager;
     private NegotiationManager _negotiationManager;
+    private AppraisePrice _appraisePrice;
 
     [Header("Contract and Stamps")]
     [SerializeField] GameObject _contractObject;
@@ -34,7 +35,7 @@ public class ContractManager : MonoBehaviour
     [SerializeField] private Transform _requestTransform;
 
     [Header("Price")]
-    [SerializeField] private List<GameObject> _priceField = new List<GameObject>();
+    [SerializeField] public List<GameObject> priceField = new List<GameObject>();
     [SerializeField] private Transform _priceTransform;
 
 
@@ -44,6 +45,7 @@ public class ContractManager : MonoBehaviour
         _clientManager = FindObjectOfType<ClientManager>();
         _dialogueManager = FindObjectOfType<DialogueManager>();
         _negotiationManager = FindObjectOfType<NegotiationManager>();
+        _appraisePrice = FindObjectOfType<AppraisePrice>();
 
         _contractObject.transform.DOLocalMoveY(-943f, 0f);
         _dealObject.transform.DOLocalMoveZ(-10, 1f);
@@ -54,7 +56,7 @@ public class ContractManager : MonoBehaviour
     public void SetContractFields(bool setPrice)
     {
         var cc = _currentClient.possessions;
-        var field = _priceField;
+        var field = priceField;
         var transformParent = _priceTransform;
         if (!setPrice)
         {
@@ -69,7 +71,7 @@ public class ContractManager : MonoBehaviour
         // Then Client's possessions
         foreach (var name in cc.names)
         {  
-            var fieldInstance = InstantiateField(setPrice, transformParent, name);
+            var fieldInstance = InstantiateField(setPrice, transformParent, "Name: " + name);
 
             // Updating text
             ChangeText(fieldInstance, name);
@@ -79,7 +81,7 @@ public class ContractManager : MonoBehaviour
 
         foreach(var visual in cc.visuals)
         {
-            var fieldInstance = InstantiateField(setPrice,transformParent, visual.name);
+            var fieldInstance = InstantiateField(setPrice,transformParent, "Visual: " + visual.name);
 
             // Updating text
             ChangeText(fieldInstance, visual.name);
@@ -115,7 +117,7 @@ public class ContractManager : MonoBehaviour
 
         foreach(var character in cc.characters)
         {
-            var fieldInstance = InstantiateField(setPrice, transformParent, character.name);
+            var fieldInstance = InstantiateField(setPrice, transformParent, "Character: " + character.name);
             ChangeText(fieldInstance, cc.description);
             ChangeSprite(fieldInstance, character.fullSprite);
 
@@ -124,8 +126,8 @@ public class ContractManager : MonoBehaviour
 
         foreach(var item in cc.items)
         {
-            var fieldInstance = InstantiateField(setPrice, transformParent, item.name);
-            ChangeText(fieldInstance, cc.description);
+            var fieldInstance = InstantiateField(setPrice, transformParent, "Item: " + item.name);
+            ChangeText(fieldInstance, item.name);
             ChangeSprite(fieldInstance, item.sprite);
 
             field.Add(fieldInstance);
@@ -139,7 +141,7 @@ public class ContractManager : MonoBehaviour
 
         fieldInstance.name = name;
 
-        var qtd = _priceField.Count;
+        var qtd = priceField.Count;
 
         // Button
         Button instanceButton = fieldInstance.GetComponentInChildren<Button>();
@@ -178,7 +180,7 @@ public class ContractManager : MonoBehaviour
 
     public void ClearLists()
     {
-        foreach (var price in _priceField)
+        foreach (var price in priceField)
         {
             /*
             var button = price.GetComponentInChildren<Button>();
@@ -203,13 +205,13 @@ public class ContractManager : MonoBehaviour
             Destroy(request);
         }
 
-        _priceField.Clear();
+        priceField.Clear();
         _requestField.Clear();
     }
 
     public void UnlockButton()
     {
-        foreach(var price in _priceField)
+        foreach(var price in priceField)
         {
             Button priceButton = price.GetComponentInChildren<Button>();
             priceButton.enabled = true;
@@ -218,15 +220,15 @@ public class ContractManager : MonoBehaviour
 
     public void OnPriceSelect(GameObject clickedPrice)
     {
-        if(clickedPrice != _priceField[0])
+        if(clickedPrice != priceField[0])
         {
-            int index = _priceField.IndexOf(clickedPrice);
+            int index = priceField.IndexOf(clickedPrice);
 
             Image clickedImage = clickedPrice.transform.Find("Field Image").GetComponent<Image>();
             TMPro.TextMeshProUGUI clickedText = clickedPrice.transform.Find("Field Description").GetComponent<TMPro.TextMeshProUGUI>();
 
-            ChangeText(_priceField[0], clickedText.text);
-            ChangeSprite(_priceField[0], clickedImage.sprite);
+            ChangeText(priceField[0], clickedText.text);
+            ChangeSprite(priceField[0], clickedImage.sprite);
         }
 
         HideFields(true, false);
@@ -234,13 +236,15 @@ public class ContractManager : MonoBehaviour
         _dialogueManager.CheckNextDialogue();
 
         _negotiationManager.canSetPrice = false;
+
+        _appraisePrice.SetPrice();
     }
 
     public void ShowFields(bool showPrice, bool showRequest)
     {
         if(showPrice)
         {
-            foreach (var price in _priceField)
+            foreach (var price in priceField)
             {
                 price.SetActive(true);
             }
@@ -259,9 +263,9 @@ public class ContractManager : MonoBehaviour
     {
         if(hidePrice)
         {
-            for (int i = 1; i < _priceField.Count; i++)
+            for (int i = 1; i < priceField.Count; i++)
             {
-                _priceField[i].SetActive(false);
+                priceField[i].SetActive(false);
             }
         }
 

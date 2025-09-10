@@ -31,6 +31,12 @@ MonoBehaviour:
     characters: []
     items:
     - {fileID: 11400000, guid: f7b0aecdbb0b40f43a3509c7cf36a291, type: 2}
+  values:
+    name: 2
+    visuals: 2
+    cash: 2
+    items: 0
+    characters: 1
   encounters:
   - encounterTag: 
     objectives:

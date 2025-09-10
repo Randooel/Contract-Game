@@ -23,9 +23,7 @@ MonoBehaviour:
   profilePossessions:
     description: 
     names:
-    - Leo
-    - Ervilha
-    - Paullo
+    - Demiurgo
     visuals: []
     cash: 300
     useStatus: 0
@@ -34,6 +32,14 @@ MonoBehaviour:
     characters: []
     items:
     - {fileID: 11400000, guid: 0d0503fe33feb5b4d828b586c932595b, type: 2}
+  values:
+    name: 0
+    visuals: 1
+    cash: 2
+    satisfaction: 0
+    resolution: 0
+    items: 2
+    characters: 0
   encounters:
   - encounterTag: FIRST ENCOUNTER
     objectives:
@@ -75,7 +81,7 @@ MonoBehaviour:
       - "I\u2019m worried some of them have come to take revenge."
       playerResponses:
       - responseLine: I see. I will help you. <i>[SetPrice]</i>
-        answerSatisfaction: 0
+        answerSatisfaction: 5
         skipToDialogueX: 1
         nextDialogueTag: DISCUSS TERMS
       - responseLine: <i>[SetPrice]</i>
@@ -104,10 +110,23 @@ MonoBehaviour:
       - I'll be back to check on your progress tomorrow.
       - See ya.
       playerResponses: []
+    - dialogueTag: CRITICAL DEAL
+      currentDialogueState: 3
+      clientLines:
+      - Sweet! Thank you so much for your help.
+      - I'll come back to check on your progress tomorrow.
+      - See ya!
+      playerResponses: []
     - dialogueTag: REFUSED
       currentDialogueState: 3
       clientLines:
       - I see. Thank you for your time.
+      playerResponses: []
+    - dialogueTag: CRITICAL REFUSE
+      currentDialogueState: 3
+      clientLines:
+      - I never heard a worse proposal in my entire life.
+      - Take care.
       playerResponses: []
   - encounterTag: CHECK PROGRESS - 2
     objectives:

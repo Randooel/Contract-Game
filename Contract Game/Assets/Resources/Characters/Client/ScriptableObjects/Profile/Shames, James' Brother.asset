@@ -29,7 +29,13 @@ MonoBehaviour:
     satisfaction: 0
     resolution: 0
     characters: []
-    item: []
+    items: []
+  values:
+    name: 1
+    visuals: 1
+    cash: 1
+    items: 1
+    characters: 1
   encounters:
   - encounterTag: 
     objectives:
@@ -42,7 +48,7 @@ MonoBehaviour:
       resolution: 0
       characters:
       - {fileID: 11400000, guid: bfe3f220ecb88534a98d396fb7b9a048, type: 2}
-      item: []
+      items: []
     dialogueGroups:
     - dialogueTag: 
       currentDialogueState: 0
